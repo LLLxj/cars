@@ -1,0 +1,93 @@
+/* pages/perCenter/perCenter.wxss */
+.wrap{
+  position: fixed;
+  /* overflow: auto; */
+}
+.content{
+  width:100%;
+  height:200rpx;
+  background: blue;
+  position: relative;
+}
+.perInfo{
+  position: absolute;
+  width:80%;
+  left:0;
+  right:0;
+  margin:0 auto;
+  padding:30rpx 5%;
+  top:100rpx;
+  border-radius:10rpx;
+  background: #ffffff;
+  filter: drop-shadow(rgba(231, 231, 231, 0.3) 0px 5px 5px)
+}
+.perInfo{
+  overflow: hidden;
+}
+.perInfo-img{
+  float:left;
+  width:20%;
+  /* border:1px solid yellow; */
+}
+.perInfo-img image{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+}
+.userInfo-avatar{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+  overflow: hidden;
+}
+.perInfo-content{
+  float:left;
+  margin-left:50rpx;
+}
+.name{
+  position: relative;
+}
+.login{
+  font-size:36rpx;
+  font-weight: bold;
+  color:#0a0a0a;
+}
+.loginInfo{
+  color:#888888;
+  font-size:28rpx;
+  margin-top:15rpx;
+}
+.wxlogin{
+  position: absolute;
+  width:100%;
+  left:0;
+  top:0;
+  height:100rpx;
+  opacity: 0;
+}
+.blank{
+  height:100rpx;
+  /* border:1px solid red; */
+  border-bottom:1px solid #efefef;
+}
+.funciton{
+  /* border:1px solid blue; */
+  overflow: hidden;
+  padding:20rpx 0;
+}
+.funciton .list{
+  float:left;
+  width:25%;
+}
+.list .icon{
+  width:50rpx;
+  margin:0 auto;
+}
+.list .icon image{
+  width:60rpx;
+  height:60rpx;
+}
+.list .name{
+  text-align: center;
+  margin-top:10rpx;
+}

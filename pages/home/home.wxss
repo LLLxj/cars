@@ -1,0 +1,61 @@
+/* pages/home/home.wxss */
+.list{
+  width:90%;
+  margin:0 auto;
+  overflow: hidden;
+  /* border:1px solid red; */
+  /* padding:15rpx 0; */
+  margin-top:15rpx;
+}
+.info-img{
+  width:35%;
+  float:left;
+}
+.info-img image{
+  width:100%;
+  border-radius:10rpx;
+}
+/* 介绍开始 */
+.info-desc{
+  float:right;
+  width:62%;
+}
+.info-desc .title{
+  font-size:22rpx;
+  font-weight:bold;
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.isCheck text{
+  background:#dff6ff;
+  color:#318dd0;
+  font-size:20rpx;
+  padding:2rpx 4rpx;
+}
+.info_time{
+  overflow: hidden;
+}
+.info_time{
+  margin-top:10rpx;
+  font-size:24rpx;
+  color:#454449;
+}
+.info_time .buytime{
+  width:70%;
+  float:left;
+}
+.info_time .postdate{
+  width:30%;
+  float:right;
+  text-align: right;
+}
+.info-desc .price{
+  margin-top:5rpx;
+  font-size:32rpx;
+  font-weight:bold;
+  color:#ea6200;
+}
+/* 介绍结束 */

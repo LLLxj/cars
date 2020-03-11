@@ -1,0 +1,27 @@
+<!--pages/home/home.wxml-->
+<view class="wrap">
+
+  <view class="search">
+  </view>
+
+  <view class="list" wx:for="{{infolist}}" wx:key="unique" >
+
+    <!-- 照片 -->
+    <view class="info-img">
+      <image src="{{item.extParamMap.picurl}}" mode="widthFix"></image>
+    </view>
+
+    <!-- 介绍 -->
+    <view class="info-desc">
+      <view class="title">{{item.extParamMap.title}}</view>
+      <view class="isCheck"><text>证件已审</text></view>
+      <view class="info_time">
+        <view class="buytime">{{item.extParamMap.buytime}} · {{item.extParamMap.rundistance}}           </view>
+        <view class="postdate">{{item.extParamMap.postdate}}</view>
+      </view>
+      <view class="price">{{item.extParamMap.price}}</view>
+    </view>
+
+  </view>
+
+</view>
