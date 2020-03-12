@@ -1,0 +1,45 @@
+<view class="wrap">
+
+  <!-- 轮播 -->
+  <view class="swiper">
+    <swiper style="height:500rpx;"
+      autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
+      bindchange="changeCurrent">
+      <block wx:for="{{picList}}" wx:key="*this">
+        <swiper-item>
+          <view class="swiper-item">
+            <image src="{{item}}" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <!-- 轮播index -->
+    <view class="item-index">{{current}} / {{picList.length}}</view>
+
+    <!-- 更新时间 -->
+    <view class="postTime">{{postTime}}</view>
+  </view>
+
+  <view class="price-info">
+    <view class="infotitle">{{carInfo.infotitle}}</view>
+    <view class="price-detail">
+      <!-- 二手车价格 -->
+      <view class="ershou-price">{{carInfo.erchouchePrice}}万元</view>
+      <!-- 新车价格 -->
+      <view class="pre-price">
+        <view class="price">{{carInfo.erchouchePrice}}万元</view>
+        <view class="title">查看估值</view>
+      </view>
+      <!-- 预估价格 -->
+      <view class="yishou-price">
+        <view class="price">{{carInfo.erchouchePrice}}万元</view>
+        <view class="title">新车价格</view>
+      </view>
+    </view>
+    
+  </view>
+  
+  
+
+</view>

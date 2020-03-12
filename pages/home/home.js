@@ -5,6 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    region: '广州',
+    date: '2020',
+    price: '价格',
     infolist: [
       {
         "infoId": "40839893932583",
@@ -1108,5 +1111,25 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+  toDetail: function () {
+    wx.navigateTo({
+      url: '../detail/detail'
+    })
+  },
+
+  bindRegionChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value[0]
+    })
+  },
+
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
 })

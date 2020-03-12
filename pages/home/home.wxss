@@ -1,5 +1,5 @@
 /* pages/home/home.wxss */
-.list{
+.list-wrap .list{
   width:90%;
   margin:0 auto;
   overflow: hidden;
@@ -59,3 +59,35 @@
   color:#ea6200;
 }
 /* 介绍结束 */
+
+/* 搜索框开始 */
+.serach{
+  overflow: hidden;
+  width:100%;
+  border:1px solid #000000;
+  margin-bottom: 20rpx;
+}
+.serach .list{
+  width:25%;
+  float:left;
+  border:1px solid red;
+  padding:15rpx 0 0 0;
+}
+.serach .list .picker{
+  overflow: hidden;
+}
+.picker .location{
+  float:left;
+  width:50%;
+  text-align: right;
+  margin-top:5rpx;
+  font-size:26rpx;
+}
+.picker .icon{
+  float:left;
+  width:50%;
+}
+.picker .icon image{
+  width:50rpx;
+}
+/* 搜索框结束 */

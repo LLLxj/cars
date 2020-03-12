@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/perCenter/perCenter"
+    "pages/perCenter/perCenter",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
