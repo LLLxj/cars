@@ -25,21 +25,116 @@
     <view class="infotitle">{{carInfo.infotitle}}</view>
     <view class="price-detail">
       <!-- 二手车价格 -->
-      <view class="ershou-price">{{carInfo.erchouchePrice}}万元</view>
+      <view class="ershou-price">
+        <view class="price">{{carInfo.erchouchePrice}}万元</view>
+        <view class="title">(含过户费)</view>        
+      </view>
+
       <!-- 新车价格 -->
       <view class="pre-price">
         <view class="price">{{carInfo.erchouchePrice}}万元</view>
-        <view class="title">查看估值</view>
+        <view class="title">查看估值 ></view>
       </view>
+
       <!-- 预估价格 -->
       <view class="yishou-price">
         <view class="price">{{carInfo.erchouchePrice}}万元</view>
         <view class="title">新车价格</view>
       </view>
     </view>
-    
   </view>
-  
+
+  <view class="line"></view>
   
 
+  <!-- 车辆信息 -->
+  <view class="cars-info">
+    <view class="list">
+      <view class="data shangpainianyue">{{carInfo.shangpainianyue}}</view>
+      <view class="title">上牌时间</view>
+    </view>
+    <view class="list">
+      <view class="data rundistance">{{carInfo.rundistance}}</view>
+      <view class="title">1.3万公里/年</view>
+    </view>
+    <view class="list">
+      <view class="data paifangbiaozhun">{{carInfo.paifangbiaozhun || '国家标准'}}</view>
+      <view class="title">排放</view>
+    </view>
+    <view class="list">
+      <view class="data displacement">{{carInfo.displacement}}</view>
+      <view class="title">油耗:6.6L</view>
+    </view>
+    <view class="list">
+      <view class="data cheshenyanse">{{carInfo.cheshenyanse}}</view>
+      <view class="title">车身颜色</view>
+    </view>
+    <view class="list">
+      <view class="data quyu">{{carInfo.quyu}}</view>
+      <view class="title">所在地</view>
+    </view>
+  </view>
+
+  <view class="line"></view>
+
+  <!-- 配置信息 -->
+  <!-- <view class="configuration-info">
+    <view class="list">
+      <view class="icon taiya">
+      </view>
+      <view class="name"></view>
+    </view>
+    <view class="list">
+      <view class="icon"></view>
+      <view class="name"></view>
+    </view>
+    <view class="list">
+      <view class="icon"></view>
+      <view class="name"></view>
+    </view>
+    <view class="list">
+      <view class="icon"></view>
+      <view class="name"></view>
+    </view>
+  </view> -->
+
+  <!-- 整体简介 -->
+  <view class="short-desc">
+  
+    <!-- 车主信息 -->
+    <view class="user-info">
+      <view class="avatar"></view>
+      <view class="place">
+        <view class="name">{{userInfo.linkman}}</view>
+        <view class="title">发布于{{userInfo.locallist[0].name}}</view>
+      </view>
+      <view class="phone">
+        <view class="icon">
+        </view>
+        <view class="name">
+          电话
+        </view>
+      </view>
+    </view> 
+
+    <!-- 车辆信息 -->
+    <view class="car-desc">
+      <rich-text nodes="{{carInfo.content}}"></rich-text>
+    </view>
+
+  </view>
+
+</view>
+
+<!-- 底部悬浮框 -->
+<view class="fixBottom">
+  <view class="list share">
+    <view class="icon">
+      <image src="../../images/share.png" mode="widthFix"></image>
+    </view>
+    <view class="name">分享</view>
+  </view>
+  <view class="list phone" bindtap="phoneCall">
+    {{userInfo.start}}
+  </view>
 </view>

@@ -1,6 +1,14 @@
+.wrap{
+  padding:0 0 120rpx 0;
+}
 .swiper{
   width:100%;
   position: relative;
+}
+.line{
+  width:100%;
+  height:20rpx;
+  background: #f6f6f6;
 }
 .swiper .item-index{
   position: absolute;
@@ -27,8 +35,7 @@
   font-size:22rpx;
 }
 .price-info{
-  border:1px solid red;
-  padding:0 5% 15rpx 5%;
+  padding:0 5% 25rpx 5%;
   font-size:32rpx;
   color:#333333;
 }
@@ -37,13 +44,21 @@
 }
 .price-detail{
   overflow: hidden;
+  margin-top:15rpx;
 }
 .price-detail .ershou-price{
-  width:25%;
+  width:28%;
   float:left;
+}
+.price-detail .ershou-price .price{
   color:#ff552e;
-  font-size:36rpx;
+  font-size:38rpx;
   font-weight:bold;
+}
+.price-detail .ershou-price .title{
+  color:#c6c6c6;
+  font-size:22rpx;
+  text-align: left;
 }
 .price-detail .yishou-price{
   width:20%;
@@ -55,7 +70,7 @@
 }
 .price-detail .yishou-price .price{
   color:#292a2c;
-  font-size:20rpx;
+  font-size:22rpx;
 }
 .price-detail .yishou-price .title{
   color:#8e8e90;
@@ -72,10 +87,143 @@
 }
 .price-detail .pre-price .price{
   color:#292a2c;
-  font-size:20rpx;
+  font-size:22rpx;
 }
 .price-detail .pre-price .title{
   color:#8e8e90;
   font-size:20rpx;
   margin-top:10rpx;
+}
+.cars-info{
+  overflow: hidden;
+}
+.cars-info .list{
+  float:left;
+  width:33.3%;
+  padding:30rpx 0 15rpx 0;
+  text-align: center;
+}
+.cars-info .list .data{
+  color:#222222;
+  font-size: 28rpx;
+}
+.cars-info .list .title{
+  color:#b9b9b9;
+  font-size:24rpx;
+  margin-top:10rpx;
+}
+
+.peizhi{
+  width: 36px;
+  height: 36px;
+  margin: 8px auto 16px;
+  background: url(https://img.58cdn.com.cn/ui7/detail/img/newversion/brightpz_icon.png) no-repeat;
+  background-size: 1072px 72px;
+}
+
+.configuration-info{
+  overflow: hidden;
+}
+.configuration-info .list{
+  width:25%;
+  float:left;
+}
+.configuration-info .list .icon{
+  width: 36rpx;
+  height: 36rpx;
+  margin: 8rpx auto 16rpx;
+  background: url(https://img.58cdn.com.cn/ui7/detail/img/newversion/brightpz_icon.png) no-repeat;
+  background-size: 1072px 72px;
+}
+
+/* 整体简介 */
+.short-desc{
+  width:92%;
+  padding:15rpx 4% 20rpx 4%;
+}
+/* 车主信息 */
+.user-info{
+  width:100%;
+  overflow: hidden;
+  margin-bottom:30rpx;
+}
+.user-info>view{
+  float:left;
+}
+.user-info .avatar{
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+  border:1px solid #000000;
+}
+.user-info .place{
+  margin-left:25rpx;
+}
+.user-info .place .name{
+  color:#282828;
+  font-size:32rpx;
+  margin-top:5rpx;
+}
+.user-info .place .title{
+  margin-top:10rpx;
+  color:#616161;
+  font-size:24rpx;
+}
+.user-info .phone{
+  float:right;
+}
+.car-desc{
+  color:#303030;
+}
+
+/* 底部悬浮框 */
+.fixBottom{
+  position:fixed;
+  z-index:100;
+  width:100%;
+  left:0;
+  bottom:0;
+  height:120rpx;
+  background: #fff;
+  border-top:1px solid #e7e7e7;
+}
+.fixBottom .list{
+  float:left;
+}
+.fixBottom .share{
+  width:20%;
+  position:relative;
+}
+.fixBottom .share:after{
+  position:absolute;
+  width:1rpx;
+  right:0;
+  height:100rpx;
+  top:10rpx;
+  content: '';
+  background: #e7e7e7;
+}
+.fixBottom .phone{
+  width:72%;
+  float:right;
+  margin:15rpx 4% 0 0;
+  height:90rpx;
+  line-height: 90rpx;
+  background: #fe552e;
+  text-align: center;
+  color:#ffffff;
+  font-size:34rpx;
+}
+.fixBottom .share .icon{
+  width:50rpx;
+  margin:0 auto;
+  margin-top:15rpx;
+}
+.fixBottom .share .icon image{
+  width:100%;
+}
+.share .name{
+  text-align: center;
+  font-size:24rpx;
+  color:#000000;
 }

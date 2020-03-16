@@ -84,6 +84,36 @@ Page({
       "buytime": "2017年",
       "pinpaicode": "410767",
       "chexicode": "410975"
+    },
+    userInfo: {
+      "infoid": 40722461930527,
+      "sid": "152840468207665477437191466",
+      "phone": "13822******",
+      "userid": 29699440365834,
+      "sessionid": null,
+      "catentry": {
+        "dispid": "29",
+        "name": "二手车",
+        "listname": "ershouche"
+      },
+      "isbiz": true,
+      "locallist": [
+        {
+          "dispid": "3",
+          "name": "广州",
+          "listname": "gz"
+        }
+      ],
+      "page": "1",
+      "start": 1584361857889,
+      "rootcatentry": {
+        "dispid": "4",
+        "name": "车辆买卖与服务",
+        "listname": "car"
+      },
+      "linkman": "黄生",
+      "modules": "finalpage",
+      "is_huzhuan": false
     }
   
   },
@@ -170,6 +200,12 @@ Page({
     var current = e.detail.current
     this.setData({
       current: current + 1
+    })
+  },
+
+  phoneCall: function () {
+    wx.makePhoneCall({
+      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
     })
   }
 })
