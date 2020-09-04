@@ -38,22 +38,37 @@
 
   <view class="blank"></view>
 
-  <view class="funciton">
-
-    <view class="list">
-      <view class="icon">
-        <image src="../../images/noCollect.png"></image>
+  <view class="list-wrap">
+    <view class="list" bindtap="toPersonInfo">
+      个人信息
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-      <view class="name">收藏</view>
     </view>
-
-    <view class="list">
-      <view class="icon">
-        <image src="../../images/noCollect.png"></image>
+    <view class="list" bindtap="toComAuth">
+      企业认证
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-      <view class="name">错题</view>
     </view>
-
+    <view class="list" bindtap="toEstPrice">
+      估车价
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toCollect">
+      收藏
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toWrongRecord">
+      错题记录
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
   </view>
 
 </view>

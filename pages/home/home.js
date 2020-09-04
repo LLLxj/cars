@@ -1,4 +1,5 @@
 // pages/home/home.js
+const app = getApp()
 Page({
 
   /**
@@ -1054,7 +1055,9 @@ Page({
         },
         "juheParamMap": null
       }
-    ]
+    ],
+    token: '',
+    bannerList: []
   },
 
   /**
@@ -1075,7 +1078,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // this.getDataList()
+    this.setLogin()
+    // this.getBannerList()
   },
 
   /**
@@ -1118,18 +1123,157 @@ Page({
       url: '../detail/detail'
     })
   },
-
+  getDataList() {
+    var mythis = this
+    // var token = wx.getStorageSync('token')
+    // mythis.setData({
+    //   token: token
+    // })
+    var chId = mythis.data.chId
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/personalList',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+        page: 1,
+        limit: 10
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+        //  console.log(res)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
   bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       region: e.detail.value[0]
     })
   },
-
+  setLogin() {
+    var mythis = this
+    wx.request({
+      url: app.globalData.apiUrl + '/smsLogin',
+      method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+        "phone": "13422356022",
+        "smsCode": "111"
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          mythis.setData({
+            token: res.data.data
+          })
+          mythis.getDataList()
+          mythis.getBannerList()
+          mythis.getUserInfo()
+          wx.setStorage({
+            key: "token",
+            data: res.data.data,
+            success(res) {
+              // console.log(res)
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
+        } else {
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError(err)
+      }
+    })
+  },
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       date: e.detail.value
     })
   },
+  getBannerList() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/conf/banner/list',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          mythis.setData({
+            bannerList: res.data.data[1].bannerWaresList
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  getUserInfo() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/user/info',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          wx.setStorage({
+            key: "userInfo",
+            data: res.data.data,
+            success(res) {
+              // console.log(res)
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  }
 })

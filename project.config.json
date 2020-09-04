@@ -4,19 +4,27 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false,
 		"coverView": true,
+		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.3",
-	"appid": "wxc203944dbcd462cf",
+	"libVersion": "2.12.2",
+	"appid": "wx0a09f6863407a03b",
 	"projectname": "cars",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -67,6 +75,19 @@
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/personInfo/personInfo",
+					"pathName": "pages/personInfo/personInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/estPrice/estPrice",
+					"pathName": "pages/estPrice/estPrice",
 					"scene": null
 				}
 			]

@@ -4,7 +4,11 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/perCenter/perCenter",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/sell/sell",
+    "pages/comAuth/comAuth",
+    "pages/personInfo/personInfo",
+    "pages/estPrice/estPrice"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,6 +26,12 @@
         "iconPath": "images/noSelectHome.png",
         "pagePath": "pages/home/home",
         "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/selectHome.png",
+        "iconPath": "images/noSelectHome.png",
+        "pagePath": "pages/sell/sell",
+        "text": "卖车"
       },
       {
         "selectedIconPath": "images/selectReport.png",

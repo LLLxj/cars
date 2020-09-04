@@ -1,11 +1,27 @@
 <!--pages/home/home.wxml-->
 <view class="wrap">
-
+  <!-- <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerList}}" wx:key="index">
+      <swiper-item>
+        <view class="swiper-item {{item}}">
+          <image src="{{item.image}}"></image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper> -->
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerList}}" wx:key="index">
+      <swiper-item>
+          <image src="{{item.image}}" class="slide-image" model="widthFix" />
+        </swiper-item>
+      </block>
+    </swiper>
   <!-- 搜索框 -->
   <view class="serach">
 
     <!-- 地区 -->
-    <view class="list">
+    <!-- <view class="list">
       <view class="section">
         <view class="section__title"></view>
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -17,9 +33,9 @@
           </view>
         </picker>
       </view>
-    </view>
+    </view> -->
 
-    <view class="list">
+    <!-- <view class="list">
       <view class="section">
         <view class="section__title"></view>
         <picker mode="date" value="{{date}}" fields="year" bindchange="bindDateChange">
@@ -32,9 +48,9 @@
         </picker>
       </view>
     </view>
-    
+     -->
 
-    <view class="list">
+    <!-- <view class="list">
       <view class="section">
         <view class="section__title"></view>
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -46,7 +62,7 @@
           </view>
         </picker>
       </view>
-    </view>
+    </view> -->
 
   </view>
 

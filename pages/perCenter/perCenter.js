@@ -11,7 +11,8 @@ Page({
     userName: '马上登录',
     width: '',
     height: '',
-    token: ''
+    token: '',
+    userInfo: {}
   },
 
   /**
@@ -24,7 +25,6 @@ Page({
       height: wx.getSystemInfoSync().windowHeight,
       token: token
     })
-
     // wx.getSetting({
     //   success(res) {
     //     if (!res.authSetting['scope.record']) {
@@ -65,9 +65,15 @@ Page({
    */
   onShow: function () {
     var token = wx.getStorageSync('token')
+    var userInfo = wx.getStorageSync('userInfo')
+    var isFresh = wx.getStorageSync('isFresh')
     this.setData({
-      token: token
+      token: token,
+      userInfo: userInfo
     })
+    if (isFresh) {
+      this.getUserInfo()
+    }
   },
 
   /**
@@ -107,6 +113,7 @@ Page({
 
   // 获取用户手机号
   getPhoneNumber: function (e) {
+    console.log(e)
     var mythis = this
     wx.showLoading({
       title: '登录中',
@@ -114,8 +121,9 @@ Page({
     // console.log(scene)
     wx.login({
       success: res => {
+        console.log(res)
         wx.request({
-          url: app.globalData.apiUrl + '/api/home/login',
+          url: app.globalData.apiUrl + '/wxLogin',
           header: {
           },
           method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -127,9 +135,10 @@ Page({
           success: function (res) {
             if (res.data && res.data.code == 0) {
               wx.hideLoading()
-              mythis.setData({
-                token: res.data.data.token
-              })
+              console.log(res.data)
+              // mythis.setData({
+              //   token: res.data.data.token
+              // })
               // //缓存分享参数
               // wx.setStorageSync('share', res.data.data.share);
 
@@ -163,4 +172,51 @@ Page({
       }
     })
   },
+  toComAuth() {
+    wx.navigateTo({
+      url: '/pages/comAuth/comAuth',
+    })
+  },
+  toPersonInfo() {
+    wx.navigateTo({
+      url: '/pages/personInfo/personInfo',
+    })
+  },
+  toEstPrice() {
+    wx.navigateTo({
+      url: '/pages/estPrice/estPrice',
+    })
+  },
+  getUserInfo() {
+    var mythis = this
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/user/info',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.setStorage({
+            key: "userInfo",
+            data: res.data.data,
+            success(res) {
+              // console.log(res)
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
+        } else {
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  }
 })

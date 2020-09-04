@@ -1,0 +1,15 @@
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">车型</view>
+    <view class="val">
+      <picker bindchange="sexChange" range="{{sexArray}}">  
+        <input name="sex" placeholder="性别" value='{{sex}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>
+<view class="btn" bindtap="updateInfo">提交</view>

@@ -34,6 +34,29 @@ App({
     })
   },
   globalData: {
-    userInfo: null
-  }
+    userInfo: null,
+    apiUrl: "http://39.100.108.10:8087/wechat",
+  },
+  showNetworkError: function () {
+    wx.showToast({
+      title: '网络异常',
+      image: '../../images/loginerror.png',
+      duration: 3000
+    })
+  },
+  showErrorMsg: function (msg) {
+    wx.showToast({
+      title: msg,
+      // icon: 'success',
+      image: '../../images/loginerror.png',
+      duration: 3000
+    })
+  },
+  showsuccessMsg: function (msg) {
+    wx.showToast({
+      title: msg,
+      icon: 'success',
+      duration: 2000
+    })
+  },
 })
