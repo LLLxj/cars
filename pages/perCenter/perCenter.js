@@ -113,7 +113,6 @@ Page({
 
   // 获取用户手机号
   getPhoneNumber: function (e) {
-    console.log(e)
     var mythis = this
     wx.showLoading({
       title: '登录中',
@@ -121,7 +120,6 @@ Page({
     // console.log(scene)
     wx.login({
       success: res => {
-        console.log(res)
         wx.request({
           url: app.globalData.apiUrl + '/wxLogin',
           header: {
@@ -135,19 +133,19 @@ Page({
           success: function (res) {
             if (res.data && res.data.code == 0) {
               wx.hideLoading()
-              console.log(res.data)
-              // mythis.setData({
-              //   token: res.data.data.token
-              // })
+              mythis.setData({
+                token: res.data.data
+              })
+              mythis.getUserInfo()
               // //缓存分享参数
               // wx.setStorageSync('share', res.data.data.share);
 
               // //存入缓存即可
               wx.setStorage({
                 key: "token",
-                data: res.data.data.token,
+                data: res.data.data,
                 success(res) {
-                  console.log(res)
+                  // console.log(res)
                 },
                 fail(err) {
                   console.log(err)
@@ -172,6 +170,49 @@ Page({
       }
     })
   },
+  getUserInfo() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/user/info',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          console.log(res.data.data)
+          mythis.setData({
+            userInfo: res.data.data,
+            userName: res.data.data.dealUserName
+          })
+          wx.setStorage({
+            key: "userInfo",
+            data: res.data.data,
+            success(res) {
+              // console.log(res)
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
   toComAuth() {
     wx.navigateTo({
       url: '/pages/comAuth/comAuth',
@@ -187,36 +228,9 @@ Page({
       url: '/pages/estPrice/estPrice',
     })
   },
-  getUserInfo() {
-    var mythis = this
-    wx.request({
-      url: app.globalData.apiUrl + '/deal/user/info',
-      header: {
-        'token': mythis.data.token
-      },
-      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      data: {
-      },
-      success: function (res) {
-        if (res.data && res.data.code == 0) {
-          wx.setStorage({
-            key: "userInfo",
-            data: res.data.data,
-            success(res) {
-              // console.log(res)
-            },
-            fail(err) {
-              console.log(err)
-            }
-          })
-        } else {
-          app.showErrorMsg(res.data.msg);
-        }
-      },
-      fail: function (err) {
-        console.log(err);
-        app.showNetworkError()
-      }
+  toPreAssess() {
+    wx.navigateTo({
+      url: '/pages/preAccess/preAccess',
     })
   }
 })

@@ -16,7 +16,7 @@
         <view class="name">
           <view hidden="{{token !== ''}}">
             <view class="login">{{userName}}</view>
-            <view class="loginInfo" hidden="{{uid !== ''}}">立即预测考试通过率</view>
+            <!-- <view class="loginInfo" hidden="{{uid !== ''}}">立即预测考试通过率</view> -->
             <view class="wxlogin" hidden="{{uid !== ''}}">
               <button open-type="getPhoneNumber" class="getUserInfo" bindgetphonenumber="getPhoneNumber">
               马上登录
@@ -25,7 +25,8 @@
           </view>
           
           <view hidden="{{token == ''}}">
-            <open-data type="userNickName"></open-data>
+            <!-- <open-data type="userNickName"></open-data> -->
+            <view>{{userInfo.dealUserName}}</view>
           </view>
           
           
@@ -45,6 +46,57 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
+    <!-- 评估功能模块 -->
+    <view class="list" bindtap="toPersonInfo">
+      免费估值
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toPreAssess">
+      评估商品列表
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toPersonInfo">
+      出售评估商品
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <!-- 商品模块 -->
+    <view class="list" bindtap="toComAuth">
+      新增商品
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toComAuth">
+      商品列表
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <!-- 金融模块 -->
+    <view class="list" bindtap="toComAuth">
+      新增金融单
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toComAuth">
+      提现
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <view class="list" bindtap="toComAuth">
+      资讯分期列表
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
     <view class="list" bindtap="toComAuth">
       企业认证
       <view class="function">
@@ -53,18 +105,6 @@
     </view>
     <view class="list" bindtap="toEstPrice">
       估车价
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
-    </view>
-    <view class="list" bindtap="toCollect">
-      收藏
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
-    </view>
-    <view class="list" bindtap="toWrongRecord">
-      错题记录
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>

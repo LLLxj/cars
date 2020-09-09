@@ -1,9 +1,9 @@
 <!--pages/personInfo/personInfo.wxml-->
 <view class="list-wrap">
   <view class="list">
-    <view class="label">车型</view>
+    <view class="label">品牌</view>
     <view class="val">
-      <picker bindchange="sexChange" range="{{sexArray}}">  
+      <picker bindchange="bandChange" range="{{bandArray}}">  
         <input name="sex" placeholder="性别" value='{{sex}}' />  
       </picker>
     </view>

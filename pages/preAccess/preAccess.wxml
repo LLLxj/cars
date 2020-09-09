@@ -1,5 +1,4 @@
 <!--pages/home/home.wxml-->
-<wxs module="formatter" src="home.wxs"></wxs>
 <view class="wrap">
   <!-- <swiper indicator-dots="{{indicatorDots}}"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
@@ -22,7 +21,7 @@
   <view class="serach">
 
     <!-- 地区 -->
-    <view class="list">
+    <!-- <view class="list">
       <view class="section">
         <view class="section__title"></view>
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -63,7 +62,7 @@
           </view>
         </picker>
       </view>
-    </view>
+    </view> -->
 
   </view>
 
@@ -82,7 +81,7 @@
         <view class="title">{{item.dealWaresTitle}}</view>
         <!-- <view class="isCheck"><text>证件已审</text></view> -->
         <view class="info_time">
-          <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
+          <view class="buytime">{{item.registerTime}}年  {{item.distance}}公里</view>
           <view class="postdate">{{item.extParamMap.postdate}}</view>
         </view>
         <view class="price">{{item.extParamMap.price}}</view>

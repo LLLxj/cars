@@ -1,0 +1,9 @@
+var formatter = {
+  getYearVal: function (value) {
+    var result = value.slice(0, 4)
+    return result
+  }
+}
+module.exports = {
+  getYearVal: formatter.getYearVal
+} 

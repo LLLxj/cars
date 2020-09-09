@@ -88,6 +88,13 @@
 					"id": -1,
 					"name": "pages/estPrice/estPrice",
 					"pathName": "pages/estPrice/estPrice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/preAccess/preAccess",
+					"pathName": "pages/preAccess/preAccess",
 					"scene": null
 				}
 			]

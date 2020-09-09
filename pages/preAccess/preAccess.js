@@ -1,4 +1,4 @@
-// pages/estPrice/estPrice.js
+// pages/preAccess/preAccess.js
 const app = getApp()
 
 Page({
@@ -8,8 +8,7 @@ Page({
    */
   data: {
     token: '',
-    sexArray: ['男', '女'],
-    bandArray: []
+    list: []
   },
 
   /**
@@ -34,7 +33,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getBrandList()
+    this.getDataList()
   },
 
   /**
@@ -70,36 +69,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  getBrandList() {
-    var mythis = this
-    wx.showLoading({
-      title: '加载中',
-    })
-    wx.request({
-      url: app.globalData.apiUrl + '/cou/wares/brand/getCouBrandList',
-      header: {
-        'token': mythis.data.token
-      },
-      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      data: {},
-      success: function (res) {
-        if (res.data && res.data.code === 0) {
-          wx.hideLoading()
-          mythis.setData({
-            bandArray: res.data.data
-          })
-        } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
-        }
-      },
-      fail: function (err) {
-        wx.hideLoading()
-        console.log(err);
-        app.showNetworkError()
-      }
-    })
   },
   getDataList() {
     var mythis = this

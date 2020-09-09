@@ -1,16 +1,15 @@
 /* pages/perCenter/perCenter.wxss */
 .wrap{
-  position: fixed;
+  /* position: fixed; */
+  background: #fafafa;
   /* overflow: auto; */
 }
 .content{
   width:100%;
-  height:200rpx;
-  background: blue;
+  background: #fff;
   position: relative;
 }
 .perInfo{
-  position: absolute;
   width:80%;
   left:0;
   right:0;
@@ -19,33 +18,36 @@
   top:100rpx;
   border-radius:10rpx;
   background: #ffffff;
-  filter: drop-shadow(rgba(231, 231, 231, 0.3) 0px 5px 5px)
 }
 .perInfo{
   overflow: hidden;
 }
 .perInfo-img{
-  float:left;
-  width:20%;
+  width:120rpx;
+  margin:0 auto;
+  margin-top:20rpx;
   /* border:1px solid yellow; */
 }
 .perInfo-img image{
-  width:100rpx;
-  height:100rpx;
+  width:120rpx;
+  height:120rpx;
   border-radius:50%;
 }
 .userInfo-avatar{
-  width:100rpx;
-  height:100rpx;
+  width:120rpx;
+  height:120rpx;
   border-radius:50%;
   overflow: hidden;
 }
 .perInfo-content{
-  float:left;
-  margin-left:50rpx;
+  /* margin-left:50rpx; */
 }
 .name{
   position: relative;
+  font-size:34rpx;
+  text-align: center;
+  margin:20rpx 0 50rpx 0;
+  color:#919191;
 }
 .login{
   font-size:36rpx;
@@ -66,9 +68,9 @@
   opacity: 0;
 }
 .blank{
-  height:100rpx;
+  height:30rpx;
   /* border:1px solid red; */
-  border-bottom:1px solid #efefef;
+  /* border-bottom:1px solid #efefef; */
 }
 .funciton{
   /* border:1px solid blue; */
@@ -90,6 +92,127 @@
 .list .name{
   text-align: center;
   margin-top:10rpx;
+}
+
+/**index.wxss**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+/* 遮罩层 */
+.l-cover{
+  background-color: rgba(0, 0, 0, 0.7);
+  position:absolute;
+  width:100%;
+  left:0;
+  top:0;
+  z-index:100;
+}
+
+/* 选择登录模式 */
+.l-choose-login{
+  opacity: 1;
+  position:fixed; 
+  width:70%;
+  top:300rpx;
+  left:0;
+  right:0;
+  margin:0 auto;
+  height:500rpx;
+  background: #fff;
+  border-radius: 5px
+}
+.l-cancle-login image{
+  opacity:1;
+  width:40rpx;
+  height:40rpx;
+  float:right;
+  margin-right:30rpx;
+  margin-top:30rpx;
+}
+.l-login-style{
+  text-align: center;
+  width:100%;
+  display:block;
+  color:black;
+  font-size: 34rpx;
+  margin-top:10rpx;
+}
+
+.l-wechat-login{
+  width:80%;
+  margin:0 auto;
+  margin-top:50rpx;
+  border-radius:5px;
+  height:100rpx;
+  background: #6DC3D2
+}
+.l-wechat-login image{
+  float:left;
+  margin-left:80rpx;
+  margin-top:25rpx;
+}
+.l-wechat-login text{
+  float:left;
+  margin-left:30rpx;
+  margin-top:30rpx;
+}
+.getUserInfo{
+  position:absolute;
+  width:80%;
+  opacity: 0
+}
+
+.l-mobile-login{
+  width:80%;
+  margin:0 auto;
+  margin-top:50rpx;
+  border-radius:5px;
+  height:100rpx;
+  background: #F8F8F8
+}
+.l-wechat-login image{
+  width:64rpx;
+  height:55rpx;
+}
+
+.l-mobile-login image{
+  width:36rpx;
+  height:64rpx;
+  float:left;
+  margin-left:90rpx;
+  margin-top:20rpx;
+}
+.l-wechat-login text{
+  color:#fff;
+  font-size: 30rpx;
+}
+.l-mobile-login text{
+  color:black;
+  font-size: 30rpx;
+  float:left;
+  margin-left:50rpx;
+  margin-top:30rpx;
+}
+.clear{
+  clear:both;
 }
 .list-wrap .list{
   width:90%;
@@ -114,4 +237,10 @@
   width:30rpx;
   height:30rpx;
   transform:rotate(180deg);
+}
+.quit{
+  padding:35rpx 0;
+  background: #fff;
+  text-align: center;
+  color:#ed7a68;
 }
