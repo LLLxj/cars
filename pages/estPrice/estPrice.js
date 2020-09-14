@@ -9,7 +9,12 @@ Page({
   data: {
     token: '',
     sexArray: ['男', '女'],
-    bandArray: []
+    bandArray: [], // 品牌列表
+    seriesList: [], // 系列列表
+    couBrandId: '',
+    couBrandName: '',
+    couWaresId: '',
+    couWaresName: '',
   },
 
   /**
@@ -101,7 +106,7 @@ Page({
       }
     })
   },
-  getDataList() {
+  getDataList() { // 获取品牌列表
     var mythis = this
     wx.showLoading({
       title: '加载中',
@@ -134,4 +139,56 @@ Page({
       }
     })
   },
+  getSeries(id) {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/cou/wares/getCouWaresList/' + id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          console.log(res.data.data)
+          mythis.setData({
+            seriesList: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  brandChange(e) {
+    const id = e.detail.value
+    const couBrandId = this.data.bandArray[id].couBrandId
+    const couBrandName = this.data.bandArray[id].couBrandName
+    this.setData({
+      couBrandId: couBrandId,
+      couBrandName: couBrandName
+    })
+    this.getSeries(couBrandId)
+  },
+  seriesChange(e) {
+    const id = e.detail.value
+    const couWaresId = this.data.seriesList[id].couWaresId
+    const couWaresName = this.data.seriesList[id].couWaresName
+    this.setData({
+      couWaresId: couWaresId,
+      couWaresName: couWaresName
+    })
+  }
+  
 })

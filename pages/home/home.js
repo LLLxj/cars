@@ -74,26 +74,28 @@ Page({
   onShareAppMessage: function () {
 
   },
-
-  toDetail: function () {
-    wx.navigateTo({
-      url: '../detail/detail'
-    })
+  toDetail: function (item) {
+    console.log(item)
+    const id = item.currentTarget.dataset.id.dealWaresId
+    var token = this.data.token
+    if (token) {
+      wx.navigateTo({
+        url: '../detail/detail?id=' + id
+      })
+    } else {
+      app.showErrorMsg('请登录')
+    }
   },
   getDataList() {
     var mythis = this
-    // var token = wx.getStorageSync('token')
-    // mythis.setData({
-    //   token: token
-    // })
     var chId = mythis.data.chId
     wx.showLoading({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/wares/personalList',
+      url: app.globalData.apiUrl + '/deal/wares/retailList',
       header: {
-        'token': mythis.data.token
+        // 'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
@@ -136,7 +138,6 @@ Page({
     wx.request({
       url: app.globalData.apiUrl + '/conf/banner/list',
       header: {
-        'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {

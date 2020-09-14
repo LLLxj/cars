@@ -20,7 +20,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.12.2",
@@ -64,10 +67,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "",
+					"query": "id=3a863d000ff84055a8ec57228972c001",
 					"scene": null
 				},
 				{
@@ -95,6 +98,21 @@
 					"id": -1,
 					"name": "pages/preAccess/preAccess",
 					"pathName": "pages/preAccess/preAccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/comManage/comManage",
+					"pathName": "pages/comManage/comManage",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/applyCompany/applyCompany",
+					"pathName": "pages/applyCompany/applyCompany",
+					"query": "",
 					"scene": null
 				}
 			]

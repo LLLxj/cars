@@ -69,7 +69,7 @@
 
   <view class="list-wrap">
 
-    <view class="list" wx:for="{{infolist}}" wx:key="unique" bindtap="toDetail">
+    <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
 
       <!-- 照片 -->
       <view class="info-img">

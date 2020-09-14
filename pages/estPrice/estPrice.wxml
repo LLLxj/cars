@@ -3,8 +3,19 @@
   <view class="list">
     <view class="label">品牌</view>
     <view class="val">
-      <picker bindchange="bandChange" range="{{bandArray}}">  
-        <input name="sex" placeholder="性别" value='{{sex}}' />  
+      <picker bindchange="brandChange" range="{{bandArray}}" range-key="couBrandName">  
+        <input name="brand" placeholder="请选择品牌" value='{{couBrandName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">系列</view>
+    <view class="val">
+      <picker bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
+        <input name="series" placeholder="请选择系列" value='{{couWaresName}}' />  
       </picker>
     </view>
     <view class="function">

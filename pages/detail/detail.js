@@ -1,10 +1,12 @@
 // pages/detail/detail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    id: '',
     indicatorDots: true,
     vertical: false,
     autoplay: false,
@@ -14,7 +16,7 @@ Page({
     imageWidth: '',
     current: 1,
     postTime: '今日更新',
-    carInfo: {
+    carInfo1: {
       "10589": "26000000",
       "rundistance": "6.02万公里",
       "paifangbiaozhun": "",
@@ -85,6 +87,7 @@ Page({
       "pinpaicode": "410767",
       "chexicode": "410975"
     },
+    carInfo: {},
     userInfo: {
       "infoid": 40722461930527,
       "sid": "152840468207665477437191466",
@@ -114,8 +117,8 @@ Page({
       "linkman": "黄生",
       "modules": "finalpage",
       "is_huzhuan": false
-    }
-  
+    },
+    token: ''
   },
 
   /**
@@ -123,8 +126,13 @@ Page({
    */
   onLoad: function (options) {
     // console.log(options)
+    var token = wx.getStorageSync('token')
+    this.setData({
+      token: token
+    })
     this.setData({
       imageWidth: wx.getSystemInfoSync().windowWidth,
+      id: options.id
     })
   },
 
@@ -139,14 +147,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var data = this.data.carInfo.pics
+    // var data = this.data.carInfo.pics
     // var array = []
     // for (var i=0,len=data.length;i< 9;i++) {
     //   array.push(data[i])
     // }
-    this.setData({
-      picList: data
-    })
+    // this.setData({
+    //   picList: data
+    // })
+    this.getInfo()
   },
 
   /**
@@ -182,6 +191,39 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getInfo() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/retail/' + mythis.data.id,
+      header: {
+        token: mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          console.log(res)
+          mythis.setData({
+            carInfo: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
   },
 
   bindRegionChange: function (e) {

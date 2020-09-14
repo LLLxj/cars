@@ -46,8 +46,14 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
+    <view class="list" bindtap="toComManage">
+      企业信息
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
     <!-- 评估功能模块 -->
-    <view class="list" bindtap="toPersonInfo">
+    <view class="list" bindtap="toEstPrice">
       免费估值
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>

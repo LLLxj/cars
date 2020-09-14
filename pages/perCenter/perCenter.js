@@ -223,6 +223,11 @@ Page({
       url: '/pages/personInfo/personInfo',
     })
   },
+  toComManage() { // 企业管理模块
+    wx.navigateTo({
+      url: '/pages/comManage/comManage',
+    })
+  },
   toEstPrice() {
     wx.navigateTo({
       url: '/pages/estPrice/estPrice',
