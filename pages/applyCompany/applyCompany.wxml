@@ -6,5 +6,20 @@
       <input value="{{ dealStoreName }}" placeholder="请输入企业名称" bindinput="getName"></input>
     </view>
   </view>
+  <view class="list">
+    <view class="label">客户职位</view>
+    <view class="val">
+      <input value="{{ dealUserJob }}" placeholder="请输入客户职位" bindinput="getStaff"></input>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">企业门店logo</view>
+    <view class="logo-wrap" bindtap="uploadLogo">
+      <image src="../../images/add-pic-icon.png"></image>
+    </view>
+    <view class="logo-wrap">
+      <image :src="{{ logo }}"></image>
+    </view>
+  </view>
 </view>
-<view class="btn" bindtap="updateInfo">提交</view>
+<view class="btn" bindtap="applyCompany">申请认证</view>

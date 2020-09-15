@@ -10,7 +10,9 @@ Page({
     token: '',
     dealStoreName: '',
     image: '',
-    name: ''
+    name: '',
+    dealUserJob: '',
+    logo: ''
   },
 
   /**
@@ -76,7 +78,12 @@ Page({
   },
   getName(e) {
     this.setData({
-      name: e.detail.value
+      dealStoreName: e.detail.value
+    })
+  },
+  getStaff(e) {
+    this.setData({
+      dealUserJob: e.detail.value
     })
   },
   updateInfo() {
@@ -121,8 +128,9 @@ Page({
     })
   },
   uploadLogo() {
+    var mythis = this
     wx.chooseImage({
-      count: 9, // 默认9
+      count: 1, // 默认9
       sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
@@ -131,15 +139,15 @@ Page({
         var tempFiles = res.tempFiles;
         console.log(tempFiles)
         mythis.setData({
-          picList: tempFiles
+          logo: tempFiles[0].path
         })
-        console.log(mythis.data.picList)
+        // console.log(mythis.data.picList)
         // 上传图片
         // wx.showLoading({
         //   title: '上传中...',
         // })
         // const uploadTask = wx.uploadFile({
-        //   url: app.globalData.apiurl + 'Upload/uploadFile.html', //仅为示例，非真实的接口地址
+        //   url: app.globalData.apiurl + '/deal/user/store/uploadStore', //仅为示例，非真实的接口地址
         //   filePath: tempFilePaths[0],
         //   name: 'coverurl',
         //   formData: {
@@ -161,9 +169,40 @@ Page({
         //         duration: 3000
         //       })
         //     }
-
         //   }
         // })
+      }
+    })
+  },
+  applyCompany() {
+    const mythis = this
+    wx.showLoading({
+      title: '提交中...',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/user/store/save',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+        dealStoreName: mythis.data.dealStoreName,
+        image: mythis.data.image,
+        dealUserJob: mythis.data.dealUserJob
+      },
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          wx.navigateBack({})
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
       }
     })
   }

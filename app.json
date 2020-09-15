@@ -11,7 +11,9 @@
     "pages/estPrice/estPrice",
     "pages/preAccess/preAccess",
     "pages/comManage/comManage",
-    "pages/applyCompany/applyCompany"
+    "pages/applyCompany/applyCompany",
+    "pages/companyList/companyList"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

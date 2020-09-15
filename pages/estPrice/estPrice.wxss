@@ -39,5 +39,5 @@
   bottom: 20rpx;
   height:80rpx;
   line-height: 80rpx;
-  background:linear-gradient(132deg,rgba(91,86,86,1) 0%,rgba(56,56,56,1) 100%);
+  background:linear-gradient(132deg,rgba(30,105,198,1) 0%,rgba(72,50,197,1) 100%);
 }

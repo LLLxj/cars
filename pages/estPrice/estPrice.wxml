@@ -14,9 +14,10 @@
   <view class="list">
     <view class="label">系列</view>
     <view class="val">
-      <picker bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
+      <picker wx:if="{{couBrandId}}" bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
         <input name="series" placeholder="请选择系列" value='{{couWaresName}}' />  
       </picker>
+      <input wx:else disabled="true" name="couBrandId" bindtap="getSeriesVal" placeholder="请选择系列" value='{{couBrandName}}' /> 
     </view>
     <view class="function">
       <image src="../../images/array1.png" mode="widthFix"></image>

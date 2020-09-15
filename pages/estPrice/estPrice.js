@@ -182,6 +182,7 @@ Page({
     this.getSeries(couBrandId)
   },
   seriesChange(e) {
+    console.log(e)
     const id = e.detail.value
     const couWaresId = this.data.seriesList[id].couWaresId
     const couWaresName = this.data.seriesList[id].couWaresName
@@ -189,6 +190,11 @@ Page({
       couWaresId: couWaresId,
       couWaresName: couWaresName
     })
+  },
+  getSeriesVal(e) {
+    if (!this.data.couBrandId) {
+      app.showErrorMsg('请选择品牌');
+      return
+    }
   }
-  
 })

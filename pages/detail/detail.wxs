@@ -1,0 +1,9 @@
+var formatter = {
+  getSlice: function (value) {
+    var result = value.slice(0, 7)
+    return result
+  }
+}
+module.exports = {
+  getSlice: formatter.getSlice
+} 

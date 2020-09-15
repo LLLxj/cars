@@ -70,14 +70,14 @@
 					"id": 1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "id=3a863d000ff84055a8ec57228972c001",
+					"query": "id=3a863d000ff84055a8ec57228972c001&type=0",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "",
+					"query": "id=3a863d000ff84055a8ec57228972c001&type=1",
 					"scene": null
 				},
 				{
@@ -112,6 +112,20 @@
 					"id": -1,
 					"name": "pages/applyCompany/applyCompany",
 					"pathName": "pages/applyCompany/applyCompany",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/preAccess/preAccess",
+					"pathName": "pages/preAccess/preAccess",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/companyList/companyList",
+					"pathName": "pages/companyList/companyList",
 					"query": "",
 					"scene": null
 				}

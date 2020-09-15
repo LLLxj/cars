@@ -11,8 +11,6 @@ Page({
     price: '价格',
     infolist: [],
     token: '',
-    bannerList: [],
-    userInfo: {}
   },
 
   /**
@@ -34,13 +32,10 @@ Page({
    */
   onShow: function () {
     var token = wx.getStorageSync('token')
-    var userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      token: token,
-      userInfo: userInfo
+      token: token
     })
     this.getDataList()
-    this.getBannerList()
   },
 
   /**
@@ -82,7 +77,7 @@ Page({
     var token = this.data.token
     if (token) {
       wx.navigateTo({
-        url: '../detail/detail?id=' + id + '&type=' + 0
+        url: '../detail/detail?id=' + id + '&type=' + 1
       })
     } else {
       app.showErrorMsg('请登录')
@@ -95,9 +90,9 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/wares/retailList',
+      url: app.globalData.apiUrl + '/deal/wares/storeList',
       header: {
-        // 'token': mythis.data.token
+        'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
@@ -130,36 +125,6 @@ Page({
   bindDateChange: function (e) {
     this.setData({
       date: e.detail.value
-    })
-  },
-  getBannerList() {
-    var mythis = this
-    wx.showLoading({
-      title: '加载中',
-    })
-    wx.request({
-      url: app.globalData.apiUrl + '/conf/banner/list',
-      header: {
-      },
-      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      data: {
-      },
-      success: function (res) {
-        if (res.data && res.data.code == 0) {
-          wx.hideLoading()
-          mythis.setData({
-            bannerList: res.data.data[1].bannerWaresList
-          })
-        } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
-        }
-      },
-      fail: function (err) {
-        wx.hideLoading()
-        console.log(err);
-        app.showNetworkError()
-      }
     })
   },
   getUserInfo() {
@@ -198,21 +163,6 @@ Page({
         console.log(err);
         app.showNetworkError()
       }
-    })
-  },
-  toCompanyList() {
-    const userInfo = this.data.userInfo
-    const token = this.data.token
-    if (!token) {
-      app.showErrorMsg('请登录')
-      return
-    }
-    // if (userInfo.type === 0) {
-    //   app.showErrorMsg('请验证身份')
-    //   return
-    // }
-    wx.navigateTo({
-      url: '/pages/companyList/companyList',
     })
   }
 })

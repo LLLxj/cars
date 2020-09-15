@@ -118,22 +118,26 @@ Page({
       "modules": "finalpage",
       "is_huzhuan": false
     },
-    token: ''
+    token: '',
+    type: '' // 0 个人 1 企业
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
     var token = wx.getStorageSync('token')
     this.setData({
-      token: token
-    })
-    this.setData({
       imageWidth: wx.getSystemInfoSync().windowWidth,
-      id: options.id
+      id: options.id,
+      token: token,
+      type: options.type
     })
+    if (options && options.type == 0) {
+      this.getPersonInfo()
+    } else if (options && options.type == 1) {
+      this.getComInfo()
+    }
   },
 
   /**
@@ -147,15 +151,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var data = this.data.carInfo.pics
-    // var array = []
-    // for (var i=0,len=data.length;i< 9;i++) {
-    //   array.push(data[i])
-    // }
-    // this.setData({
-    //   picList: data
-    // })
-    this.getInfo()
+    
   },
 
   /**
@@ -193,7 +189,7 @@ Page({
 
   },
 
-  getInfo() {
+  getPersonInfo() {
     var mythis = this
     wx.showLoading({
       title: '加载中',
@@ -209,7 +205,40 @@ Page({
       success: function (res) {
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
-          console.log(res)
+          console.log(res.data.data)
+          mythis.setData({
+            carInfo: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+
+  getComInfo() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/store/' + mythis.data.id,
+      header: {
+        token: mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          console.log(res.data.data)
           mythis.setData({
             carInfo: res.data.data
           })
@@ -247,7 +276,7 @@ Page({
 
   phoneCall: function () {
     wx.makePhoneCall({
-      phoneNumber: '1340000' //仅为示例，并非真实的电话号码
+      phoneNumber: this.data.carInfo.contactPhone
     })
   }
 })

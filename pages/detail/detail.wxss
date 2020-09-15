@@ -1,6 +1,15 @@
 .wrap{
   padding:0 0 120rpx 0;
 }
+.column-wrap{
+  width: 100%;
+  padding:25rpx 5%;
+  box-sizing: border-box;
+}
+.title{
+  font-size: 34rpx;
+  padding: 0 0 30rpx 0;
+}
 .swiper{
   width:100%;
   position: relative;
@@ -41,6 +50,9 @@
 }
 .price-info .infotitle{
   padding:20rpx 0 10rpx 0;
+  font-size: 34rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
 }
 .price-detail{
   overflow: hidden;
@@ -95,13 +107,23 @@
   margin-top:10rpx;
 }
 .cars-info{
-  overflow: hidden;
+  width: 100%;
+  padding:25rpx 5%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
-.cars-info .list{
-  float:left;
-  width:33.3%;
-  padding:30rpx 0 15rpx 0;
-  text-align: center;
+.cars-info .title{
+  font-size: 34rpx;
+}
+.cars-info .list-wrap{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.cars-info .list-wrap .list{
+  width: 50%;
+  flex-wrap: wrap;
 }
 .cars-info .list .data{
   color:#222222;
@@ -226,4 +248,45 @@
   text-align: center;
   font-size:24rpx;
   color:#000000;
+}
+
+/* 基本信息 */
+.basic-info{
+  margin: 20rpx 0 0 0;
+  display: flex;
+}
+.basic-info .item{
+  width: 33.3%;
+  display: flex;
+  border-right: 1rpx solid #b9b9b9;
+  flex-direction: column;
+}
+.basic-info .item:nth-last-of-type(1){
+  border: none;
+}
+.basic-info .item-two{
+  padding: 0 0 0 40rpx;
+}
+.basic-info .item .label{
+  font-size: 20rpx;
+  color: #b9b9b9;
+}
+.basic-info .item .value{
+  margin: 10rpx 0 0 0;
+  font-size: 32rpx;
+  color: #222222;
+}
+.basic-info .item .addColor{
+  color: #ff552e;
+}
+
+/* 车辆描述 */
+.cars-desc .desc{
+  font-size: 24rpx;
+}
+
+/* 看车地点 */
+.place-info .row .place{
+  font-size: 24rpx;
+  color: #b9b9b9;
 }
