@@ -1,4 +1,4 @@
-// pages/preAccess/preAccess.js
+// pages/sellEstProductInfo/sellEstProductInfo.js
 const app = getApp()
 
 Page({
@@ -8,18 +8,18 @@ Page({
    */
   data: {
     token: '',
-    list: [],
-    width: '',
-    height: ''
+    id: '',
+    form: {},
+    dealSellTitle: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options.id)
     this.setData({
-      width: wx.getSystemInfoSync().windowWidth,
-      height: wx.getSystemInfoSync().windowHeight
+      id: options.id
     })
   },
 
@@ -38,7 +38,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getDataList()
+    this.getInfo()
   },
 
   /**
@@ -68,38 +68,35 @@ Page({
   onReachBottom: function () {
 
   },
-
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   },
-  getDataList() {
-    var mythis = this
+  getInfo() {
+    const mythis = this
+    const id = mythis.data.id
     wx.showLoading({
-      title: '加载中',
+      title: '提交中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/assess/list',
+      url: app.globalData.apiUrl + '/deal/assess/sell/info/' + id,
       header: {
         'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
-        page: 1,
-        limit: 10
       },
       success: function (res) {
-        if (res.data && res.data.code === 0) {
-          console.log(res.data.data.list)
+        if (res.data && res.data.code == 0) {
           wx.hideLoading()
           mythis.setData({
-            list: res.data.data.list
-          })
+            form: res.data.data
+          }) 
         } else {
           wx.hideLoading()
-          app.showErrorMsg(res.data.message);
+          app.showErrorMsg(res.data.msg);
         }
       },
       fail: function (err) {
@@ -109,4 +106,10 @@ Page({
       }
     })
   },
+  getTitle(e) {
+    console.log(e.detail.value)
+    this.setData({
+      dealSellTitle: e.detail.value
+    })
+  }
 })

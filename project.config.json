@@ -128,6 +128,20 @@
 					"pathName": "pages/companyList/companyList",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sellEstProduct/sellEstProduct",
+					"pathName": "pages/sellEstProduct/sellEstProduct",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/sellEstProductInfo/sellEstProductInfo",
+					"pathName": "pages/sellEstProductInfo/sellEstProductInfo",
+					"query": "id=3",
+					"scene": null
 				}
 			]
 		}

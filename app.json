@@ -12,7 +12,9 @@
     "pages/preAccess/preAccess",
     "pages/comManage/comManage",
     "pages/applyCompany/applyCompany",
-    "pages/companyList/companyList"
+    "pages/companyList/companyList",
+    "pages/sellEstProduct/sellEstProduct",
+    "pages/sellEstProductInfo/sellEstProductInfo"
 
   ],
   "window": {

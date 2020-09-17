@@ -1,0 +1,38 @@
+
+<view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
+    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
+      <view class="logo">
+        <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
+      </view>
+      <view class="info">
+        <view class="row">
+          <view class="name">{{ item.couWaresName }}</view>
+          <view class="status {{item.status === 1 ? 'fail' : ''}} {{item.status === 2 ? 'checking' : ''}}{{item.status === 3 ? 'success' : ''}}{{item.status === 0 ? 'delete' : ''}}">
+            <block wx:if="{{item.status === 0}}">已取消</block>
+            <block wx:if="{{item.status === 1}}">待处理</block>
+            <block wx:if="{{item.status === 2}}">处理中</block>
+            <block wx:if="{{item.status === 3}}">已完成</block>
+          </view>
+          <!-- status (integer, optional): 出售情况 0.已取消 1.待处理 2.处理中 3.已完成 , -->
+        </view>
+        <view class="staff">最终出售金额：{{ item.sellPrice }}</view>
+        <view class="time">跟进人：{{ item.sysUserName }}
+        </view>
+      </view>
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+</view>
+
+<!-- 无数据 -->
+<view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="no-data-wrap">
+    <view class="noData">
+      <image src="../../images/manageNoData.png" mode="widthFix"></image> 
+    </view>
+    <view class="noData-text">暂无数据</view>
+  </view>
+</view>
+
+<view wx:if="{{list.length}}" class="btn" bindtap="applyCompany">新增</view>

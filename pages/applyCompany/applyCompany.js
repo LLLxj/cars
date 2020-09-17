@@ -186,6 +186,9 @@ Page({
       },
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
+        dealUserId: mythis.data.userInfo.dealUserId,
+        // sysUserId: mythis.data.userInfo.sysUserId,
+        sysUserId: 100002,
         dealStoreName: mythis.data.dealStoreName,
         image: mythis.data.image,
         dealUserJob: mythis.data.dealUserJob

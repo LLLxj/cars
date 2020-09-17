@@ -6,7 +6,7 @@
     <swiper style="height:500rpx;"
       autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}"
       bindchange="changeCurrent">
-      <block wx:for="{{carInfo.waresImages}}" wx:key="*this">
+      <block wx:for="{{carInfo.waresImages}}" wx:key="index">
         <swiper-item>
           <view class="swiper-item">
             <!-- <image src="{{item.image}}" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image> -->
@@ -62,36 +62,44 @@
     </view>
   </view>
 
-  <!-- 车辆信息 -->
+  <!-- 基本信息 -->
   <view class="cars-info">
 
     <view class="title">基本信息</view>
 
     <view class="list-wrap">
-      <view class="list">
-        <view class="data shangpainianyue">{{carInfo.shangpainianyue}}</view>
-        <view class="title">上牌时间</view>
+      <view class="row">
+        <view class="list">
+          产品框架号<text class="value">{{carInfo.waresFrameCode}}</text>
+        </view>
+        <view class="list">
+          过户次数<text class="value">{{carInfo.transferNum}}</text>
+        </view>
       </view>
-      <view class="list">
-        <view class="data rundistance">{{carInfo.rundistance}}</view>
-        <view class="title">1.3万公里/年</view>
+      <view class="row">
+        <view class="list">
+          是否含过户费<text class="value">{{carInfo.isTransfer === 0 ? '是' : '否'}}</text>
+        </view>
+        <view class="list">
+          是否有抵押<text class="value">{{carInfo.isMortgage === 0 ? '是' : '否'}}</text>
+        </view>
       </view>
-      <view class="list">
-        <view class="data paifangbiaozhun">{{carInfo.paifangbiaozhun || '国家标准'}}</view>
-        <view class="title">排放</view>
+      <view class="row">
+        <view class="list">
+          是否有定期4s保养<text class="value">{{carInfo.isMaintain === 0 ? '是' : '否'}}</text>
+        </view>
+        <view class="list">
+          1.3万公里/年<text class="value">{{carInfo.rundistance}}</text>
+        </view>
       </view>
-      <view class="list">
-        <view class="data displacement">{{carInfo.displacement}}</view>
-        <view class="title">油耗:6.6L</view>
-      </view>
-      <view class="list">
-        <view class="data cheshenyanse">{{carInfo.cheshenyanse}}</view>
-        <view class="title">车身颜色</view>
-      </view>
-      <view class="list">
-        <view class="data quyu">{{carInfo.quyu}}</view>
-        <view class="title">所在地</view>
-      </view>
+      <!-- <view class="row">
+        <view class="list">
+          上牌时间<text class="value">{{carInfo.shangpainianyue}}</text>
+        </view>
+        <view class="list">
+          1.3万公里/年<text class="value">{{carInfo.rundistance}}</text>
+        </view>
+      </view> -->
     </view>
 
     
@@ -120,7 +128,8 @@
       <view class="avatar"></view>
       <view class="place">
         <view class="name">{{carInfo.contactName}}</view>
-        <view class="title">发布于{{carInfo.submitTime}}</view>
+        <!-- <view class="title">发布于{{carInfo.submitTime}}</view> -->
+        <view class="title">所属：{{carInfo.dealStoreName}}</view>
       </view>
       <view class="phone">
         <view class="icon">

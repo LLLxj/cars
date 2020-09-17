@@ -53,6 +53,7 @@
   font-size: 34rpx;
   font-weight: bold;
   letter-spacing: 2rpx;
+  color: #2d2d2d;
 }
 .price-detail{
   overflow: hidden;
@@ -117,17 +118,23 @@
   font-size: 34rpx;
 }
 .cars-info .list-wrap{
-  display: flex;
-  flex-direction: row;
   width: 100%;
 }
-.cars-info .list-wrap .list{
-  width: 50%;
-  flex-wrap: wrap;
+.list-wrap .row{
+  width: 100%;
+  display: flex;
+  margin: 0 0 20rpx 0;
 }
-.cars-info .list .data{
-  color:#222222;
+.list-wrap .row .list{
+  width: 50%;
+  display: flex;
+  color:#9b9b9b;
   font-size: 28rpx;
+}
+.list-wrap .row .value{
+  padding: 0 0 0 10rpx;
+  color: #434343;
+  font-size: 30rpx;
 }
 .cars-info .list .title{
   color:#b9b9b9;
@@ -269,15 +276,17 @@
 }
 .basic-info .item .label{
   font-size: 20rpx;
-  color: #b9b9b9;
+  color: #969696;
+  font-weight: bold;
 }
 .basic-info .item .value{
   margin: 10rpx 0 0 0;
   font-size: 32rpx;
-  color: #222222;
+  color: #404040;
 }
 .basic-info .item .addColor{
-  color: #ff552e;
+  color: #f75435;
+  font-weight: bold;
 }
 
 /* 车辆描述 */

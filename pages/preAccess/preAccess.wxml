@@ -1,96 +1,38 @@
-<!--pages/home/home.wxml-->
-<view class="wrap">
-  <!-- <swiper indicator-dots="{{indicatorDots}}"
-    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{bannerList}}" wx:key="index">
-      <swiper-item>
-        <view class="swiper-item {{item}}">
-          <image src="{{item.image}}"></image>
+
+<view class="wrap" hidden="{{!list}}" style="width:{{width}}px;height:{{height}}px;">
+    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
+      <view class="logo">
+        <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
+      </view>
+      <view class="info">
+        <view class="row">
+          <view class="name">{{ item.couWaresName }}</view>
+          <view class="status {{item.sellStatus === 0 ? 'fail' : ''}} {{item.sellStatus === 1 ? 'checking' : ''}}{{item.sellStatus === 2 ? 'success' : ''}}">
+            <block wx:if="{{item.sellStatus === 0}}">未交易</block>
+            <block wx:if="{{item.sellStatus === 1}}">交易中</block>
+            <block wx:if="{{item.sellStatus === 2}}">已交易</block>
+          </view>
         </view>
-      </swiper-item>
-    </block>
-  </swiper> -->
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{bannerList}}" wx:key="index">
-      <swiper-item>
-          <image src="{{item.image}}" class="slide-image" model="widthFix" />
-        </swiper-item>
-      </block>
-    </swiper>
-  <!-- 搜索框 -->
-  <view class="serach">
-
-    <!-- 地区 -->
-    <!-- <view class="list">
-      <view class="section">
-        <view class="section__title"></view>
-        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-          <view class="picker">
-            <view class="location">{{region}}</view>
-            <view class="icon">
-              <image src="../../images/array.png" mode="widthFix"></image>
-            </view>
-          </view>
-        </picker>
-      </view>
-    </view>
-
-    <view class="list">
-      <view class="section">
-        <view class="section__title"></view>
-        <picker mode="date" value="{{date}}" fields="year" bindchange="bindDateChange">
-          <view class="picker">
-            <view class="location">{{date}}</view>
-            <view class="icon">
-              <image src="../../images/array.png" mode="widthFix"></image>
-            </view>
-          </view>
-        </picker>
-      </view>
-    </view>
-    
-
-    <view class="list">
-      <view class="section">
-        <view class="section__title"></view>
-        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-          <view class="picker">
-            <view class="location">{{price}}</view>
-            <view class="icon">
-              <image src="../../images/array.png" mode="widthFix"></image>
-            </view>
-          </view>
-        </picker>
-      </view>
-    </view> -->
-
-  </view>
-
-  <view class="list-wrap">
-
-    <view class="list" wx:for="{{infolist}}" wx:key="unique" bindtap="toDetail">
-
-      <!-- 照片 -->
-      <view class="info-img">
-        <!-- <image src="{{item.coverImage.image}}" mode="widthFix"></image> -->
-        <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image>
-      </view>
-
-      <!-- 介绍 -->
-      <view class="info-desc">
-        <view class="title">{{item.dealWaresTitle}}</view>
-        <!-- <view class="isCheck"><text>证件已审</text></view> -->
-        <view class="info_time">
-          <view class="buytime">{{item.registerTime}}年  {{item.distance}}公里</view>
-          <view class="postdate">{{item.extParamMap.postdate}}</view>
+        <view class="staff">评估价格：{{ item.dealAssessPrice }}</view>
+        <view class="time">状态：
+          <block wx:if="{{item.status === 0}}">待审核</block>
+          <block wx:if="{{item.status === 1}}">已审核</block>
         </view>
-        <view class="price">{{item.extParamMap.price}}</view>
       </view>
-
+      <!-- <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view> -->
     </view>
-
-  </view>
-
-  
-
 </view>
+
+<!-- 无数据 -->
+<view class="wrap" hidden="{{list}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="no-data-wrap">
+    <view class="noData">
+      <image src="../../images/manageNoData.png" mode="widthFix"></image> 
+    </view>
+    <view class="noData-text">暂无数据</view>
+  </view>
+</view>
+
+<!-- <view class="btn" bindtap="applyCompany">申请认证</view> -->

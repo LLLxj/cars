@@ -1,0 +1,10 @@
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">出售标题</view>
+    <view class="val">
+      <input value="{{form.dealSellTitle}}" bindinput="getTitle"></input>
+    </view>
+  </view>
+</view>
+<view class="btn" bindtap="updateInfo">提交</view>

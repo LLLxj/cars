@@ -71,9 +71,10 @@ Page({
       token: token,
       userInfo: userInfo
     })
-    if (isFresh) {
-      this.getUserInfo()
-    }
+    this.getUserInfo()
+    // if (isFresh) {
+    //   this.getUserInfo()
+    // }
   },
 
   /**
@@ -202,8 +203,14 @@ Page({
             }
           })
         } else {
+          console.log(111)
           wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          wx.clearStorage({
+            success: (res) => {
+              console.log(res)
+            },
+          })
+          app.showErrorMsg(res.data.message);
         }
       },
       fail: function (err) {
@@ -237,5 +244,10 @@ Page({
     wx.navigateTo({
       url: '/pages/preAccess/preAccess',
     })
+  },
+  toSellProduct() { // 评估商品出售
+    wx.navigateTo({
+      url: '/pages/sellEstProduct/sellEstProduct',
+    }) 
   }
 })

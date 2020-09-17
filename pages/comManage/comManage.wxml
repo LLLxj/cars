@@ -1,31 +1,21 @@
 
 <view class="wrap" hidden="{{!recordList}}" style="width:{{width}}px;height:{{height}}px;">
-
-  
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
       <view class="logo">
         <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
       </view>
-      <!-- dealStoreId (integer, optional): 主键ID ,
-dealUserId (integer, optional): 客户ID ,
-dealStoreName (string, optional): 公司名称 ,
-image (string, optional): 商家门面图URL ,
-dealUserJob (integer, optional): 客户职位 ,
-examine (integer, optional): 审核状态 0.审核失败 1.审核中 2.审核通过 ,
-applyTime (string, optional): 申请时间 ,
-examineTime (string, optional): 审核时间 -->
       <view class="info">
         <view class="row">
           <view class="name">{{ item.dealStoreName }}</view>
-          <view class="status">
-            审核中
-            <!-- <block wx:if="{{item.examine === 0}}">审核失败</block>
+          <view class="status {{item.examine === 0 ? 'fail' : ''}} {{item.examine === 1 ? 'checking' : ''}}{{item.examine === 2 ? 'success' : ''}} {{item.examine === 3 ? 'delete' : ''}}">
+            <block wx:if="{{item.examine === 0}}">审核失败</block>
             <block wx:if="{{item.examine === 1}}">审核中</block>
-            <block wx:if="{{item.examine === 2}}">审核通过</block> -->
+            <block wx:if="{{item.examine === 2}}">审核通过</block>
+            <block wx:if="{{item.examine === 3}}">作废</block>
           </view>
         </view>
         <view class="staff">{{ item.dealUserJob }}</view>
-        <view class="time">{{ item.examineTime }}</view>
+        <view class="time">{{ item.examineTime ? item.examineTime: '' }}</view>
       </view>
       <!-- <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>

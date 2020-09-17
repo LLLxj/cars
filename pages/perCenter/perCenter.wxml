@@ -54,7 +54,7 @@
     </view>
     <!-- 评估功能模块 -->
     <view class="list" bindtap="toEstPrice">
-      免费估值
+      估车价
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
@@ -65,8 +65,8 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
-    <view class="list" bindtap="toPersonInfo">
-      出售评估商品
+    <view class="list" bindtap="toSellProduct">
+      评估商品出售
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
@@ -99,18 +99,6 @@
     </view>
     <view class="list" bindtap="toComAuth">
       资讯分期列表
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
-    </view>
-    <view class="list" bindtap="toComAuth">
-      企业认证
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
-    </view>
-    <view class="list" bindtap="toEstPrice">
-      估车价
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>

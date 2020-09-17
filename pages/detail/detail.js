@@ -211,13 +211,13 @@ Page({
           })
         } else {
           wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.message);
         }
       },
       fail: function (err) {
         wx.hideLoading()
         console.log(err);
-        app.showNetworkError()
+        app.showNetworkError(err)
       }
     })
   },
@@ -244,13 +244,13 @@ Page({
           })
         } else {
           wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.message);
         }
       },
       fail: function (err) {
         wx.hideLoading()
         console.log(err);
-        app.showNetworkError()
+        app.showNetworkError(err)
       }
     })
   },

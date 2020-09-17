@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       width: wx.getSystemInfoSync().windowWidth,
-      height: wx.getSystemInfoSync().windowHeight
+      height: wx.getSystemInfoSync().windowHeight - 70
     })
   },
 
@@ -81,7 +81,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/assess/list',
+      url: app.globalData.apiUrl + '/deal/assess/sell/list',
       header: {
         'token': mythis.data.token
       },
@@ -109,4 +109,12 @@ Page({
       }
     })
   },
+  getDetail(e) {
+    console.log(e)
+    const id = e.currentTarget.dataset.id.dealSellId
+    console.log(id)
+    wx.navigateTo({
+      url: '/pages/sellEstProductInfo/sellEstProductInfo?id=' + id
+    })
+  }
 })
