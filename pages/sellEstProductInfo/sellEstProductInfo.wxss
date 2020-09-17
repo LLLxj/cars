@@ -16,6 +16,9 @@
   text-align: right;
   /* border:1px solid red; */
 }
+.label{
+  width: 200rpx;
+}
 .btn{
   position:fixed;
   width:90%;
@@ -30,4 +33,9 @@
   height:80rpx;
   line-height: 80rpx;
   background:linear-gradient(132deg,rgba(30,105,198,1) 0%,rgba(72,50,197,1) 100%);
+}
+.list-wrap .list .function image{
+  width:30rpx;
+  height:30rpx;
+  transform:rotate(180deg);
 }

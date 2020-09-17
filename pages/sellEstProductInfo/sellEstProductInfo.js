@@ -10,7 +10,25 @@ Page({
     token: '',
     id: '',
     form: {},
-    dealSellTitle: ''
+    dealSellTitle: '',
+    cityList: [],
+    sexLabel: '',
+    contactName: '',
+    contactPhone: '',
+    areaName: '',
+    areaId: '',
+    proAreaId: 19,
+    cityAreaId: '',
+    cityAreaName: '',
+    countyAreaId: '',
+    countyAreaName: '',
+    countyList: [],
+    sex: '',
+    sexArray: [
+      { label: '先生', val: 0 },
+      { label: '女士', val: 1 }
+    ],
+    addr: ''
   },
 
   /**
@@ -39,6 +57,7 @@ Page({
       token: token
     })
     this.getInfo()
+    this.getCityList()
   },
 
   /**
@@ -91,6 +110,7 @@ Page({
       success: function (res) {
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
+          console.log(res.data.data)
           mythis.setData({
             form: res.data.data
           }) 
@@ -107,9 +127,151 @@ Page({
     })
   },
   getTitle(e) {
-    console.log(e.detail.value)
     this.setData({
       dealSellTitle: e.detail.value
+    })
+  },
+  sexChange(e) {
+    const id = e.detail.value
+    const sex = this.data.sexArray[id].val
+    const sexLabel = this.data.sexArray[id].label
+    this.setData({
+      sex: sex,
+      sexLabel: sexLabel
+    })
+  },
+  getAddress(e) {
+    this.setData({
+      addr: e.detail.value
+    })
+  },
+  getContact(e) {
+    this.setData({
+      contactName: e.detail.value
+    })
+  },
+  getPhone(e) {
+    this.setData({
+      contactPhone: e.detail.value
+    })
+  },
+  getCityList() {
+    const mythis = this
+    wx.showLoading({
+      title: '提交中。。。',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/cust/area/city/19',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          mythis.setData({
+            cityList: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  cityChange(e) {
+    const id = e.detail.value
+    const areaName = this.data.cityList[id].areaName
+    const areaId = this.data.cityList[id].areaId
+    this.setData({
+      cityAreaId: areaId,
+      cityAreaName: areaName
+    })
+    this.getCountryList(areaId)
+  },
+  getCountryList(id) {
+    const mythis = this
+    wx.showLoading({
+      title: '加载中。。。',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/cust/area/county/' + id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          mythis.setData({
+            countyList: res.data.data
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  countyChange(e) {
+    const id = e.detail.value
+    const countyAreaName = this.data.countyList[id].areaName
+    const countyAreaId = this.data.countyList[id].areaId
+    this.setData({
+      countyAreaId: countyAreaId,
+      countyAreaName: countyAreaName
+    })
+  },
+  updateInfo() {
+    const mythis = this
+    wx.showLoading({
+      title: '提交中。。。',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/assess/sell/update',
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+        dealSellId: mythis.data.form.dealSellId,
+        dealSellTitle: mythis.data.dealSellTitle,
+        contactName: mythis.data.contactName,
+        contactPhone: mythis.data.contactPhone,
+        sex: mythis.data.sex,
+        proAreaId: mythis.data.proAreaId,
+        cityAreaId: mythis.data.cityAreaId,
+        countyAreaId: mythis.data.countyAreaId,
+        addr: mythis.data.addr
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          console.log(res)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.message);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
     })
   }
 })
