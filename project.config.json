@@ -22,7 +22,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -70,7 +70,7 @@
 					"id": 1,
 					"name": "pages/detail/detail",
 					"pathName": "pages/detail/detail",
-					"query": "id=3a863d000ff84055a8ec57228972c001&type=0",
+					"query": "id=3a863d000ff84055a8ec57228972c001&type=0&couWaresId=1",
 					"scene": null
 				},
 				{
@@ -141,6 +141,20 @@
 					"name": "pages/sellEstProductInfo/sellEstProductInfo",
 					"pathName": "pages/sellEstProductInfo/sellEstProductInfo",
 					"query": "id=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/installment/installment",
+					"pathName": "pages/installment/installment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/product/product",
+					"pathName": "pages/product/product",
+					"query": "",
 					"scene": null
 				}
 			]

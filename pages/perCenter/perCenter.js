@@ -205,6 +205,16 @@ Page({
         } else {
           console.log(111)
           wx.hideLoading()
+          wx.setStorage({
+            key: "token",
+            data: '',
+            success(res) {
+              // console.log(res)
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
           wx.clearStorage({
             success: (res) => {
               console.log(res)
@@ -248,6 +258,16 @@ Page({
   toSellProduct() { // 评估商品出售
     wx.navigateTo({
       url: '/pages/sellEstProduct/sellEstProduct',
+    }) 
+  },
+  toInstalMent() { // 分期
+    wx.navigateTo({
+      url: '/pages/installmentList/installmentList',
+    }) 
+  },
+  toProduct() {
+    wx.navigateTo({
+      url: '/pages/product/product',
     }) 
   }
 })

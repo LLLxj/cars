@@ -67,7 +67,7 @@
 
   </view>
 
-  <view class="company-banner" bindtap="toCompany">
+  <view class="company-banner" bindtap="toCompanyList">
     企业管理
   </view>
 

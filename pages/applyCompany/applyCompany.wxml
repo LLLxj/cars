@@ -14,11 +14,16 @@
   </view>
   <view class="list logo">
     <view class="label">企业门店logo</view>
-    <view class="logo-wrap" bindtap="uploadLogo">
-      <image src="../../images/add-pic-icon.png"></image>
-    </view>
-    <view class="logo-wrap">
-      <image :src="{{ logo }}"></image>
+    <view class="logo-box">
+      <view class="logo-wrap" bindtap="uploadLogo">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view>
+      <view class="logo-wrap">
+        <image bindtap="viewLogo" src="{{ logo }}"></image>
+        <view wx:if="{{ logo }}" class="delete" bindtap="deleteLogoImg">
+          <image src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
     </view>
   </view>
 </view>

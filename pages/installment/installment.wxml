@@ -1,0 +1,24 @@
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">联系人名称</view>
+    <view class="val">
+      <input value="{{contactName}}" bindinput="getName" placeholder="请输入姓名"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">联系电话</view>
+    <view class="val">
+      <input value="{{contactPhone}}" bindinput="getMobile" placeholder="请输入电话"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">性别</view>
+    <view class="val">
+      <picker bindchange="sexChange" range="{{sexArray}}" range-key="label">  
+        <input name="sex" placeholder="请选择性别" value='{{sexLabel}}' />  
+      </picker>
+    </view>
+  </view>
+</view>
+<view class="btn" bindtap="sumbit">提交</view>

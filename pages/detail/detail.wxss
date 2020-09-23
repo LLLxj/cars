@@ -212,7 +212,9 @@
   width:100%;
   left:0;
   bottom:0;
+  display: flex;
   height:120rpx;
+  align-items: center;
   background: #fff;
   border-top:1px solid #e7e7e7;
 }
@@ -236,8 +238,8 @@
   width:72%;
   float:right;
   margin:15rpx 4% 0 0;
-  height:90rpx;
-  line-height: 90rpx;
+  height:80rpx;
+  line-height: 80rpx;
   background: #fe552e;
   text-align: center;
   color:#ffffff;

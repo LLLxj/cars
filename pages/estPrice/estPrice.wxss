@@ -8,7 +8,7 @@
   position:relative;
   color:#444444;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 .label{
   width: 40%;
@@ -16,6 +16,7 @@
 .val{
   width: 55%;
   text-align: left;
+  display: flex;
 }
 .list-wrap .list .val input{
   text-align: right;
@@ -40,4 +41,26 @@
   height:80rpx;
   line-height: 80rpx;
   background:linear-gradient(132deg,rgba(30,105,198,1) 0%,rgba(72,50,197,1) 100%);
+}
+.logo{
+  flex-direction: column;
+}
+.logo-wrap{
+  display: flex;
+  margin: 20rpx 20rpx 0 0 ;
+  position:relative;
+}
+.logo-wrap image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.delete{
+  position: absolute;
+  width: 60rpx;
+  right: -30rpx;
+  top:-30rpx;
+}
+.delete image{
+  width: 100%;
 }

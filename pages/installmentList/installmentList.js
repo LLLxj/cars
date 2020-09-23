@@ -1,4 +1,4 @@
-// pages/preAccess/preAccess.js
+// pages/installmentList/installmentList.js
 const app = getApp()
 
 Page({
@@ -7,10 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    token: '',
-    list: [],
     width: '',
-    height: ''
+    height: '',
+    token: '',
+    list: []
   },
 
   /**
@@ -81,7 +81,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/assess/list',
+      url: app.globalData.apiUrl + '/deal/wares/installment/list',
       header: {
         'token': mythis.data.token
       },
@@ -107,12 +107,6 @@ Page({
         console.log(err);
         app.showNetworkError()
       }
-    })
-  },
-  getDetail(e) {
-    const dealAssessId = e.currentTarget.dataset.id.dealAssessId
-    wx.navigateTo({
-      url: '/pages/preAccessInfo/preAccessInfo?dealAssessId=' + dealAssessId,
     })
   }
 })

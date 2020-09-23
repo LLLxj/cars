@@ -1,4 +1,4 @@
-// pages/preAccess/preAccess.js
+// pages/preAccessInfo/preAccessInfo.js
 const app = getApp()
 
 Page({
@@ -7,10 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dealAssessId: '',
     token: '',
-    list: [],
-    width: '',
-    height: ''
+    productInfo: {}
   },
 
   /**
@@ -18,8 +17,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      width: wx.getSystemInfoSync().windowWidth,
-      height: wx.getSystemInfoSync().windowHeight
+      dealAssessId: options.dealAssessId
     })
   },
 
@@ -38,7 +36,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getDataList()
+    this.getDataInfo()
   },
 
   /**
@@ -75,27 +73,25 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getDataList() {
+  getDataInfo() {
     var mythis = this
+    var dealAssessId = mythis.data.dealAssessId
     wx.showLoading({
-      title: '加载中',
+      title: '查询中。。。',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/assess/list',
+      url: app.globalData.apiUrl + '/deal/assess/info/' + dealAssessId,
       header: {
         'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
-        page: 1,
-        limit: 10
       },
       success: function (res) {
-        if (res.data && res.data.code === 0) {
-          console.log(res.data.data.list)
+        if (res.data && res.data.code == 0) {
           wx.hideLoading()
           mythis.setData({
-            list: res.data.data.list
+            productInfo: res.data.data
           })
         } else {
           wx.hideLoading()
@@ -107,12 +103,6 @@ Page({
         console.log(err);
         app.showNetworkError()
       }
-    })
-  },
-  getDetail(e) {
-    const dealAssessId = e.currentTarget.dataset.id.dealAssessId
-    wx.navigateTo({
-      url: '/pages/preAccessInfo/preAccessInfo?dealAssessId=' + dealAssessId,
     })
   }
 })

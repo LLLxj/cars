@@ -10,11 +10,15 @@
     "pages/personInfo/personInfo",
     "pages/estPrice/estPrice",
     "pages/preAccess/preAccess",
+    "pages/preAccessInfo/preAccessInfo",
     "pages/comManage/comManage",
     "pages/applyCompany/applyCompany",
     "pages/companyList/companyList",
     "pages/sellEstProduct/sellEstProduct",
-    "pages/sellEstProductInfo/sellEstProductInfo"
+    "pages/sellEstProductInfo/sellEstProductInfo",
+    "pages/installmentList/installmentList",
+    "pages/installment/installment",
+    "pages/product/product"
 
   ],
   "window": {
@@ -33,12 +37,6 @@
         "iconPath": "images/noSelectHome.png",
         "pagePath": "pages/home/home",
         "text": "首页"
-      },
-      {
-        "selectedIconPath": "images/selectHome.png",
-        "iconPath": "images/noSelectHome.png",
-        "pagePath": "pages/sell/sell",
-        "text": "卖车"
       },
       {
         "selectedIconPath": "images/selectReport.png",

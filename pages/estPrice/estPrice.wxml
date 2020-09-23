@@ -15,7 +15,7 @@
     <view class="label">系列</view>
     <view class="val">
       <picker wx:if="{{couBrandId}}" bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
-        <input name="series" placeholder="请选择系列" value='{{couWaresName}}' />  
+        <input name="series" placeholder="请选择系列" value='{{couSeriesName}}' />  
       </picker>
       <input wx:else disabled="true" name="couBrandId" bindtap="getSeriesVal" placeholder="请选择系列" value='{{couBrandName}}' /> 
     </view>
@@ -23,5 +23,71 @@
       <image src="../../images/array1.png" mode="widthFix"></image>
     </view>
   </view>
+  <view class="list">
+    <view class="label">行驶里程</view>
+    <view class="val">
+      <input value="{{distance}}" bindinput="distanceChange" placeholder="请输入行驶里程"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">上牌时间</view>
+    <view class="val">
+      <picker mode="date" start="2019" bindchange="bindDateChange">
+        <input placeholder="请选择" value='{{registerTime}}' disabled="true" />
+      </picker>
+    </view>
+  </view>
+  
+  <view class="list">
+    <view class="label">选择市</view>
+    <view class="val">
+      <picker bindchange="cityChange" range="{{cityList}}" range-key="areaName">  
+        <input name="area" placeholder="请选择市" value='{{areaName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">选择区</view>
+    <view class="val">
+      <picker wx:if="{{cityAreaId}}" bindchange="countyChange" range="{{countyList}}" range-key="areaName">  
+        <input name="series" placeholder="请选择区" value='{{countyName}}' />  
+      </picker>
+      <input wx:else disabled="true" name="countyId" bindtap="getCountyVal" placeholder="请选择区" value='{{countyName}}' /> 
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">驾驶证</view>
+    <view class="val">
+      <view class="logo-wrap" bindtap="uploadLogo">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view> 
+      <view class="logo-wrap">
+        <image src="{{license}}"></image>
+        <view class="delete">
+          <image wx:if="{{license}}" bindtap="deleteLicense" src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">商品评估图</view>
+    <view class="val">
+      <view class="logo-wrap" bindtap="uploadAccessImg">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view>
+      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}">
+        <image src="{{item.image}}"></image>
+        <view class="delete" bindtap="deleteAssessImg">
+          <image src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
-<view class="btn" bindtap="updateInfo">提交</view>
+<view class="btn" bindtap="submit">提交</view>

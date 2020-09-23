@@ -146,10 +146,16 @@
     <view class="icon">
       <image src="../../images/share.png" mode="widthFix"></image>
     </view>
-    <view class="name">分享</view>
+    <!-- <view class="name">分享</view> -->
+  </view>
+  <view class="list phone" bindtap="estPrice">
+    估车价
   </view>
   <view class="list phone" bindtap="phoneCall">
     立即联系
     <!-- {{userInfo.start}} -->
+  </view>
+  <view class="list phone" bindtap="contact">
+    分期咨询
   </view>
 </view>

@@ -53,12 +53,12 @@
       </view>
     </view>
     <!-- 评估功能模块 -->
-    <view class="list" bindtap="toEstPrice">
+    <!-- <view class="list" bindtap="toEstPrice">
       估车价
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view>
+    </view> -->
     <view class="list" bindtap="toPreAssess">
       评估商品列表
       <view class="function">
@@ -78,7 +78,7 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
-    <view class="list" bindtap="toComAuth">
+    <view class="list" bindtap="toProduct">
       商品列表
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
@@ -97,7 +97,7 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
-    <view class="list" bindtap="toComAuth">
+    <view class="list" bindtap="toInstalMent">
       资讯分期列表
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>

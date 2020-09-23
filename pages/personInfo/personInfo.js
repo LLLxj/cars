@@ -35,7 +35,6 @@ Page({
       userInfo: userInfo,
       token: token
     })
-    console.log(this.data.userInfo)
   },
 
   /**

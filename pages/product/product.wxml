@@ -34,4 +34,4 @@
   </view>
 </view>
 
-<view class="btn" bindtap="applyCompany">申请认证</view>
+<view class="btn" bindtap="applyCompany">新增</view>

@@ -278,5 +278,18 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.carInfo.contactPhone
     })
+  },
+
+  estPrice() {
+    const couWaresId = this.data.carInfo.couWaresId
+    wx.navigateTo({
+      url: '/pages/estPrice/estPrice?couWaresId=' + couWaresId,
+    })
+  },
+  contact() {
+    const dealWaresId = this.data.carInfo.dealWaresId
+    wx.navigateTo({
+      url: '/pages/installment/installment?dealWaresId=' + dealWaresId
+    })
   }
 })

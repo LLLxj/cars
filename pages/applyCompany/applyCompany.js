@@ -137,40 +137,37 @@ Page({
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFiles = res.tempFiles;
-        console.log(tempFiles)
-        mythis.setData({
-          logo: tempFiles[0].path
-        })
         // console.log(mythis.data.picList)
         // 上传图片
-        // wx.showLoading({
-        //   title: '上传中...',
-        // })
-        // const uploadTask = wx.uploadFile({
-        //   url: app.globalData.apiurl + '/deal/user/store/uploadStore', //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-        //   name: 'coverurl',
-        //   formData: {
-        //     validation: app.globalData.validation,//验证
-        //     user_id: userInfo.user_id,
-        //   },
-        //   success: function (res) {
-        //     var data = JSON.parse(res.data)
-        //     if (data.code == 200) {
-        //       mythis.setData({
-        //         license: data.data.filePath
-        //       })
-        //       wx.hideLoading()
-        //       app.showsuccessMsg(data.msg);
-        //     } else {
-        //       wx.showToast({
-        //         title: data.msg,
-        //         icon: 'none',
-        //         duration: 3000
-        //       })
-        //     }
-        //   }
-        // })
+        wx.showLoading({
+          title: '上传中...',
+        })
+        const uploadTask = wx.uploadFile({
+          url: app.globalData.apiUrl + '/deal/user/store/upload', //仅为示例，非真实的接口地址
+          filePath: tempFiles[0].path,
+          name: 'file',
+          header: {
+            'token': mythis.data.token
+          },
+          formData: {
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data)
+            if (data.code == 0) {
+              mythis.setData({
+                logo: data.data.url
+              })
+              wx.hideLoading()
+              app.showsuccessMsg('上传成功');
+            } else {
+              wx.showToast({
+                title: data.msg,
+                icon: 'none',
+                duration: 3000
+              })
+            }
+          }
+        })
       }
     })
   },
@@ -207,6 +204,21 @@ Page({
         console.log(err);
         app.showNetworkError()
       }
+    })
+  },
+  viewLogo() {
+    const logo = this.data.logo
+    if (!logo) {
+      return
+    }
+    wx.previewImage({
+      current: logo, // 当前显示图片的http链接
+      urls: [logo] // 需要预览的图片http链接列表
+    })
+  },
+  deleteLogoImg() {
+    this.setData({
+      logo: ''
     })
   }
 })

@@ -35,4 +35,4 @@
   </view>
 </view>
 
-<view wx:if="{{list.length}}" class="btn" bindtap="applyCompany">新增</view>
+<!-- <view wx:if="{{list.length}}" class="btn" bindtap="applyCompany">新增</view> -->

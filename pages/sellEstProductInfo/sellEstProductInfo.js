@@ -249,7 +249,7 @@ Page({
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
         dealSellId: mythis.data.form.dealSellId,
-        dealSellTitle: mythis.data.dealSellTitle,
+        dealSellTitle: mythis.data.form.dealSellTitle,
         contactName: mythis.data.contactName,
         contactPhone: mythis.data.contactPhone,
         sex: mythis.data.sex,
@@ -261,10 +261,10 @@ Page({
       success: function (res) {
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
-          console.log(res)
+          wx.navigateBack({})
         } else {
           wx.hideLoading()
-          app.showErrorMsg(res.data.message);
+          app.showErrorMsg(res.data.msg);
         }
       },
       fail: function (err) {
