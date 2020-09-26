@@ -24,6 +24,12 @@
     </view>
   </view>
   <view class="list">
+    <view class="label">评估商品名称</view>
+    <view class="val">
+      <input value="{{assessWaresTitle}}" bindinput="nameChange" placeholder="请输入评估商品名称"></input>
+    </view>
+  </view>
+  <view class="list">
     <view class="label">行驶里程</view>
     <view class="val">
       <input value="{{distance}}" bindinput="distanceChange" placeholder="请输入行驶里程"></input>
@@ -68,9 +74,9 @@
         <image src="../../images/add-pic-icon.png"></image>
       </view> 
       <view class="logo-wrap">
-        <image src="{{license}}"></image>
+        <image src="{{driveImage}}"></image>
         <view class="delete">
-          <image wx:if="{{license}}" bindtap="deleteLicense" src="../../images/delete.png" mode="widthFix"></image>
+          <image wx:if="{{driveImage}}" bindtap="deleteLicense" src="../../images/delete.png" mode="widthFix"></image>
         </view>
       </view>
     </view>
@@ -81,7 +87,7 @@
       <view class="logo-wrap" bindtap="uploadAccessImg">
         <image src="../../images/add-pic-icon.png"></image>
       </view>
-      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}">
+      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}" >
         <image src="{{item.image}}"></image>
         <view class="delete" bindtap="deleteAssessImg">
           <image src="../../images/delete.png" mode="widthFix"></image>

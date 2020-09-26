@@ -1,0 +1,20 @@
+<view class="list-wrap">
+  <view class="list" bindtap="toAddPress">
+    免费评估
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toPreAssess">
+    评估商品列表
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toSellProduct">
+    出售评估商品
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,216 @@
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">出售商品标题</view>
+    <view class="val">
+      <input value="{{dealWaresTitle}}" bindinput="titleChange" placeholder="请输入出售商品标题"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">品牌</view>
+    <view class="val">
+      <picker bindchange="brandChange" range="{{bandArray}}" range-key="couBrandName">  
+        <input name="brand" placeholder="请选择品牌" value='{{couBrandName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">系列</view>
+    <view class="val">
+      <picker wx:if="{{couBrandId}}" bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
+        <input name="series" placeholder="请选择系列" value='{{couSeriesName}}' />  
+      </picker>
+      <input wx:else disabled="true" name="couBrandId" bindtap="getSeriesVal" placeholder="请选择系列" value='{{couBrandName}}' /> 
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">型号</view>
+    <view class="val">
+      <picker bindchange="modelChange" range="{{moduleList}}" range-key="couModelName">  
+        <input name="model" placeholder="请选择型号" value='{{couModelName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">商品框架号</view>
+    <view class="val">
+      <input value="{{waresFrameCode}}" bindinput="frameChange" placeholder="请输入产品框架号"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">批发价</view>
+    <view class="val">
+      <input value="{{tradePrice}}" type="number" bindinput="tradePriceChange" placeholder="请输入批发价"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">零售价</view>
+    <view class="val">
+      <input value="{{retailPrice}}" type="number" bindinput="retailPriceChange" placeholder="请输入零售价"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">牌照</view>
+    <view class="val">
+      <input value="{{licenseId}}" bindinput="licenseIdChange" placeholder="请输入牌照"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">年款</view>
+    <view class="val">
+      <input value="{{marketYear}}" type="number" bindinput="marketYearChange" maxlength="4" placeholder="请输入年款"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">行驶里程</view>
+    <view class="val">
+      <input value="{{distance}}" type="number" bindinput="distanceChange" placeholder="请输入行驶里程"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">上牌时间</view>
+    <view class="val">
+      <picker mode="date" start="2019" bindchange="bindDateChange">
+        <input placeholder="请选择" value='{{registerTime}}' disabled="true" />
+      </picker>
+    </view>
+  </view>
+  
+  <view class="list">
+    <view class="label">选择市</view>
+    <view class="val">
+      <picker bindchange="cityChange" range="{{cityList}}" range-key="areaName">  
+        <input name="area" placeholder="请选择市" value='{{areaName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">选择区</view>
+    <view class="val">
+      <picker wx:if="{{cityAreaId}}" bindchange="countyChange" range="{{countyList}}" range-key="areaName">  
+        <input name="series" placeholder="请选择区" value='{{countyName}}' />  
+      </picker>
+      <input wx:else disabled="true" name="countyId" bindtap="getCountyVal" placeholder="请选择区" value='{{countyName}}' /> 
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">地址</view>
+    <view class="val">
+      <input value="{{addr}}" bindinput="getAddr" placeholder="请输入详细地址"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">商品描述</view>
+    <view class="val">
+      <input value="{{waresRemark}}" bindinput="getDesc" placeholder="请输入商品描述"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">过户次数</view>
+    <view class="val">
+      <input value="{{transferNum}}" type="number" bindinput="getTransNum" placeholder="请输入过户次数"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">是否有过户费</view>
+    <view class="val">
+      <picker bindchange="transferChange" range="{{transferArray}}" range-key="label">  
+        <input name="isTransfer" placeholder="请选择" value='{{isTransferLabel}}' />  
+      </picker>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">是否有抵押</view>
+    <view class="val">
+      <picker bindchange="mortgageChange" range="{{mortgageArray}}" range-key="label">  
+        <input name="isMortgage" placeholder="请选择" value='{{isMortgageLabel}}' />  
+      </picker>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">是否有定期保养</view>
+    <view class="val">
+      <picker bindchange="maintainChange" range="{{maintainArray}}" range-key="label">  
+        <input name="isMaintain" placeholder="请选择" value='{{isMaintainLabel}}' />  
+      </picker>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">联系人名称</view>
+    <view class="val">
+      <input value="{{contactName}}" bindinput="getName" placeholder="请输入姓名"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">联系电话</view>
+    <view class="val">
+      <input value="{{contactPhone}}" bindinput="getMobile" maxlength="11" placeholder="请输入电话"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">性别</view>
+    <view class="val">
+      <picker bindchange="sexChange" range="{{sexArray}}" range-key="label">  
+        <input name="sex" placeholder="请选择性别" value='{{sexLabel}}' />  
+      </picker>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">驾驶证</view>
+    <view class="val">
+      <view class="logo-wrap" bindtap="uploadLogo">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view> 
+      <view class="logo-wrap">
+        <image src="{{driveImage}}"></image>
+        <view class="delete">
+          <image wx:if="{{driveImage}}" bindtap="deleteLicense" src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">商品封面图</view>
+    <view class="val">
+      <view class="logo-wrap" bindtap="uploadCover">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view> 
+      <view class="logo-wrap">
+        <image src="{{coverImage}}"></image>
+        <view class="delete">
+          <image wx:if="{{coverImage}}" bindtap="deleteCover" src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list logo">
+    <view class="label">商品评估图</view>
+    <view class="val">
+      <view class="logo-wrap" bindtap="uploadAccessImg">
+        <image src="../../images/add-pic-icon.png"></image>
+      </view>
+      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}">
+        <image src="{{item.image}}"></image>
+        <view class="delete" bindtap="deleteAssessImg">
+          <image src="../../images/delete.png" mode="widthFix"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="btn" bindtap="submit">提交</view>

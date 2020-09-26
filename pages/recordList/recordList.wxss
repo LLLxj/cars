@@ -45,13 +45,11 @@
 }
 .time{
   font-size: 24rpx;
+  margin: 40rpx 0 0 0;
 }
 .staff{
   margin: 20rpx 0 0 0;
   font-size: 24rpx;
-}
-.time{
-  margin: 10rpx 0 0 0;
 }
 .function{
   flex: 1;

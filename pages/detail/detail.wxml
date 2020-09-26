@@ -148,9 +148,9 @@
     </view>
     <!-- <view class="name">分享</view> -->
   </view>
-  <view class="list phone" bindtap="estPrice">
+  <!-- <view class="list phone" bindtap="estPrice">
     估车价
-  </view>
+  </view> -->
   <view class="list phone" bindtap="phoneCall">
     立即联系
     <!-- {{userInfo.start}} -->

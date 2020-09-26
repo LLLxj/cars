@@ -1,22 +1,22 @@
 
-<view class="wrap" hidden="{{!recordList}}" style="width:{{width}}px;height:{{height}}px;">
+<view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
       <view class="logo">
         <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image> -->
-        <image src="{{item.image}}"></image>
+        <image src="{{item.coverImage.image}}"></image>
       </view>
       <view class="info">
         <view class="row">
-          <view class="name">{{ item.dealStoreName }}</view>
-          <view class="status {{item.examine === 0 ? 'fail' : ''}} {{item.examine === 1 ? 'checking' : ''}}{{item.examine === 2 ? 'success' : ''}} {{item.examine === 3 ? 'delete' : ''}}">
-            <block wx:if="{{item.examine === 0}}">审核失败</block>
-            <block wx:if="{{item.examine === 1}}">审核中</block>
-            <block wx:if="{{item.examine === 2}}">审核通过</block>
-            <block wx:if="{{item.examine === 3}}">作废</block>
+          <view class="name">{{ item.dealWaresTitle }}</view>
+          <view class="status {{item.sellStatus === 0 ? 'fail' : ''}} {{item.sellStatus === 1 ? 'success' : ''}}">
+            <block wx:if="{{item.sellStatus === 0}}">未出售</block>
+            <block wx:if="{{item.sellStatus === 1}}">已出售</block>
+            <!-- <block wx:if="{{item.examine === 2}}">审核通过</block>
+            <block wx:if="{{item.examine === 3}}">作废</block> -->
           </view>
         </view>
         <view class="staff">{{ item.dealUserJob }}</view>
-        <view class="time">{{ item.examineTime ? item.examineTime: '' }}</view>
+        <view class="time">{{ item.submitTime ? item.submitTime: '' }}</view>
       </view>
       <!-- <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
@@ -25,7 +25,7 @@
 </view>
 
 <!-- 无数据 -->
-<view class="wrap" hidden="{{recordList}}" style="width:{{width}}px;height:{{height}}px;">
+<view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
   <view class="no-data-wrap">
     <view class="noData">
       <image src="../../images/manageNoData.png" mode="widthFix"></image> 
@@ -34,4 +34,4 @@
   </view>
 </view>
 
-<view class="btn" bindtap="applyCompany">新增</view>
+<!-- <view class="btn" bindtap="addProduct">新增</view> -->

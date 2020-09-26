@@ -21,7 +21,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       width: wx.getSystemInfoSync().windowWidth,
-      height: wx.getSystemInfoSync().windowHeight - 70
+      height: wx.getSystemInfoSync().windowHeight
     })
   },
 

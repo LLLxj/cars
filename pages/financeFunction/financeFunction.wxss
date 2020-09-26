@@ -1,0 +1,24 @@
+.list-wrap .list{
+  width:90%;
+  overflow: hidden;
+  padding:35rpx 5%;
+  border-bottom:1px solid #F8F8F8;
+  background: #ffffff;
+  /* margin-top:20rpx; */
+  /* border-radius:5px; */
+  position:relative;
+  color:#444444;
+}
+.list-wrap .list .function{
+  position:absolute;
+  right:30rpx;
+  height:30rpx;
+  top:0;
+  bottom:0;
+  margin:auto 0;
+}
+.list-wrap .list .function image{
+  width:30rpx;
+  height:30rpx;
+  transform:rotate(180deg);
+}

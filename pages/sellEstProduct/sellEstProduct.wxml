@@ -6,7 +6,7 @@
       </view>
       <view class="info">
         <view class="row">
-          <view class="name">{{ item.couWaresName }}</view>
+          <view class="name">{{ item.dealSellTitle }}</view>
           <view class="status {{item.status === 1 ? 'fail' : ''}} {{item.status === 2 ? 'checking' : ''}}{{item.status === 3 ? 'success' : ''}}{{item.status === 0 ? 'delete' : ''}}">
             <block wx:if="{{item.status === 0}}">已取消</block>
             <block wx:if="{{item.status === 1}}">待处理</block>

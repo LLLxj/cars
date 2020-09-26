@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    assessWaresTitle: '',
     token: '',
     sexArray: ['男', '女'],
     bandArray: [], // 品牌列表
@@ -23,23 +24,19 @@ Page({
     areaId: '',
     countyList: [],
     distance: '',
-    driveImage: 'https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg',
+    driveImage: '',
     waresImages: [],
     couWaresId: '',
     registerTime: '',
-    license: 'https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg',
-    assessImgList: [
-      { image: 'https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg', index: 1 }
-    ]
+    license: '',
+    assessImgList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      couWaresId: options.couWaresId
-    })
+
   },
 
   /**
@@ -307,6 +304,12 @@ Page({
       distance: distance
     })
   },
+  nameChange(e) {
+    const distance = e.detail.value
+    this.setData({
+      assessWaresTitle: distance
+    })
+  },
   uploadLogo() {
     var mythis = this
     wx.chooseImage({
@@ -317,10 +320,6 @@ Page({
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFiles = res.tempFiles;
-        console.log(tempFiles)
-        // mythis.setData({
-        //   logo: tempFiles[0].path
-        // })
         // // 上传图片
         wx.showLoading({
           title: '上传中...',
@@ -339,7 +338,7 @@ Page({
             if (data.code == 0) {
               console.log(data)
               mythis.setData({
-                license: data.data.url
+                driveImage: data.data.url
               })
               wx.hideLoading()
               app.showsuccessMsg('上传成功');
@@ -365,45 +364,48 @@ Page({
         console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFiles = res.tempFiles;
-        console.log(tempFiles)
-        mythis.setData({
-          logo: tempFiles[0].path
-        })
-        console.log(mythis.data.picList)
         // // 上传图片
-        // wx.showLoading({
-        //   title: '上传中...',
-        // })
-        // const uploadTask = wx.uploadFile({
-        //   url: app.globalData.apiurl + '/deal/user/store/uploadStore', //仅为示例，非真实的接口地址
-        //   filePath: tempFilePaths[0],
-        //   name: 'coverurl',
-        //   formData: {
-        //     validation: app.globalData.validation,//验证
-        //     user_id: userInfo.user_id,
-        //   },
-        //   success: function (res) {
-        //     var data = JSON.parse(res.data)
-        //     if (data.code == 200) {
-        //       mythis.setData({
-        //         license: data.data.filePath
-        //       })
-        //       wx.hideLoading()
-        //       app.showsuccessMsg(data.msg);
-        //     } else {
-        //       wx.showToast({
-        //         title: data.msg,
-        //         icon: 'none',
-        //         duration: 3000
-        //       })
-        //     }
-        //   }
-        // })
+        wx.showLoading({
+          title: '上传中...',
+        })
+        const uploadTask = wx.uploadFile({
+          url: app.globalData.apiUrl + '/deal/assess/upload/waresImage', //仅为示例，非真实的接口地址
+          filePath: tempFiles[0].path,
+          name: 'file',
+          header: {
+            'token': mythis.data.token
+          },
+          formData: {
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data)
+            if (data.code == 0) {
+              var tempList = mythis.data.assessImgList
+              var index = tempList.length
+              var obj = {
+                image: data.data.url,
+                index: index + 1
+              }
+              tempList.push(obj)
+              mythis.setData({
+                assessImgList: tempList
+              })
+              console.log(mythis.data.assessImgList)
+              wx.hideLoading()
+              app.showsuccessMsg('上传成功');
+            } else {
+              wx.showToast({
+                title: data.msg,
+                icon: 'none',
+                duration: 3000
+              })
+            }
+          }
+        })
       }
     })
   },
   bindDateChange(e) {
-    console.log(e)
     this.setData({
       registerTime: e.detail.value
     })
@@ -412,7 +414,7 @@ Page({
     const mythis = this
     const couBrandId = mythis.data.couBrandId
     const couSeriesId = mythis.data.couSeriesId
-    const couWaresId = mythis.data.couWaresId
+    const assessWaresTitle = mythis.data.assessWaresTitle
     const distance = mythis.data.distance
     const proAreaId = mythis.data.proAreaId
     const cityAreaId = mythis.data.cityAreaId
@@ -431,7 +433,7 @@ Page({
       data: {
         couBrandId: couBrandId,
         couSeriesId: couSeriesId,
-        couWaresId: couWaresId,
+        assessWaresTitle: assessWaresTitle,
         registerTime: registerTime,
         proAreaId: proAreaId,
         cityAreaId: cityAreaId,

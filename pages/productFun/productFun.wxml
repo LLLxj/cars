@@ -1,0 +1,14 @@
+<view class="list-wrap">
+  <view class="list" bindtap="toAddProduct">
+    新增商品
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toProductList">
+    商品列表
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

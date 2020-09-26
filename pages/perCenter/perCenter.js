@@ -231,43 +231,103 @@ Page({
     })
   },
   toComAuth() {
-    wx.navigateTo({
-      url: '/pages/comAuth/comAuth',
-    })
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/comAuth/comAuth',
+      })
+    }
   },
   toPersonInfo() {
-    wx.navigateTo({
-      url: '/pages/personInfo/personInfo',
-    })
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/personInfo/personInfo',
+      })
+    }
   },
   toComManage() { // 企业管理模块
-    wx.navigateTo({
-      url: '/pages/comManage/comManage',
-    })
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/companyFun/companyFun',
+      })
+    }
   },
   toEstPrice() {
-    wx.navigateTo({
-      url: '/pages/estPrice/estPrice',
-    })
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/estPrice/estPrice',
+      })
+    }
   },
   toPreAssess() {
-    wx.navigateTo({
-      url: '/pages/preAccess/preAccess',
-    })
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/preAccess/preAccess',
+      })
+    }
   },
   toSellProduct() { // 评估商品出售
-    wx.navigateTo({
-      url: '/pages/sellEstProduct/sellEstProduct',
-    }) 
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/sellEstProduct/sellEstProduct',
+      })
+    }
   },
   toInstalMent() { // 分期
-    wx.navigateTo({
-      url: '/pages/installmentList/installmentList',
-    }) 
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/installmentList/installmentList',
+      }) 
+    }
   },
   toProduct() {
-    wx.navigateTo({
-      url: '/pages/product/product',
-    }) 
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/productFun/productFun',
+      })
+    }
+  },
+  toPrePart() {
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/preFuntion/preFuntion',
+      }) 
+    }
+  },
+  toFinancePart() {
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/financeFunction/financeFunction',
+      }) 
+    }
   }
 })

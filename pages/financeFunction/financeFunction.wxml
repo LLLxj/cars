@@ -1,0 +1,20 @@
+<view class="list-wrap">
+  <view class="list" bindtap="toFinance">
+    金融单
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toWidthDraw">
+    客户提现
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toRecordList">
+    提现、扣费记录
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>

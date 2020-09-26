@@ -1,4 +1,4 @@
-// pages/product/product.js
+// pages/installmentList/installmentList.js
 const app = getApp()
 
 Page({
@@ -9,6 +9,7 @@ Page({
   data: {
     width: '',
     height: '',
+    token: '',
     list: []
   },
 
@@ -37,7 +38,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getList()
+    this.getDataList()
   },
 
   /**
@@ -74,29 +75,31 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getList() {
+  getDataList() {
     var mythis = this
     wx.showLoading({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/wares/personalList',
+      url: app.globalData.apiUrl + '/deal/user/store/refund/list',
       header: {
         'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
+        page: 1,
+        limit: 10
       },
       success: function (res) {
         if (res.data && res.data.code === 0) {
-          wx.hideLoading()
           console.log(res.data.data.list)
+          wx.hideLoading()
           mythis.setData({
             list: res.data.data.list
           })
         } else {
           wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.message);
         }
       },
       fail: function (err) {
@@ -105,21 +108,5 @@ Page({
         app.showNetworkError()
       }
     })
-  },
-  addProduct() {
-    wx.navigateTo({
-      url: '/pages/addProduct/addProduct',
-    })
-  },
-  getDetail(e) {
-    const dealWaresId = e.currentTarget.dataset.id.dealWaresId
-    const token = this.data.token
-    if (!token) {
-      app.showErrorMsg('请登录')
-    } else {
-      wx.navigateTo({
-        url: '/pages/addProduct/addProduct?dealWaresId=' + dealWaresId,
-      })
-    }
   }
 })

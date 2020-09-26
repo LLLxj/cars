@@ -1,6 +1,6 @@
 var formatter = {
   getYearVal: function (value) {
-    var result = value.slice(0, 4)
+    var result = value.substring(0, 4)
     return result
   }
 }

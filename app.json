@@ -18,7 +18,17 @@
     "pages/sellEstProductInfo/sellEstProductInfo",
     "pages/installmentList/installmentList",
     "pages/installment/installment",
-    "pages/product/product"
+    "pages/product/product",
+    "pages/addProduct/addProduct",
+    "pages/prePart/prePart",
+    "pages/preFuntion/preFuntion",
+    "pages/financeFunction/financeFunction",
+    "pages/financeAdd/financeAdd",
+    "pages/widthDraw/widthDraw",
+    "pages/productFun/productFun",
+    "pages/companyFun/companyFun",
+    "pages/recordList/recordList",
+    "pages/recordInfo/recordInfo"
 
   ],
   "window": {

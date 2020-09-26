@@ -26,7 +26,7 @@
           
           <view hidden="{{token == ''}}">
             <!-- <open-data type="userNickName"></open-data> -->
-            <view>{{userInfo.dealUserName}}</view>
+            <view bindtap="toPersonInfo">{{userInfo.dealUserName}}</view>
           </view>
           
           
@@ -40,26 +40,26 @@
   <view class="blank"></view>
 
   <view class="list-wrap">
-    <view class="list" bindtap="toPersonInfo">
+    <!-- <view class="list" bindtap="toPersonInfo">
       个人信息
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view>
-    <view class="list" bindtap="toComManage">
-      企业信息
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
-    </view>
-    <!-- 评估功能模块 -->
-    <!-- <view class="list" bindtap="toEstPrice">
-      估车价
-      <view class="function">
-        <image src="../../images/array1.png" mode="widthFix"></image>
-      </view>
     </view> -->
-    <view class="list" bindtap="toPreAssess">
+    <view class="list" bindtap="toComManage" wx:if="{{userInfo.type === 1}}">
+      企业模块
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <!-- 评估模块 -->
+    <view class="list" bindtap="toPrePart">
+      评估模块
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view>
+    <!-- <view class="list" bindtap="toPreAssess">
       评估商品列表
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
@@ -70,22 +70,27 @@
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view>
+    </view> -->
     <!-- 商品模块 -->
-    <view class="list" bindtap="toComAuth">
+    <!-- <view class="list" bindtap="toComAuth">
       新增商品
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view>
+    </view> -->
     <view class="list" bindtap="toProduct">
-      商品列表
+      商品模块
+      <view class="function">
+        <image src="../../images/array1.png" mode="widthFix"></image>
+      </view>
+    </view><view class="list" bindtap="toFinancePart">
+      金融模块
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view>
     <!-- 金融模块 -->
-    <view class="list" bindtap="toComAuth">
+    <!-- <view class="list" bindtap="toComAuth">
       新增金融单
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
@@ -96,7 +101,7 @@
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view>
+    </view> -->
     <view class="list" bindtap="toInstalMent">
       资讯分期列表
       <view class="function">

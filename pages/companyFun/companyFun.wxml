@@ -1,0 +1,14 @@
+<view class="list-wrap">
+  <view class="list" bindtap="toAddCompany">
+    申请认证
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list" bindtap="toCompanyList">
+    申请列表
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+</view>
