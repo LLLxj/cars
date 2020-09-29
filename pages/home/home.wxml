@@ -21,32 +21,37 @@
   <!-- 搜索框 -->
   <view class="serach">
 
-    <!-- 地区 -->
-    <view class="list">
+    <!-- 品牌 -->
+    <view class="list" bindtap="toBrand">
       <view class="section">
         <view class="section__title"></view>
-        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+          <view class="location">{{brand}}</view>
+          <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view>
+        </view>
+        <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
           <view class="picker">
-            <view class="location">{{region}}</view>
+            <view class="location">品牌</view>
             <view class="icon">
               <image src="../../images/array.png" mode="widthFix"></image>
             </view>
           </view>
-        </picker>
+        </picker> -->
       </view>
     </view>
 
-    <view class="list">
+    <!-- 型号 -->
+    <view class="list" bindtap="toModel">
       <view class="section">
         <view class="section__title"></view>
-        <picker mode="date" value="{{date}}" fields="year" bindchange="bindDateChange">
-          <view class="picker">
-            <view class="location">{{date}}</view>
-            <view class="icon">
-              <image src="../../images/array.png" mode="widthFix"></image>
-            </view>
+        <view class="picker">
+          <view class="location">{{model}}</view>
+          <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
           </view>
-        </picker>
+        </view>
       </view>
     </view>
     
@@ -54,44 +59,53 @@
     <view class="list">
       <view class="section">
         <view class="section__title"></view>
-        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-          <view class="picker">
-            <view class="location">{{price}}</view>
-            <view class="icon">
-              <image src="../../images/array.png" mode="widthFix"></image>
-            </view>
-          </view>
-        </picker>
+        <view class="picker">
+          <view class="location" bindtap="toCompanyList">企业端</view>
+          <!-- <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view> -->
+        </view>
+        <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          
+        </picker> -->
       </view>
+    </view>
+
+    <view class="input-wrap">
+      <input type="text" placeholder="请输入您要搜索的关键字" bindinput="getSearch" bindconfirm="getDataList"></input>
     </view>
 
   </view>
 
-  <view class="company-banner" bindtap="toCompanyList">
+  <!-- <view class="company-banner" bindtap="toCompanyList">
     企业管理
-  </view>
+  </view> -->
 
   <view class="list-wrap">
+    <view wx:if="{{infolist.length}}">
+      <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
 
-    <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
+<!-- 照片 -->
+<view class="info-img">
+  <!-- <image src="{{item.coverImage.image}}" mode="widthFix"></image> -->
+  <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image>
+</view>
 
-      <!-- 照片 -->
-      <view class="info-img">
-        <!-- <image src="{{item.coverImage.image}}" mode="widthFix"></image> -->
-        <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image>
+<!-- 介绍 -->
+<view class="info-desc">
+  <view class="title">{{item.dealWaresTitle}}</view>
+  <!-- <view class="isCheck"><text>证件已审</text></view> -->
+  <view class="info_time">
+    <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
+    <view class="postdate">{{item.extParamMap.postdate}}</view>
+  </view>
+  <view class="price">{{item.extParamMap.price}}</view>
+</view>
+
       </view>
-
-      <!-- 介绍 -->
-      <view class="info-desc">
-        <view class="title">{{item.dealWaresTitle}}</view>
-        <!-- <view class="isCheck"><text>证件已审</text></view> -->
-        <view class="info_time">
-          <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
-          <view class="postdate">{{item.extParamMap.postdate}}</view>
-        </view>
-        <view class="price">{{item.extParamMap.price}}</view>
-      </view>
-
+    </view>
+    <view class="no-data" wx:if="{{!infolist.length}}">
+      暂无数据
     </view>
 
   </view>

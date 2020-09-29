@@ -28,7 +28,11 @@
     "pages/productFun/productFun",
     "pages/companyFun/companyFun",
     "pages/recordList/recordList",
-    "pages/recordInfo/recordInfo"
+    "pages/recordInfo/recordInfo",
+    "pages/search/search",
+    "pages/brandList/brandList",
+    "pages/seriesList/seriesList",
+    "pages/modelList/modelList"
 
   ],
   "window": {

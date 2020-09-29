@@ -858,5 +858,33 @@ Page({
     this.setData({
       marketYear: e.detail.value
     })
+  },
+  sellhanlde() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/sale/' + mythis.data.id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          wx.navigateBack()
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
   }
 })

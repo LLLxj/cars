@@ -1,0 +1,9 @@
+<!--pages/search/search.wxml-->
+<view class="warp">
+  <view class="box">
+    <input class="input" type="text" placeholder="请输入您需要搜索的关键字" bindinput="getSearch"></input>
+    <view class="function" wx:if="{{param.length !== 0}}" bindtap="toSearch">搜索</view>
+    <view class="function" wx:if="{{param.length === 0}}" bindtap="cancel">取消</view>
+  </view>
+</view>
+ 

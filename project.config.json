@@ -172,6 +172,55 @@
           "id": -1,
           "name": "pages/financeAdd/financeAdd",
           "pathName": "pages/financeAdd/financeAdd",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/financeFunction/financeFunction",
+          "pathName": "pages/financeFunction/financeFunction",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/recordInfo/recordInfo",
+          "pathName": "pages/recordInfo/recordInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/recordList/recordList",
+          "pathName": "pages/recordList/recordList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 20,
+          "name": "pages/companyList/companyList",
+          "pathName": "pages/companyList/companyList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/brandList/brandList",
+          "pathName": "pages/brandList/brandList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/modelList/modelList",
+          "pathName": "pages/modelList/modelList",
           "scene": null
         }
       ]

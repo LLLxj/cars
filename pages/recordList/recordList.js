@@ -108,5 +108,17 @@ Page({
         app.showNetworkError()
       }
     })
+  },
+  toDetail(e) {
+    console.log(e)
+    const refundId = e.currentTarget.dataset.id.refundId
+    const token = this.data.token
+    if (!token) {
+      app.showErrorMsg('请登录')
+    } else {
+      wx.navigateTo({
+        url: '/pages/recordInfo/recordInfo?refundId=' + refundId,
+      })
+    }
   }
 })

@@ -214,3 +214,4 @@
   </view>
 </view>
 <view class="btn" bindtap="submit">提交</view>
+<view class="btn" bindtap="sellhanlde">出售</view>

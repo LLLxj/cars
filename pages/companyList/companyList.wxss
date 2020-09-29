@@ -102,3 +102,13 @@
   line-height: 60rpx;
   text-align: center;
 }
+.input-wrap input{
+  width: 94%;
+  margin: 10rpx auto;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 0 0 20rpx;
+  background: #f3f3f3;
+  border-radius: 40rpx;
+  font-size: 26rpx;
+}

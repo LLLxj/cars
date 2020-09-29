@@ -12,6 +12,7 @@
   align-items: center;
   background: #ffffff;
   border-bottom:1px solid #efefef;
+  justify-content: space-between;
 }
 .logo{
   font-size: 0;
@@ -23,7 +24,6 @@
   border-radius: 10rpx;
 }
 .info{
-  width: 480rpx;
   display: flex;
   height: 150rpx;
   flex-direction: column;
@@ -33,15 +33,19 @@
   display: flex;
 }
 .name{
+  flex: 1;
   font-size: 30rpx;
 }
 .status{
   font-size: 22rpx;
   color: #fff;
+  height: 50rpx;
+  line-height: 50rpx;
   border-radius:5px;
   padding:4rpx 25rpx;
   margin: 0 0 0 30rpx;
   background: #67c23a;
+  text-align: center;
 }
 .time{
   font-size: 24rpx;
@@ -52,7 +56,7 @@
   font-size: 24rpx;
 }
 .function{
-  flex: 1;
+  width: 80rpx;
   text-align: center;
 }
 .function image{

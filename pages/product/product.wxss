@@ -36,12 +36,15 @@
   font-size: 30rpx;
 }
 .status{
+  width: 100rpx;
   font-size: 22rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   color: #fff;
   border-radius:5px;
-  padding:4rpx 25rpx;
   margin: 0 0 0 30rpx;
   background: #67c23a;
+  text-align: center;
 }
 .time{
   font-size: 24rpx;

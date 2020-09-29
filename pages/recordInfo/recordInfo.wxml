@@ -1,2 +1,33 @@
-<!--pages/recordInfo/recordInfo.wxml-->
-<text>pages/recordInfo/recordInfo.wxml</text>
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">退费编号</view>
+    <view class="val">
+      <text>{{refundInfo.refundNo}}</text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">退费金额</view>
+    <view class="val">
+      <text>{{refundInfo.refundPrice}}</text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">退费类型</view>
+    <view class="val">
+      <text wx:if="{{refundInfo.refundType === 0}}">扣费</text>
+      <text wx:if="{{refundInfo.refundType === 1}}">提现</text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">状态</view>
+    <view class="val">
+      <text wx:if="{{refundInfo.status === 0}}">放弃</text>
+      <text wx:if="{{refundInfo.status === 1}}">驳回</text>
+      <text wx:if="{{refundInfo.status === 2}}">财务审核中</text>
+      <text wx:if="{{refundInfo.status === 3}}">经理审核中</text>
+      <text wx:if="{{refundInfo.status === 4}}">通过</text>
+    </view>
+  </view>
+</view>
+<view class="btn" bindtap="cancleHandle">取消提现</view>

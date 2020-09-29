@@ -1,4 +1,4 @@
-// pages/comManage/comManage.js
+// pages/brandList/brandList.js
 const app = getApp()
 
 Page({
@@ -7,24 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    recordList: [],
-    cId: '',
-    width: '',
-    height: '',
-    list: [],
-    token: '',
-    page: 1,
-    canChangePage: false
+    hotList: [],
+    list: [
+      { couModelId: 0, couModelName: '不限' }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      width: wx.getSystemInfoSync().windowWidth,
-      height: wx.getSystemInfoSync().windowHeight
-    })
+
   },
 
   /**
@@ -38,12 +31,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(111)
     var token = wx.getStorageSync('token')
     this.setData({
       token: token
     })
-    this.getRecordList()
+    this.getDataList()
   },
 
   /**
@@ -71,11 +63,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log(2222)
-    const canChangePage = this.data.canChangePage
-    if (canChangePage) {
-      this.getRecordList()
-    }
+
   },
 
   /**
@@ -84,43 +72,28 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getRecordList() {
+  getDataList() {
     var mythis = this
-    const page = mythis.data.page
     wx.showLoading({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/user/store/recordList',
+      url: app.globalData.apiUrl + '/cou/wares/model/getCouModelList',
       header: {
         'token': mythis.data.token
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
-        page: page,
-        limit: 10
       },
       success: function (res) {
-        if (res.data && res.data.code === 0) {
-          wx.hideLoading()
-          if (res.data.data.currPage < res.data.data.totalPage) {
-            const tempList = mythis.data.list.concat(res.data.data.list)
-            const page = mythis.data.page
-            mythis.setData({
-              list: tempList,
-              canChangePage: true,
-              page: page + 1
-            })
-          } else {
-            const tempList = mythis.data.list.concat(res.data.data.list)
-            mythis.setData({
-              list: tempList,
-              canChangePage: false
-            })
-          }
+        wx.hideLoading()
+        if (res.data.code === 0) {
+          const tempList = mythis.data.list.concat(res.data.data)
+          mythis.setData({
+            list: tempList
+          })
         } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.msg)
         }
       },
       fail: function (err) {
@@ -130,9 +103,20 @@ Page({
       }
     })
   },
-  applyCompany() {
-    wx.navigateTo({
-      url: '/pages/applyCompany/applyCompany',
+  selectBrand(e) {
+    const modelParam = e.currentTarget.dataset.id
+    wx.setStorage({
+      key: "modelParam",
+      data: modelParam,
+      success(res) {
+        // console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
     })
+    setTimeout(function () {
+      wx.navigateBack()
+    }, 1000)
   }
 })

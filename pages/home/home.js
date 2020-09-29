@@ -12,7 +12,15 @@ Page({
     infolist: [],
     token: '',
     bannerList: [],
-    userInfo: {}
+    userInfo: {},
+    brand: '品牌',
+    series: '车系',
+    page: 1,
+    canChangePage: false,
+    brandParam: {},
+    model: '型号',
+    modelParam: {},
+    couModelId: ''
   },
 
   /**
@@ -35,10 +43,42 @@ Page({
   onShow: function () {
     var token = wx.getStorageSync('token')
     var userInfo = wx.getStorageSync('userInfo')
+    var brandParam = wx.getStorageSync('brandParam')
+    var modelParam = wx.getStorageSync('modelParam')
     this.setData({
       token: token,
-      userInfo: userInfo
+      userInfo: userInfo,
     })
+    if (brandParam.couBrandId && brandParam.couBrandId !== 0) {
+      this.setData({
+        brandParam: brandParam,
+        brand: brandParam.couBrandName,
+        couBrandId: brandParam.couBrandId,
+        page: 1
+      })
+      this.getDataList()
+    } else {
+      this.setData({
+        brandParam: {},
+        brand: '品牌',
+        couBrandId: ''
+      })
+    }
+    if (modelParam.couModelId && modelParam.couModelId !== 0) {
+      this.setData({
+        modelParam: modelParam,
+        model: modelParam.couModelName,
+        couModelId: modelParam.couModelId,
+        page: 1
+      })
+      this.getDataList()
+    } else {
+      this.setData({
+        modelParam: {},
+        model: '型号',
+        couModelId: ''
+      })
+    }
     this.getDataList()
     this.getBannerList()
   },
@@ -61,14 +101,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    const canChangePage = this.data.canChangePage
+    if (canChangePage) {
+      this.getDataList()
+    }
   },
 
   /**
@@ -89,8 +132,11 @@ Page({
     }
   },
   getDataList() {
+    console.log('请求接口')
     var mythis = this
-    var chId = mythis.data.chId
+    const couBrandId = mythis.data.couBrandId || ''
+    const dealWaresTitle = mythis.data.dealWaresTitle || ''
+    const couModelId = mythis.data.couModelId || ''
     wx.showLoading({
       title: '加载中',
     })
@@ -101,15 +147,37 @@ Page({
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
-        page: 1,
-        limit: 10
+        page: mythis.data.page,
+        limit: 10,
+        dealWaresTitle: dealWaresTitle,
+        couBrandId: couBrandId,
+        couModelId: couModelId
       },
       success: function (res) {
         if (res.data && res.data.code === 0) {
           wx.hideLoading()
-          mythis.setData({
-            infolist: res.data.data.list
-          })
+          if (mythis.data.page === 1) {
+            mythis.setData({
+              infolist: []
+            })
+            if (res.data.data.currPage < res.data.data.totalPage) {
+              const tempList = mythis.data.infolist.concat(res.data.data.list)
+              const page = mythis.data.page
+              mythis.setData({
+                infolist: tempList,
+                canChangePage: true,
+                page: page + 1
+              })
+            } else {
+              const tempList = mythis.data.infolist.concat(res.data.data.list)
+              const page = mythis.data.page
+              mythis.setData({
+                infolist: tempList,
+                canChangePage: false
+              })
+            }
+          }
+          
         } else {
           wx.hideLoading()
           app.showErrorMsg(res.data.msg);
@@ -207,12 +275,32 @@ Page({
       app.showErrorMsg('请登录')
       return
     }
-    // if (userInfo.type === 0) {
-    //   app.showErrorMsg('请验证身份')
-    //   return
-    // }
+    if (userInfo.type === 0) {
+      app.showErrorMsg('请验证身份')
+      return
+    }
     wx.navigateTo({
       url: '/pages/companyList/companyList',
+    })
+  },
+  getFocus() {
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+  getSearch(e) {
+    this.setData({
+      dealWaresTitle: e.detail.value
+    })
+  },
+  toBrand() {
+    wx.navigateTo({
+      url: '/pages/brandList/brandList',
+    })
+  },
+  toModel() {
+    wx.navigateTo({
+      url: '/pages/modelList/modelList',
     })
   }
 })

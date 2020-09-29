@@ -1,0 +1,22 @@
+
+<view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
+    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="selectBrand">
+      <view class="logo">
+        <image src="{{item.image}}" mode="widthFix"></image>
+      </view>
+      <view class="info"> 
+        {{item.couModelName}}
+      </view>
+    </view>
+</view>
+
+<!-- 无数据 -->
+<!-- <view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="no-data-wrap">
+    <view class="noData">
+      <image src="../../images/manageNoData.png" mode="widthFix"></image> 
+    </view>
+    <view class="noData-text">暂无数据</view>
+  </view>
+</view> -->
+

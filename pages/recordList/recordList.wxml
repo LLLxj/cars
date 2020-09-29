@@ -1,16 +1,18 @@
 
 <view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
-    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}">
-      <view class="logo">
+    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="toDetail">
+      <!-- <view class="logo">
         <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
-      </view>
+      </view> -->
       <view class="info">
         <view class="row">
-          <view class="name">{{ item.dealWaresTitle }}</view>
-          <view class="status {{item.followStatus === 0 ? 'fail' : ''}} {{item.followStatus === 1 ? 'checking' : ''}}{{item.followStatus === 2 ? 'success' : ''}}">
-            <block wx:if="{{item.followStatus === 0}}">作废</block>
-            <block wx:if="{{item.followStatus === 1}}">待处理</block>
-            <block wx:if="{{item.followStatus === 2}}">已处理</block>
+          <view class="name">退款单号：{{ item.refundNo }}</view>
+          <view class="status {{item.status === 0 ? 'fail' : ''}} {{item.status === 1 ? 'checking' : ''}}{{item.status === 2 ? '' : ''}} {{item.status === 3 ? 'success' : ''}} {{item.status === 4 ? 'success' : ''}}">
+            <block wx:if="{{item.status === 0}}">放弃</block>
+            <block wx:if="{{item.status === 1}}">驳回</block>
+            <block wx:if="{{item.status === 2}}">财务审核中</block>
+            <block wx:if="{{item.status === 3}}">经理审核中</block>
+            <block wx:if="{{item.status === 4}}">通过</block>
           </view>
         </view>
         <!-- <view class="staff">评估价格：{{ item.dealAssessPrice }}</view> -->

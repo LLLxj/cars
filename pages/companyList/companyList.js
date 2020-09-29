@@ -11,6 +11,9 @@ Page({
     price: '价格',
     infolist: [],
     token: '',
+    param: '',
+    page: 1,
+    canChangePage: false
   },
 
   /**
@@ -63,7 +66,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    const canChangePage = this.data.canChangePage
+    if (canChangePage) {
+      this.getDataList()
+    }
   },
 
   /**
@@ -83,9 +89,10 @@ Page({
       app.showErrorMsg('请登录')
     }
   },
-  getDataList() {
+  getDataList(param) {
     var mythis = this
-    var chId = mythis.data.chId
+    param = param || mythis.data.param
+    const page = mythis.data.page
     wx.showLoading({
       title: '加载中',
     })
@@ -96,18 +103,26 @@ Page({
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
-        page: 1,
-        limit: 10
+        page: page,
+        limit: 10,
+        dealWaresTitle: param
       },
       success: function (res) {
-        if (res.data && res.data.code === 0) {
-          wx.hideLoading()
+        wx.hideLoading()
+        if (res.data.data.currPage < res.data.data.totalPage) {
+          const tempList = mythis.data.infolist.concat(res.data.data.list)
+          const page = mythis.data.page
           mythis.setData({
-            infolist: res.data.data.list
+            infolist: tempList,
+            canChangePage: true,
+            page: page + 1
           })
         } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          const tempList = mythis.data.infolist.concat(res.data.data.list)
+          mythis.setData({
+            infolist: tempList,
+            canChangePage: false
+          })
         }
       },
       fail: function (err) {
@@ -164,5 +179,12 @@ Page({
         app.showNetworkError()
       }
     })
+  },
+  getSearch(e) {
+    this.setData({
+      param: e.detail.value
+    })
+    // const param = e.detail.value
+    // this.getDataList(param)
   }
 })

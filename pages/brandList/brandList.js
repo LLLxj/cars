@@ -1,4 +1,4 @@
-// pages/recordInfo/recordInfo.js
+// pages/brandList/brandList.js
 const app = getApp()
 
 Page({
@@ -7,20 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    refundInfo: {},
-    refundId: '',
-    token: ''
+    hotList: [],
+    list: [
+      { couBrandId: 0, couBrandName: '不限' }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (options.refundId) {
-      this.setData({
-        refundId: options.refundId
-      })
-    }
+
   },
 
   /**
@@ -38,7 +35,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getData()
+    this.getHotDataList()
   },
 
   /**
@@ -75,14 +72,13 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getData() {
-    const mythis = this
-    const refundId = mythis.data.refundId
+  getHotDataList() {
+    var mythis = this
     wx.showLoading({
-      title: '提交中',
+      title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/user/store/refund/info/' + refundId,
+      url: app.globalData.apiUrl + '/cou/wares/brand/getHotCouBrandList',
       header: {
         'token': mythis.data.token
       },
@@ -90,15 +86,14 @@ Page({
       data: {
       },
       success: function (res) {
-        if (res.data && res.data.code == 0) {
-          wx.hideLoading()
-          console.log(res.data)
+        wx.hideLoading()
+        if (res.data.code === 0) {
+          mythis.getDataList()
           mythis.setData({
-            refundInfo: res.data.data
+            hotList: res.data.data
           })
         } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.msg)
         }
       },
       fail: function (err) {
@@ -108,14 +103,13 @@ Page({
       }
     })
   },
-  cancleHandle() {
-    const mythis = this
-    const refundId = mythis.data.refundId
+  getDataList() {
+    var mythis = this
     wx.showLoading({
-      title: '提交中',
+      title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/deal/user/store/refund/cancel/' + refundId,
+      url: app.globalData.apiUrl + '/cou/wares/brand/getCouBrandList',
       header: {
         'token': mythis.data.token
       },
@@ -123,15 +117,14 @@ Page({
       data: {
       },
       success: function (res) {
-        if (res.data && res.data.code == 0) {
-          wx.hideLoading()
-          app.showsuccessMsg('操作成功');
-          setTimeout(function (){
-            wx.navigateBack()
-          }, 1500)
+        wx.hideLoading()
+        if (res.data.code === 0) {
+          const tempList = mythis.data.list.concat(res.data.data)
+          mythis.setData({
+            list: tempList
+          })
         } else {
-          wx.hideLoading()
-          app.showErrorMsg(res.data.msg);
+          app.showErrorMsg(res.data.msg)
         }
       },
       fail: function (err) {
@@ -140,5 +133,21 @@ Page({
         app.showNetworkError()
       }
     })
+  },
+  selectBrand(e) {
+    const brandParam = e.currentTarget.dataset.id
+    wx.setStorage({
+      key: "brandParam",
+      data: brandParam,
+      success(res) {
+        // console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+    setTimeout(function () {
+      wx.navigateBack()
+    }, 1000)
   }
 })

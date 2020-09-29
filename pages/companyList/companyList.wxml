@@ -6,7 +6,7 @@
   <view class="serach">
 
     <!-- 地区 -->
-    <view class="list">
+    <!-- <view class="list">
       <view class="section">
         <view class="section__title"></view>
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -47,8 +47,10 @@
           </view>
         </picker>
       </view>
+    </view> -->
+    <view class="input-wrap">
+      <input type="text" placeholder="请输入您要搜索的关键字" bindinput="getSearch" bindconfirm="getDataList"></input>
     </view>
-
   </view>
 
   <view class="list-wrap">
