@@ -13,14 +13,16 @@ Page({
     token: '',
     bannerList: [],
     userInfo: {},
-    brand: '品牌',
+    couBrandName: '品牌',
+    couBrandId: '',
     series: '车系',
     page: 1,
     canChangePage: false,
     brandParam: {},
     model: '型号',
     modelParam: {},
-    couModelId: ''
+    couModelId: '',
+    couModelName: '型号'
   },
 
   /**
@@ -43,39 +45,29 @@ Page({
   onShow: function () {
     var token = wx.getStorageSync('token')
     var userInfo = wx.getStorageSync('userInfo')
-    var brandParam = wx.getStorageSync('brandParam')
-    var modelParam = wx.getStorageSync('modelParam')
     this.setData({
       token: token,
       userInfo: userInfo,
     })
-    if (brandParam.couBrandId && brandParam.couBrandId !== 0) {
+    if (this.data.couBrandName !== '品牌') {
       this.setData({
-        brandParam: brandParam,
-        brand: brandParam.couBrandName,
-        couBrandId: brandParam.couBrandId,
         page: 1
       })
-      this.getDataList()
-    } else {
+    } 
+    if (this.data.couBrandName === '不限') {
       this.setData({
-        brandParam: {},
-        brand: '品牌',
+        couBrandName: '品牌',
         couBrandId: ''
       })
     }
-    if (modelParam.couModelId && modelParam.couModelId !== 0) {
+    if (this.data.couModelName !== '型号') {
       this.setData({
-        modelParam: modelParam,
-        model: modelParam.couModelName,
-        couModelId: modelParam.couModelId,
         page: 1
       })
-      this.getDataList()
-    } else {
+    } 
+    if (this.data.couModelName === '不限') {
       this.setData({
-        modelParam: {},
-        model: '型号',
+        couModelName: '型号',
         couModelId: ''
       })
     }

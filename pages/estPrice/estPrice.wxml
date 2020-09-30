@@ -2,9 +2,9 @@
 <view class="list-wrap">
   <view class="list">
     <view class="label">品牌</view>
-    <view class="val">
-      <picker bindchange="brandChange" range="{{bandArray}}" range-key="couBrandName">  
-        <input name="brand" placeholder="请选择品牌" value='{{couBrandName}}' />  
+    <view class="val" bindtap="toBrandList">
+      <picker bindchange="brandChange" disabled range="{{bandArray}}" range-key="couBrandName">  
+        <input name="brand" disabled placeholder="请选择品牌" value='{{couBrandName}}' />  
       </picker>
     </view>
     <view class="function">
@@ -13,9 +13,9 @@
   </view>
   <view class="list">
     <view class="label">系列</view>
-    <view class="val">
-      <picker wx:if="{{couBrandId}}" bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
-        <input name="series" placeholder="请选择系列" value='{{couSeriesName}}' />  
+    <view class="val" bindtap="toSeriesList">
+      <picker wx:if="{{couBrandId}}" disabled bindchange="seriesChange" range="{{seriesList}}" range-key="couWaresName">  
+        <input name="series" disabled placeholder="请选择系列" value='{{couSeriesName}}' />  
       </picker>
       <input wx:else disabled="true" name="couBrandId" bindtap="getSeriesVal" placeholder="请选择系列" value='{{couBrandName}}' /> 
     </view>

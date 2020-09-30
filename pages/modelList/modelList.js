@@ -105,18 +105,19 @@ Page({
   },
   selectBrand(e) {
     const modelParam = e.currentTarget.dataset.id
-    wx.setStorage({
-      key: "modelParam",
-      data: modelParam,
-      success(res) {
-        // console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      couModelName: modelParam.couModelName,
+      couModelId: modelParam.couModelId,
     })
     setTimeout(function () {
-      wx.navigateBack()
+      wx.navigateBack({
+        delta: 1
+      })
     }, 1000)
   }
 })

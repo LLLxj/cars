@@ -203,7 +203,6 @@ Page({
             }
           })
         } else {
-          console.log(111)
           wx.hideLoading()
           wx.setStorage({
             key: "token",

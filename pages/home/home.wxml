@@ -26,7 +26,7 @@
       <view class="section">
         <view class="section__title"></view>
         <view class="picker">
-          <view class="location">{{brand}}</view>
+          <view class="location">{{couBrandName}}</view>
           <view class="icon">
             <image src="../../images/array.png" mode="widthFix"></image>
           </view>
@@ -47,7 +47,7 @@
       <view class="section">
         <view class="section__title"></view>
         <view class="picker">
-          <view class="location">{{model}}</view>
+          <view class="location">{{couModelName}}</view>
           <view class="icon">
             <image src="../../images/array.png" mode="widthFix"></image>
           </view>

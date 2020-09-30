@@ -1,6 +1,6 @@
 
 <view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
-    <view class="hot">
+    <!-- <view class="hot">
       <view class="title">热门品牌</view>
       <view class="hot-box">
         <view class="item" wx:for="{{hotList}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="selectBrand">
@@ -9,24 +9,24 @@
         </view>
       </view>
     </view>
-    <view class="all-title">全部</view>
+    <view class="all-title">全部</view> -->
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="selectBrand">
-      <view class="logo">
+      <!-- <view class="logo">
         <image src="{{item.image}}" mode="widthFix"></image>
-      </view>
+      </view> -->
       <view class="info"> 
-        {{item.couBrandName}}
+        {{item.couSeriesName}}
       </view>
     </view>
 </view>
 
 <!-- 无数据 -->
-<!-- <view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
+<view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
   <view class="no-data-wrap">
     <view class="noData">
       <image src="../../images/manageNoData.png" mode="widthFix"></image> 
     </view>
     <view class="noData-text">暂无数据</view>
   </view>
-</view> -->
+</view>
 

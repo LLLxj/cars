@@ -136,18 +136,29 @@ Page({
   },
   selectBrand(e) {
     const brandParam = e.currentTarget.dataset.id
-    wx.setStorage({
-      key: "brandParam",
-      data: brandParam,
-      success(res) {
-        // console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      couBrandName: brandParam.couBrandName,
+      couBrandId: brandParam.couBrandId,
     })
+    // wx.setStorage({
+    //   key: "brandParam",
+    //   data: brandParam,
+    //   success(res) {
+    //     // console.log(res)
+    //   },
+    //   fail(err) {
+    //     console.log(err)
+    //   }
+    // })
     setTimeout(function () {
-      wx.navigateBack()
+      wx.navigateBack({
+        delta: 1
+      })
     }, 1000)
   }
 })

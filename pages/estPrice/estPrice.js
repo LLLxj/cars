@@ -447,8 +447,7 @@ Page({
       success: function (res) {
         if (res.data && res.data.code === 0) {
           wx.hideLoading()
-          console.log(res)
-          wx.navigateBack({})
+          wx.navigateBack()
         } else {
           wx.hideLoading()
           app.showErrorMsg(res.data.msg);
@@ -470,6 +469,21 @@ Page({
   deleteLicense() {
     this.setData({
       license: ''
+    })
+  },
+  toBrandList() {
+    wx.navigateTo({
+      url: '/pages/brandList/brandList',
+    })
+  },
+  toSeriesList() {
+    if (!this.data.couBrandId) {
+      app.showErrorMsg('请选择品牌');
+      return
+    }
+    const couBrandId = this.data.couBrandId
+    wx.navigateTo({
+      url: '/pages/seriesList/seriesList?couBrandId=' + couBrandId,
     })
   }
 })

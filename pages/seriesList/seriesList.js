@@ -8,16 +8,17 @@ Page({
    */
   data: {
     hotList: [],
-    list: [
-      { couBrandId: 0, couBrandName: '不限' }
-    ]
+    list: [],
+    couBrandId: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      couBrandId: options.couBrandId
+    })
   },
 
   /**
@@ -35,7 +36,7 @@ Page({
     this.setData({
       token: token
     })
-    this.getHotDataList()
+    this.getDataList()
   },
 
   /**
@@ -72,44 +73,14 @@ Page({
   onShareAppMessage: function () {
 
   },
-  getHotDataList() {
-    var mythis = this
-    wx.showLoading({
-      title: '加载中',
-    })
-    wx.request({
-      url: app.globalData.apiUrl + '/cou/wares/brand/getHotCouBrandList',
-      header: {
-        'token': mythis.data.token
-      },
-      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      data: {
-      },
-      success: function (res) {
-        wx.hideLoading()
-        if (res.data.code === 0) {
-          mythis.getDataList()
-          mythis.setData({
-            hotList: res.data.data
-          })
-        } else {
-          app.showErrorMsg(res.data.msg)
-        }
-      },
-      fail: function (err) {
-        wx.hideLoading()
-        console.log(err);
-        app.showNetworkError()
-      }
-    })
-  },
   getDataList() {
     var mythis = this
+    const couBrandId = mythis.data.couBrandId
     wx.showLoading({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/cou/wares/brand/getCouBrandList',
+      url: app.globalData.apiUrl + '/cou/wares/series/getCouSeriesList/' + couBrandId,
       header: {
         'token': mythis.data.token
       },
@@ -136,18 +107,19 @@ Page({
   },
   selectBrand(e) {
     const seriesParam = e.currentTarget.dataset.id
-    wx.setStorage({
-      key: "seriesParam",
-      data: seriesParam,
-      success(res) {
-        // console.log(res)
-      },
-      fail(err) {
-        console.log(err)
-      }
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      couSeriesName: seriesParam.couSeriesName,
+      couSeriesId: seriesParam.couSeriesId,
     })
     setTimeout(function () {
-      wx.navigateBack()
+      wx.navigateBack({
+        delta: 1
+      })
     }, 1000)
   }
 })

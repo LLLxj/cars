@@ -31,6 +31,7 @@
 }
 .row{
   display: flex;
+  padding: 10rpx 0 0 0;
 }
 .name{
   flex: 1;
@@ -39,10 +40,11 @@
 .status{
   font-size: 22rpx;
   color: #fff;
+  box-sizing: border-box;
   height: 50rpx;
   line-height: 50rpx;
   border-radius:5px;
-  padding:4rpx 25rpx;
+  padding:0 25rpx;
   margin: 0 0 0 30rpx;
   background: #67c23a;
   text-align: center;

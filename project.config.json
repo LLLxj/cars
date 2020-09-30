@@ -221,6 +221,13 @@
           "id": -1,
           "name": "pages/modelList/modelList",
           "pathName": "pages/modelList/modelList",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/productFun/productFun",
+          "pathName": "pages/productFun/productFun",
           "scene": null
         }
       ]

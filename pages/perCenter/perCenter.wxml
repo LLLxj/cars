@@ -78,12 +78,12 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view> -->
-    <view class="list" bindtap="toProduct">
+    <view class="list" bindtap="toProduct" wx:if="{{userInfo.type === 1}}">
       商品模块
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
-    </view><view class="list" bindtap="toFinancePart">
+    </view><view class="list" bindtap="toFinancePart" wx:if="{{userInfo.type === 1}}">
       金融模块
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
