@@ -23,8 +23,8 @@
   border-radius: 10rpx;
 }
 .info{
-  width: 480rpx;
   display: flex;
+  flex: 1;
   height: 150rpx;
   flex-direction: column;
   margin: 0 0 0 30rpx;
@@ -54,7 +54,7 @@
   margin: 10rpx 0 0 0;
 }
 .function{
-  flex: 1;
+  width: 80rpx;
   text-align: center;
 }
 .function image{

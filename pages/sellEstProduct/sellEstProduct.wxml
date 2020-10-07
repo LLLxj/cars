@@ -1,12 +1,13 @@
 
 <view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
-      <view class="logo">
+      <!-- <view class="logo">
         <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
-      </view>
+      </view> -->
       <view class="info">
         <view class="row">
           <view class="name">{{ item.dealSellTitle }}</view>
+          <view class="name">{{ item.assessWaresTitle }}</view>
           <view class="status {{item.status === 1 ? 'fail' : ''}} {{item.status === 2 ? 'checking' : ''}}{{item.status === 3 ? 'success' : ''}}{{item.status === 0 ? 'delete' : ''}}">
             <block wx:if="{{item.status === 0}}">已取消</block>
             <block wx:if="{{item.status === 1}}">待处理</block>

@@ -11,6 +11,8 @@ Page({
     id: '',
     form: {},
     dealSellTitle: '',
+    assessWaresTitle: '',
+    sellPrice: '',
     cityList: [],
     sexLabel: '',
     contactName: '',
@@ -129,6 +131,16 @@ Page({
   getTitle(e) {
     this.setData({
       dealSellTitle: e.detail.value
+    })
+  },
+  getName(e) {
+    this.setData({
+      assessWaresTitle: e.detail.value
+    })
+  },
+  getPrice(e) {
+    this.setData({
+      sellPrice: e.detail.value
     })
   },
   sexChange(e) {

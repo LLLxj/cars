@@ -85,11 +85,11 @@
     <view wx:if="{{infolist.length}}">
       <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
 
-<!-- 照片 -->
-<view class="info-img">
-  <!-- <image src="{{item.coverImage.image}}" mode="widthFix"></image> -->
-  <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image>
-</view>
+      <!-- 照片 -->
+      <view class="info-img">
+        <image class="imgSrc" wx:if="{{item.coverImage && item.coverImage.image}}" src="{{item.coverImage.image}}" mode="widthFix"></image>
+        <image class="imgSrc" wx:else src="/images/noImgSrc.png" mode="widthFix"></image>
+      </view>
 
 <!-- 介绍 -->
 <view class="info-desc">

@@ -10,10 +10,15 @@ Page({
     date: '2020',
     price: '价格',
     infolist: [],
+    bannerList: [],
     token: '',
     param: '',
     page: 1,
-    canChangePage: false
+    canChangePage: false,
+    couBrandName: '品牌',
+    couBrandId: '',
+    couModelId: '',
+    couModelName: '型号'
   },
 
   /**
@@ -38,7 +43,30 @@ Page({
     this.setData({
       token: token
     })
+    if (this.data.couBrandName !== '品牌') {
+      this.setData({
+        page: 1
+      })
+    } 
+    if (this.data.couBrandName === '不限') {
+      this.setData({
+        couBrandName: '品牌',
+        couBrandId: ''
+      })
+    }
+    if (this.data.couModelName !== '型号') {
+      this.setData({
+        page: 1
+      })
+    } 
+    if (this.data.couModelName === '不限') {
+      this.setData({
+        couModelName: '型号',
+        couModelId: ''
+      })
+    }
     this.getDataList()
+    this.getBannerList()
   },
 
   /**
@@ -78,6 +106,36 @@ Page({
   onShareAppMessage: function () {
 
   },
+  getBannerList() {
+    var mythis = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/conf/banner/list',
+      header: {
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {
+      },
+      success: function (res) {
+        if (res.data && res.data.code == 0) {
+          wx.hideLoading()
+          mythis.setData({
+            bannerList: res.data.data[1].bannerWaresList
+          })
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
   toDetail: function (item) {
     const id = item.currentTarget.dataset.id.dealWaresId
     var token = this.data.token
@@ -91,8 +149,10 @@ Page({
   },
   getDataList(param) {
     var mythis = this
-    param = param || mythis.data.param
     const page = mythis.data.page
+    const couBrandId = mythis.data.couBrandId || ''
+    const dealWaresTitle = mythis.data.dealWaresTitle || ''
+    const couModelId = mythis.data.couModelId || ''
     wx.showLoading({
       title: '加载中',
     })
@@ -105,24 +165,31 @@ Page({
       data: {
         page: page,
         limit: 10,
-        dealWaresTitle: param
+        dealWaresTitle: dealWaresTitle,
+        couBrandId: couBrandId,
+        couModelId: couModelId
       },
       success: function (res) {
         wx.hideLoading()
-        if (res.data.data.currPage < res.data.data.totalPage) {
-          const tempList = mythis.data.infolist.concat(res.data.data.list)
-          const page = mythis.data.page
+        if (mythis.data.page === 1) {
           mythis.setData({
-            infolist: tempList,
-            canChangePage: true,
-            page: page + 1
+            infolist: []
           })
-        } else {
-          const tempList = mythis.data.infolist.concat(res.data.data.list)
-          mythis.setData({
-            infolist: tempList,
-            canChangePage: false
-          })
+          if (res.data.data.currPage < res.data.data.totalPage) {
+            const tempList = mythis.data.infolist.concat(res.data.data.list)
+            const page = mythis.data.page
+            mythis.setData({
+              infolist: tempList,
+              canChangePage: true,
+              page: page + 1
+            })
+          } else {
+            const tempList = mythis.data.infolist.concat(res.data.data.list)
+            mythis.setData({
+              infolist: tempList,
+              canChangePage: false
+            })
+          }
         }
       },
       fail: function (err) {
@@ -186,5 +253,20 @@ Page({
     })
     // const param = e.detail.value
     // this.getDataList(param)
+  },
+  toPersonList() {
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
+  },
+  toBrand() {
+    wx.navigateTo({
+      url: '/pages/brandList/brandList',
+    })
+  },
+  toModel() {
+    wx.navigateTo({
+      url: '/pages/modelList/modelList',
+    })
   }
 })

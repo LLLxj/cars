@@ -1,9 +1,67 @@
 <!--pages/home/home.wxml-->
 <wxs module="formatter" src="companyList.wxs"></wxs>
 <view class="wrap">
+
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{bannerList}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item.image}}" class="slide-image" model="widthFix" />
+      </swiper-item>
+    </block>
+  </swiper>
   
   <!-- 搜索框 -->
   <view class="serach">
+
+    <!-- 品牌 -->
+    <view class="list" bindtap="toBrand">
+      <view class="section">
+        <view class="section__title"></view>
+        <view class="picker">
+          <view class="location">{{couBrandName}}</view>
+          <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view>
+        </view>
+        <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            <view class="location">品牌</view>
+            <view class="icon">
+              <image src="../../images/array.png" mode="widthFix"></image>
+            </view>
+          </view>
+        </picker> -->
+      </view>
+    </view>
+
+    <!-- 型号 -->
+    <view class="list" bindtap="toModel">
+      <view class="section">
+        <view class="section__title"></view>
+        <view class="picker">
+          <view class="location">{{couModelName}}</view>
+          <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+
+    <view class="list">
+      <view class="section">
+        <view class="section__title"></view>
+        <view class="picker">
+          <view class="location" bindtap="toPersonList">零售端</view>
+          <!-- <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view> -->
+        </view>
+        <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          
+        </picker> -->
+      </view>
+    </view>
 
     <!-- 地区 -->
     <!-- <view class="list">
@@ -54,27 +112,32 @@
   </view>
 
   <view class="list-wrap">
-
-    <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
-
-      <!-- 照片 -->
-      <view class="info-img">
-        <!-- <image src="{{item.coverImage.image}}" mode="widthFix"></image> -->
-        <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image>
-      </view>
-
-      <!-- 介绍 -->
-      <view class="info-desc">
-        <view class="title">{{item.dealWaresTitle}}</view>
-        <!-- <view class="isCheck"><text>证件已审</text></view> -->
-        <view class="info_time">
-          <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
-          <view class="postdate">{{item.extParamMap.postdate}}</view>
+    <view wx:if="infolist.length">
+      <view class="list" wx:for="{{infolist}}" wx:key="unique" data-id="{{item}}" bindtap="toDetail">
+        <!-- 照片 -->
+        <view class="info-img">
+          <image class="imgSrc" wx:if="{{item.coverImage && item.coverImage.image}}" src="{{item.coverImage.image}}" mode="widthFix"></image>
+          <image class="imgSrc" wx:else src="/images/noImgSrc.png" mode="widthFix"></image>
+          <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix"></image> -->
         </view>
-        <view class="price">{{item.extParamMap.price}}</view>
-      </view>
 
+        <!-- 介绍 -->
+        <view class="info-desc">
+          <view class="title">{{item.dealWaresTitle}}</view>
+          <!-- <view class="isCheck"><text>证件已审</text></view> -->
+          <view class="info_time">
+            <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
+            <view class="postdate">{{item.extParamMap.postdate}}</view>
+          </view>
+          <view class="price">{{item.extParamMap.price}}</view>
+        </view>
+
+      </view>
     </view>
+    <view class="no-data" wx:if="{{!infolist.length}}">
+      暂无数据
+    </view>
+    
 
   </view>
 

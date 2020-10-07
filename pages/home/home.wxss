@@ -8,10 +8,11 @@
   margin-top:15rpx;
 }
 .info-img{
-  width:35%;
+  /* width:35%; */
+  width: 120rpx;
   float:left;
 }
-.info-img image{
+.info-img .imgSrc{
   width:100%;
   border-radius:10rpx;
 }

@@ -7,6 +7,8 @@
 }
 .list{
   width:100%;
+  padding: 15rpx 0;
+  box-sizing: border-box;
   height: 180rpx;
   display: flex;
   align-items: center;

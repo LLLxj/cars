@@ -124,7 +124,6 @@ Page({
     }
   },
   getDataList() {
-    console.log('请求接口')
     var mythis = this
     const couBrandId = mythis.data.couBrandId || ''
     const dealWaresTitle = mythis.data.dealWaresTitle || ''

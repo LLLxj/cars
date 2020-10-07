@@ -6,6 +6,18 @@
       <input value="{{form.dealSellTitle}}" bindinput="getTitle"></input>
     </view>
   </view>
+  <!-- <view class="list">
+    <view class="label">评估商品名称</view>
+    <view class="val">
+      <input value="{{form.assessWaresTitle}}" bindinput="getName"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">评估商品名称</view>
+    <view class="val">
+      <input value="{{form.sellPrice}}" type="number" bindinput="getPrice"></input>
+    </view>
+  </view> -->
   <view class="list">
     <view class="label">联系人</view>
     <view class="val">
