@@ -17,7 +17,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "useMultiFrameRuntime": false,
-    "useApiHook": false,
+    "useApiHook": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -74,14 +74,14 @@
           "id": 1,
           "name": "pages/detail/detail",
           "pathName": "pages/detail/detail",
-          "query": "id=3a863d000ff84055a8ec57228972c001&type=0&couWaresId=1",
+          "query": "id= 1315410d0a2c4e20a463b23dc6f4eeba&type=0&couWaresId=1",
           "scene": null
         },
         {
           "id": 2,
           "name": "pages/detail/detail",
           "pathName": "pages/detail/detail",
-          "query": "id=3a863d000ff84055a8ec57228972c001&type=1",
+          "query": "id= 1315410d0a2c4e20a463b23dc6f4eeba&type=1",
           "scene": null
         },
         {
@@ -162,10 +162,10 @@
           "scene": null
         },
         {
-          "id": -1,
+          "id": 14,
           "name": "pages/addProduct/addProduct",
           "pathName": "pages/addProduct/addProduct",
-          "query": "",
+          "query": "dealWaresId=25ef3d0ee2384796b43c9c6256802df3",
           "scene": null
         },
         {
@@ -228,6 +228,14 @@
           "id": -1,
           "name": "pages/productFun/productFun",
           "pathName": "pages/productFun/productFun",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/installmentList/installmentList",
+          "pathName": "pages/installmentList/installmentList",
+          "query": "",
           "scene": null
         }
       ]

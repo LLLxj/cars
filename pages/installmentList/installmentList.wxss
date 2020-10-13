@@ -101,6 +101,7 @@
 }
 .no-data-wrap{
   width: 80%;
+  margin: 100rpx auto;
 }
 .noData{
   /* width: 80%; */

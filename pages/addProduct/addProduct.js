@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    detail: {},
     token: '',
     userInfo: {},
     releaseAreaId: '',
@@ -90,7 +91,6 @@ Page({
       })
       this.getInfo(options.dealWaresId)
     }
-    
   },
 
   /**
@@ -164,9 +164,9 @@ Page({
       success: function (res) {
         if (res.data && res.data.code === 0) {
           wx.hideLoading()
-          console.log(res.data.data)
           const result = res.data.data
           mythis.setData({
+            detail: result,
             couBrandId: result.couBrandId,
             couBrandName: result.couBrandName,
             couSeriesId: result.couSeriesId,
@@ -174,6 +174,8 @@ Page({
             couWaresId: result.couWaresId,
             registerTime: result.registerTime,
             proAreaId: result.proAreaId,
+            areaName: result.cityAreaName,
+            countyName: result.countyAreaName,
             cityAreaId: result.cityAreaId,
             countyAreaId: result.countyAreaId,
             distance: result.distance,
@@ -182,6 +184,7 @@ Page({
             contactPhone: result.contactPhone,
             contactName: result.contactName,
             sex: result.sex,
+            sexLabel: result.sexLable,
             waresFrameCode: result.waresFrameCode,
             tradePrice: result.tradePrice,
             retailPrice: result.retailPrice,
@@ -190,14 +193,17 @@ Page({
             waresRemark: result.waresRemark,
             transferNum: result.transferNum,
             isTransfer: result.isTransfer,
+            isTransferLabel: result.isTransferLable,
             isMortgage: result.isMortgage,
+            isMortgageLabel: result.isMortgageLable,
             isMaintain: result.isMaintain,
+            isMaintainLabel: result.isMaintainLable,
             marketYear: result.marketYear,
             couModelId: result.couModelId,
             couModelName: result.couModelName,
             coverImage: result.coverImage.image,
             driveImage: result.driveImage.image,
-            waresImages: result.assessImgList,
+            assessImgList: result.waresImages,
             dealStoreId: result.dealStoreId
           })
         } else {
@@ -907,4 +913,97 @@ Page({
       url: '/pages/seriesList/seriesList?couBrandId=' + couBrandId,
     })
   },
+  onLineHandle () {
+    var mythis = this
+    wx.showLoading({
+      title: '提交中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/onLine/' + mythis.data.id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          app.showsuccessMsg('操作成功')
+          setTimeout(function () {
+            wx.navigateBack()
+          }, 1000)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  unLineHandle () {
+    var mythis = this
+    wx.showLoading({
+      title: '提交中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/unLine/' + mythis.data.id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          app.showsuccessMsg('操作成功')
+          setTimeout(function () {
+            wx.navigateBack()
+          }, 1000)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  saleHandle () {
+    var mythis = this
+    wx.showLoading({
+      title: '提交中',
+    })
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/sale/' + mythis.data.id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          app.showsuccessMsg('操作成功')
+          setTimeout(function () {
+            wx.navigateBack()
+          }, 1000)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  }
 })

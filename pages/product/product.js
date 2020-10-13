@@ -90,7 +90,6 @@ Page({
       success: function (res) {
         if (res.data && res.data.code === 0) {
           wx.hideLoading()
-          console.log(res.data.data.list)
           mythis.setData({
             list: res.data.data.list
           })

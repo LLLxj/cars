@@ -3,16 +3,21 @@
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getDetail">
       <view class="logo">
         <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image> -->
-        <image src="{{item.coverImage.image}}"></image>
+        <image wx:if="{{item.coverImage && item.coverImage.image}}" src="{{item.coverImage.image}}"></image>
+        <image class="imgSrc" wx:else src="/images/noImgSrc.png" mode="widthFix"></image>
       </view>
       <view class="info">
         <view class="row">
           <view class="name">{{ item.dealWaresTitle }}</view>
-          <view class="status {{item.sellStatus === 0 ? 'fail' : ''}} {{item.sellStatus === 1 ? 'success' : ''}}">
+          <view wx:if="{{item.sellStatus === 1}}" class="status {{item.sellStatus === 0 ? 'fail' : ''}} {{item.sellStatus === 1 ? 'success' : ''}}">
             <block wx:if="{{item.sellStatus === 0}}">未出售</block>
             <block wx:if="{{item.sellStatus === 1}}">已出售</block>
-            <!-- <block wx:if="{{item.examine === 2}}">审核通过</block>
-            <block wx:if="{{item.examine === 3}}">作废</block> -->
+          </view>
+          <view wx:else class="status {{item.status === 0 ? 'fail' : ''}} {{item.status === 1 ? 'checking' : ''}}{{item.status === 2 ? 'success' : ''}} {{item.status === 3 ? 'delete' : ''}}">
+            <block wx:if="{{item.status === 0}}">驳回</block>
+            <block wx:if="{{item.status === 1}}">销售审核中</block>
+            <block wx:if="{{item.status === 2}}">经理审核中</block>
+            <block wx:if="{{item.status === 3}}">审核通过</block>
           </view>
         </view>
         <view class="staff">{{ item.dealUserJob }}</view>

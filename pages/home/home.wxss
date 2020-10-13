@@ -9,7 +9,7 @@
 }
 .info-img{
   /* width:35%; */
-  width: 120rpx;
+  width: 220rpx;
   float:left;
 }
 .info-img .imgSrc{
@@ -44,15 +44,15 @@
   display: flex;
   justify-content: space-between;
 }
-.info_time .buytime{
-  /* float:left; */
-}
 .info_time .postdate{
   /* float:right; */
   text-align: right;
+  font-size:32rpx;
+  font-weight:bold;
+  color:#ea6200;
 }
 .info-desc .price{
-  margin-top:5rpx;
+  margin-top:10rpx;
   font-size:32rpx;
   font-weight:bold;
   color:#ea6200;

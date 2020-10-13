@@ -17,10 +17,10 @@
     </swiper>
 
     <!-- 轮播index -->
-    <view class="item-index">{{current}} / {{picList.length}}</view>
+    <!-- <view class="item-index">{{current}} / {{picList.length}}</view> -->
 
     <!-- 更新时间 -->
-    <view class="postTime">{{postTime}}</view>
+    <!-- <view class="postTime">{{postTime}}</view> -->
   </view>
 
   <view class="price-info">
@@ -34,6 +34,7 @@
       <view class="item item-two">
         <view class="label">上牌时间</view>
         <view class="value">{{formatter.getSlice(carInfo.registerTime)}}</view>
+        <!-- <view class="value">{{carInfo.registerTime}}</view> -->
       </view>
       <view class="item item-two">
         <view class="label">行驶里程</view>
@@ -88,9 +89,9 @@
         <view class="list">
           是否有定期4s保养<text class="value">{{carInfo.isMaintain === 0 ? '是' : '否'}}</text>
         </view>
-        <view class="list">
+        <!-- <view class="list">
           1.3万公里/年<text class="value">{{carInfo.rundistance}}</text>
-        </view>
+        </view> -->
       </view>
       <!-- <view class="row">
         <view class="list">
@@ -125,11 +126,13 @@
     <view class="title">车源发布者</view>
     <!-- 车主信息 -->
     <view class="user-info">
-      <view class="avatar"></view>
+      <view class="avatar">
+        <image class="avatar-src" src="{{carInfo.storeImage}}"></image>
+      </view>
       <view class="place">
         <view class="name">{{carInfo.contactName}}</view>
-        <!-- <view class="title">发布于{{carInfo.submitTime}}</view> -->
-        <view class="title">所属：{{carInfo.dealStoreName}}</view>
+        <view class="store">所属：{{carInfo.dealStoreName}}</view>
+        <view class="credit">等级：{{carInfo.creditGrade}}</view>
       </view>
       <view class="phone">
         <view class="icon">
@@ -142,12 +145,11 @@
 
 <!-- 底部悬浮框 -->
 <view class="fixBottom">
-  <view class="list share">
+  <!-- <view class="list share">
     <view class="icon">
       <image src="../../images/share.png" mode="widthFix"></image>
     </view>
-    <!-- <view class="name">分享</view> -->
-  </view>
+  </view> -->
   <!-- <view class="list phone" bindtap="estPrice">
     估车价
   </view> -->

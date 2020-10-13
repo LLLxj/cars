@@ -1,5 +1,5 @@
 
-<view class="wrap" hidden="{{!list}}" style="width:{{width}}px;height:{{height}}px;">
+<view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
     <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}">
       <!-- <view class="logo">
         <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg"></image>
@@ -24,7 +24,7 @@
 </view>
 
 <!-- 无数据 -->
-<view class="wrap" hidden="{{list}}" style="width:{{width}}px;height:{{height}}px;">
+<view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
   <view class="no-data-wrap">
     <view class="noData">
       <image src="../../images/manageNoData.png" mode="widthFix"></image> 

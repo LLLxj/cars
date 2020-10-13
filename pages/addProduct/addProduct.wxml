@@ -177,9 +177,9 @@
       </view> 
       <view class="logo-wrap">
         <image src="{{driveImage}}"></image>
-        <view class="delete">
+        <!-- <view class="delete">
           <image wx:if="{{driveImage}}" bindtap="deleteLicense" src="../../images/delete.png" mode="widthFix"></image>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>
@@ -191,26 +191,30 @@
       </view> 
       <view class="logo-wrap">
         <image src="{{coverImage}}"></image>
-        <view class="delete">
+        <!-- <view class="delete">
           <image wx:if="{{coverImage}}" bindtap="deleteCover" src="../../images/delete.png" mode="widthFix"></image>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>
   <view class="list logo">
-    <view class="label">商品评估图</view>
+    <view class="label">商品图</view>
     <view class="val">
       <view class="logo-wrap" bindtap="uploadAccessImg">
         <image src="../../images/add-pic-icon.png"></image>
       </view>
       <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}">
         <image src="{{item.image}}"></image>
-        <view class="delete" bindtap="deleteAssessImg">
+        <!-- <view class="delete" bindtap="deleteAssessImg">
           <image src="../../images/delete.png" mode="widthFix"></image>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>
 </view>
-<view class="btn" bindtap="submit">提交</view>
-<view class="btn" wx:if="{{id}}" bindtap="sellhanlde">出售</view>
+<view class="btn" wx:if="{{!id}}" bindtap="submit">新增</view>
+<view class="btn" wx:if="{{id && detail.status === 1 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="submit">更新</view>
+<!-- <view class="btn" wx:if="{{id}}" bindtap="sellhanlde">出售</view> -->
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="onLineHandle">上架</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="unLineHandle">下架</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="saleHandle">已售出</view>

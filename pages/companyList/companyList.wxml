@@ -127,9 +127,9 @@
           <!-- <view class="isCheck"><text>证件已审</text></view> -->
           <view class="info_time">
             <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
-            <view class="postdate">{{item.extParamMap.postdate}}</view>
+            <!-- <view class="postdate">{{item.tradePrice}}元</view> -->
           </view>
-          <view class="price">{{item.extParamMap.price}}</view>
+          <view class="price">{{item.tradePrice}}元</view>
         </view>
 
       </view>
