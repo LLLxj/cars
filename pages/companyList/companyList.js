@@ -112,7 +112,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: app.globalData.apiUrl + '/conf/banner/list',
+      url: app.globalData.apiUrl + '/conf/banner/storeList',
       header: {
       },
       method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -122,7 +122,7 @@ Page({
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
           mythis.setData({
-            bannerList: res.data.data[1].bannerWaresList
+            bannerList: res.data.data.bannerWaresList
           })
         } else {
           wx.hideLoading()

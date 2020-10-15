@@ -237,6 +237,12 @@
           "pathName": "pages/installmentList/installmentList",
           "query": "",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/companyFun/companyFun",
+          "pathName": "pages/companyFun/companyFun",
+          "scene": null
         }
       ]
     }

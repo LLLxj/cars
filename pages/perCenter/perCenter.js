@@ -204,21 +204,6 @@ Page({
           })
         } else {
           wx.hideLoading()
-          wx.setStorage({
-            key: "token",
-            data: '',
-            success(res) {
-              // console.log(res)
-            },
-            fail(err) {
-              console.log(err)
-            }
-          })
-          wx.clearStorage({
-            success: (res) => {
-              console.log(res)
-            },
-          })
           app.showErrorMsg(res.data.message);
         }
       },
@@ -328,5 +313,27 @@ Page({
         url: '/pages/financeFunction/financeFunction',
       }) 
     }
+  },
+  quit () {
+    var mythis = this
+    var token = mythis.data.token
+    if (!token) return;
+    wx.showModal({
+      title: '提示',
+      content: '确认退出当前账号?',
+      success(res) {
+        if (res.confirm) {
+          // console.log('清除token')
+          mythis.setData({
+            token: '',
+            userName: '马上登录'
+          })
+          wx.clearStorage()
+
+        } else if (res.cancel) {
+          // console.log('取消')
+        }
+      }
+    })
   }
 })

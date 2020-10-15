@@ -9,7 +9,7 @@
   width:100%;
   padding: 15rpx 0;
   box-sizing: border-box;
-  height: 180rpx;
+  /* height: 180rpx; */
   display: flex;
   align-items: center;
   background: #ffffff;
@@ -17,11 +17,13 @@
 }
 .logo{
   font-size: 0;
-  margin: 0 0 0 20rpx; 
+  margin: 0 0 0 20rpx;
+  width:180rpx;
 }
 .logo image{
-  width:150rpx;
-  height: 150rpx;
+  width: 100%;
+  max-height: 160rpx;
+  /* height: 150rpx; */
   border-radius: 10rpx;
 }
 .info{
