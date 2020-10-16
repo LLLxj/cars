@@ -1,5 +1,4 @@
-
-<view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
     <view class="hot">
       <view class="title">热门品牌</view>
       <view class="hot-box">
@@ -9,16 +8,22 @@
         </view>
       </view>
     </view>
-    <view class="all-title">全部</view>
-    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="selectBrand">
-      <view class="logo">
-        <image src="{{item.image}}" mode="widthFix"></image>
-      </view>
-      <view class="info"> 
-        {{item.couBrandName}}
-      </view>
-    </view>
-</view>
+    <scroll-view class='rightScroll' scroll-y scroll-into-view="{{toView}}" scroll-with-animation="true">
+      <block wx:for="{{list}}" wx:key="index" wx:for-item="items">
+        <view id="{{ index !== 0 ? items.firstLetter : 'qb'}}">
+          <view class="all-title">{{items.firstLetter}}</view>
+          <view class="list" wx:for="{{items.brandVoList}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="selectBrand">
+            <view class="logo">
+              <image src="{{item.image}}" mode="widthFix"></image>
+            </view>
+            <view class="info"> 
+              {{item.couBrandName}}
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
 
 <!-- 无数据 -->
 <!-- <view class="wrap" wx:if="{{!list.length}}" style="width:{{width}}px;height:{{height}}px;">
@@ -29,4 +34,11 @@
     <view class="noData-text">暂无数据</view>
   </view>
 </view> -->
+
+
+<view class="abs-btn">
+  <view class="abs-item" wx:for="{{list}}" wx:key="index" wx:for-item='items' data-id="{{items}}" bindtap="clickScroll">
+    {{items.firstLetter}}
+  </view>
+</view>
 

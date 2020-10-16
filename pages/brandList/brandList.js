@@ -9,15 +9,21 @@ Page({
   data: {
     hotList: [],
     list: [
-      { couBrandId: 0, couBrandName: '不限' }
-    ]
+      { firstLetter: '全部', brandVoList: [{ couBrandName: '不限' }] }
+    ],
+    toView: '',
+    width: '',
+    height: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      width: wx.getSystemInfoSync().windowWidth,
+      height: wx.getSystemInfoSync().windowHeight,
+    })
   },
 
   /**
@@ -145,20 +151,19 @@ Page({
       couBrandName: brandParam.couBrandName,
       couBrandId: brandParam.couBrandId,
     })
-    // wx.setStorage({
-    //   key: "brandParam",
-    //   data: brandParam,
-    //   success(res) {
-    //     // console.log(res)
-    //   },
-    //   fail(err) {
-    //     console.log(err)
-    //   }
-    // })
     setTimeout(function () {
       wx.navigateBack({
         delta: 1
       })
     }, 1000)
+  },
+  clickScroll(e) {
+    let value = e.target.dataset.id.firstLetter
+    if (value === '全部') {
+      value = 'qb'
+    } 
+    this.setData({
+      toView: value
+    })
   }
 })

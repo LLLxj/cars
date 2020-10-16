@@ -9,8 +9,8 @@
       <block wx:for="{{carInfo.waresImages}}" wx:key="index">
         <swiper-item>
           <view class="swiper-item">
-            <!-- <image src="{{item.image}}" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image> -->
-            <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image>
+            <image src="{{item.image}}" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image>
+            <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image> -->
           </view>
         </swiper-item>
       </block>
@@ -141,6 +141,15 @@
     </view> 
   </view>
 
+  <!-- 照片展示 -->
+  <view class="column-wrap">
+    <view class="title">图片展示</view>
+    <view class="img-box" wx:if="carInfo.waresImages.length">
+      <view class="img-list" wx:for="{{carInfo.waresImages}}" wx:key="unique">
+        <image class="img-list-src" src="{{item.image}}"></image>
+      </view>
+    </view>
+  </view>
 </view>
 
 <!-- 底部悬浮框 -->

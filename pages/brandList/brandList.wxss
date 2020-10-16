@@ -51,7 +51,9 @@
   background: #eeeeee;
 }
 .hot{
-  padding: 10rpx 5%;
+  /* padding: 10rpx 5%; */
+  padding: 0 5%;
+  height: 30vh;
   box-sizing: border-box;
 }
 .hot .title{
@@ -71,4 +73,27 @@
 .brandName{
   text-align: center;
   font-size: 24rpx;
+}
+
+.abs-btn{
+  position: fixed;
+  width: 60rpx;
+  height: 80vh;
+  right:0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  font-size: 30rpx;
+  
+}
+.abs-item{
+  margin: 0 auto;
+  width: 30rpx;
+  overflow: hidden;
+  height: 45rpx;
+  text-align: center;
+  color: #b9b9b9;
+}
+.rightScroll{
+  height: 70vh;
 }

@@ -310,3 +310,13 @@
   font-size: 24rpx;
   color: #b9b9b9;
 }
+
+.img-list{
+  width: 100%;
+  font-size: 0;
+  margin: 10rpx 0 0 0;
+}
+.img-list-src{
+  width: 100%;
+
+}
