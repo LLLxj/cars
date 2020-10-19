@@ -46,7 +46,7 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view> -->
-    <view class="list" bindtap="toComManage" wx:if="{{userInfo.type === 1}}">
+    <view class="list" bindtap="toComManage">
       企业模块
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>

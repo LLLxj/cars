@@ -569,7 +569,7 @@ Page({
   uploadAccessImg() {
     var mythis = this
     wx.chooseImage({
-      count: 1, // 默认9
+      count: 9, // 默认9
       sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
@@ -579,38 +579,40 @@ Page({
         wx.showLoading({
           title: '上传中...',
         })
-        const uploadTask = wx.uploadFile({
-          url: app.globalData.apiUrl + '/deal/wares/upload/waresImage', //仅为示例，非真实的接口地址
-          filePath: tempFiles[0].path,
-          name: 'file',
-          header: {
-            'token': mythis.data.token
-          },
-          formData: {
-          },
-          success: function (res) {
-            var data = JSON.parse(res.data)
-            if (data.code == 0) {
-              var tempList = mythis.data.assessImgList
-              var index = tempList.length
-              var obj = {
-                image: data.data.url,
-                index: index + 1
+        tempFiles.forEach((item, i) => {
+          const uploadTask = wx.uploadFile({
+            url: app.globalData.apiUrl + '/deal/wares/upload/waresImage', //仅为示例，非真实的接口地址
+            filePath: tempFiles[i].path,
+            name: 'file',
+            header: {
+              'token': mythis.data.token
+            },
+            formData: {
+            },
+            success: function (res) {
+              var data = JSON.parse(res.data)
+              if (data.code == 0) {
+                var tempList = mythis.data.assessImgList
+                var index = tempList.length
+                var obj = {
+                  image: data.data.url,
+                  index: index + 1
+                }
+                tempList.push(obj)
+                mythis.setData({
+                  assessImgList: tempList
+                })
+                wx.hideLoading()
+                app.showsuccessMsg('上传成功');
+              } else {
+                wx.showToast({
+                  title: data.msg,
+                  icon: 'none',
+                  duration: 3000
+                })
               }
-              tempList.push(obj)
-              mythis.setData({
-                assessImgList: tempList
-              })
-              wx.hideLoading()
-              app.showsuccessMsg(data.msg);
-            } else {
-              wx.showToast({
-                title: data.msg,
-                icon: 'none',
-                duration: 3000
-              })
             }
-          }
+          })
         })
       }
     })
@@ -776,12 +778,16 @@ Page({
     }
   },
   deleteAssessImg(e) {
-    const index = e.currentTarget.dataset.id.index
-    var assessImgList = this.data.assessImgList.filter(item => item.index !== index)
+    const index = e.currentTarget.dataset.index
+    var assessImgList = this.data.assessImgList
+    assessImgList = assessImgList.filter((item, i) => i !== index)
+    this.setData({
+      assessImgList: assessImgList
+    })
   },
   deleteLicense() {
     this.setData({
-      license: ''
+      driveImage: ''
     })
   },
   deleteCover() {

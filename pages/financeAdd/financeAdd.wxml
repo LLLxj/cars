@@ -16,7 +16,7 @@
     <view class="label">性别</view>
     <view class="val">
       <picker bindchange="sexChange" range="{{sexArray}}" range-key="label">  
-        <input name="sex" placeholder="请选择性别" value='{{sexLabel}}' />  
+        <input name="sex" disabled placeholder="请选择性别" value='{{sexLabel}}' />  
       </picker>
     </view>
   </view>

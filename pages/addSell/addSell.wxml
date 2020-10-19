@@ -1,0 +1,60 @@
+<!--pages/personInfo/personInfo.wxml-->
+<view class="list-wrap">
+  <view class="list">
+    <view class="label">标题</view>
+    <view class="val">
+      <input value="{{dealSellTitle}}" bindinput="getTitle" placeholder="请输入标题"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">联系人名称</view>
+    <view class="val">
+      <input value="{{contactName}}" bindinput="getName" placeholder="请输入姓名"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">联系电话</view>
+    <view class="val">
+      <input value="{{contactPhone}}" bindinput="getMobile" maxlength="11" placeholder="请输入电话"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">选择市</view>
+    <view class="val">
+      <picker bindchange="cityChange" range="{{cityList}}" range-key="areaName">  
+        <input name="area" disabled placeholder="请选择市" value='{{areaName}}' />  
+      </picker>
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">选择区</view>
+    <view class="val">
+      <picker wx:if="{{cityAreaId}}" bindchange="countyChange" range="{{countyList}}" range-key="areaName">  
+        <input name="series" disabled placeholder="请选择区" value='{{countyName}}' />  
+      </picker>
+      <input wx:else disabled="true" name="countyId" bindtap="getCountyVal" placeholder="请选择区" value='{{countyName}}' /> 
+    </view>
+    <view class="function">
+      <image src="../../images/array1.png" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">地址</view>
+    <view class="val">
+      <input value="{{addr}}" bindinput="getAddr" placeholder="请输入详细地址"></input>
+    </view>
+  </view>
+  <view class="list">
+    <view class="label">性别</view>
+    <view class="val">
+      <picker bindchange="sexChange" range="{{sexArray}}" range-key="label">  
+        <input name="sex" disabled placeholder="请选择性别" value='{{sexLabel}}' />  
+      </picker>
+    </view>
+  </view>
+
+</view>
+<view class="btn" bindtap="submit">出售</view>

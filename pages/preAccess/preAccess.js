@@ -10,7 +10,8 @@ Page({
     token: '',
     list: [],
     width: '',
-    height: ''
+    height: '',
+    dealAssessId: ''
   },
 
   /**
@@ -92,7 +93,6 @@ Page({
       },
       success: function (res) {
         if (res.data && res.data.code === 0) {
-          console.log(res.data.data.list)
           wx.hideLoading()
           mythis.setData({
             list: res.data.data.list
@@ -114,5 +114,18 @@ Page({
     wx.navigateTo({
       url: '/pages/preAccessInfo/preAccessInfo?dealAssessId=' + dealAssessId,
     })
+  },
+  getItem(item) {
+    const dealAssessId = item.currentTarget.dataset.id.dealAssessId
+    item.status === 1 && item.sellStatus === 0
+    const status = item.currentTarget.dataset.id.status
+    const sellStatus = item.currentTarget.dataset.id.sellStatus
+    if (status === 2 && item.sellStatus === 0) {
+      wx.navigateTo({
+        url: '/pages/addSell/addSell?dealAssessId=' + dealAssessId,
+      })
+    } else {
+      app.showErrorMsg('不可出售')
+    }
   }
 })

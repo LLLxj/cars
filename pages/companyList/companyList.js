@@ -18,7 +18,7 @@ Page({
     couBrandName: '品牌',
     couBrandId: '',
     couModelId: '',
-    couModelName: '型号'
+    couModelName: '车辆类型'
   },
 
   /**
@@ -54,14 +54,14 @@ Page({
         couBrandId: ''
       })
     }
-    if (this.data.couModelName !== '型号') {
+    if (this.data.couModelName !== '车辆类型') {
       this.setData({
         page: 1
       })
     } 
     if (this.data.couModelName === '不限') {
       this.setData({
-        couModelName: '型号',
+        couModelName: '车辆类型',
         couModelId: ''
       })
     }

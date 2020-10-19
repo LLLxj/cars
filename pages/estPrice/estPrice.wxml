@@ -39,7 +39,7 @@
     <view class="label">上牌时间</view>
     <view class="val">
       <picker mode="date" start="2019" bindchange="bindDateChange">
-        <input placeholder="请选择" value='{{registerTime}}' disabled="true" />
+        <input placeholder="请选择" disabled value='{{registerTime}}' disabled="true" />
       </picker>
     </view>
   </view>
@@ -48,7 +48,7 @@
     <view class="label">选择市</view>
     <view class="val">
       <picker bindchange="cityChange" range="{{cityList}}" range-key="areaName">  
-        <input name="area" placeholder="请选择市" value='{{areaName}}' />  
+        <input name="area" disabled placeholder="请选择市" value='{{areaName}}' />  
       </picker>
     </view>
     <view class="function">
@@ -59,7 +59,7 @@
     <view class="label">选择区</view>
     <view class="val">
       <picker wx:if="{{cityAreaId}}" bindchange="countyChange" range="{{countyList}}" range-key="areaName">  
-        <input name="series" placeholder="请选择区" value='{{countyName}}' />  
+        <input name="series" disabled placeholder="请选择区" value='{{countyName}}' />  
       </picker>
       <input wx:else disabled="true" name="countyId" bindtap="getCountyVal" placeholder="请选择区" value='{{countyName}}' /> 
     </view>
@@ -87,9 +87,9 @@
       <view class="logo-wrap" bindtap="uploadAccessImg">
         <image src="../../images/add-pic-icon.png"></image>
       </view>
-      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="unique" data-id="{{item}}" >
-        <image src="{{item.image}}"></image>
-        <view class="delete" bindtap="deleteAssessImg">
+      <view class="logo-wrap" wx:for="{{assessImgList}}" wx:key="index" wx:for-index="index" wx:for-item="items">
+        <image src="{{items.image}}"></image>
+        <view class="delete" bindtap="deleteAssessImg" data-index="{{index}}">
           <image src="../../images/delete.png" mode="widthFix"></image>
         </view>
       </view>

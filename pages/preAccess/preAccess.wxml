@@ -1,6 +1,6 @@
 
 <view class="wrap" wx:if="{{list.length}}" style="width:{{width}}px;height:{{height}}px;">
-    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}">
+    <view class="list" wx:for="{{list}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="getItem">
       <view class="logo">
         <image src="{{item.waresImages[0].image}}"></image>
       </view>
@@ -14,14 +14,18 @@
           </view>
         </view>
         <view class="staff">评估价格：{{ item.dealAssessPrice }}</view>
-        <view class="time">状态：
-          <block wx:if="{{item.status === 0}}">待审核</block>
-          <block wx:if="{{item.status === 1}}">已审核</block>
+        <view class="time">
+          <view>
+            状态：
+            <block wx:if="{{item.status === 0}}">待审核</block>
+            <block wx:if="{{item.status === 1}}">已审核</block>
+          </view>
+          <!-- <view wx:if="{{item.status === 1 && item.sellStatus === 0}}" class="sell-btn status success1">出售</view> -->
         </view>
       </view>
-      <!-- <view class="function">
+      <view wx:if="{{item.status === 1 && item.sellStatus === 0}}" class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
-      </view> -->
+      </view>
     </view>
 </view>
 

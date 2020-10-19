@@ -27,8 +27,10 @@ Page({
    */
   onShow: function () {
     var token = wx.getStorageSync('token')
+    var userInfo = wx.getStorageSync('userInfo')
     this.setData({
-      token: token
+      token: token,
+      userInfo: userInfo
     })
   },
 

@@ -1,5 +1,5 @@
 <view class="list-wrap">
-  <view class="list" bindtap="toAddCompany">
+  <view wx:if="{{userInfo.type === 0}}" class="list" bindtap="toAddCompany">
     申请认证
     <view class="function">
       <image src="../../images/array1.png" mode="widthFix"></image>

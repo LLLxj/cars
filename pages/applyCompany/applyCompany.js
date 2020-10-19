@@ -185,9 +185,9 @@ Page({
       data: {
         dealUserId: mythis.data.userInfo.dealUserId,
         // sysUserId: mythis.data.userInfo.sysUserId,
-        sysUserId: 100002,
+        // sysUserId: 100002,
         dealStoreName: mythis.data.dealStoreName,
-        image: mythis.data.image,
+        image: mythis.data.logo,
         dealUserJob: mythis.data.dealUserJob
       },
       success: function (res) {

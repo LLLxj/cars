@@ -61,3 +61,8 @@
 .delete image{
   width: 100%;
 }
+
+.logo .val{
+  width: 100%;
+  flex-wrap: wrap;
+}

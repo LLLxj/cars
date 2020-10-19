@@ -32,7 +32,8 @@
     "pages/search/search",
     "pages/brandList/brandList",
     "pages/seriesList/seriesList",
-    "pages/modelList/modelList"
+    "pages/modelList/modelList",
+    "pages/addSell/addSell"
 
   ],
   "window": {
