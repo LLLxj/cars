@@ -1,0 +1,58 @@
+/* pages/mobileLogin/mobileLogin.wxss */
+.l-title{
+  color:black;
+  font-size: 40rpx;
+  margin-left:40rpx;
+  display:block;
+  margin-top:80rpx;
+}
+
+/* 登录表单 */
+.l-login-form{
+  margin-top:50rpx;
+}
+.l-border{
+  position:relative;
+}
+.pre-icon{
+  width:22rpx;
+  height:33rpx;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:40rpx;
+  margin:auto 0;
+}
+.l-border input{
+  height:100rpx;
+  font-size: 28rpx;
+  padding-left:100rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+.getCode{
+  z-index:100;
+  height:40rpx;
+  display:block;
+  position:absolute;
+  top:0rpx;
+  bottom:0rpx;
+  font-size: 28rpx;
+  right:10rpx;
+  margin:auto 0;
+}
+
+.l-login-btn{
+  width:90%;
+  background: #6AC4D2;
+  height:100rpx;
+  margin:0 auto;
+  margin-top:60rpx;
+  border-radius:5px;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+.l-login-btn text{
+  color:#fff;
+  font-size: 36rpx;
+}

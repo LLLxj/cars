@@ -33,7 +33,8 @@
     "pages/brandList/brandList",
     "pages/seriesList/seriesList",
     "pages/modelList/modelList",
-    "pages/addSell/addSell"
+    "pages/addSell/addSell",
+    "pages/mobileLogin/mobileLogin"
 
   ],
   "window": {

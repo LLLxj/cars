@@ -1,0 +1,30 @@
+<!--pages/mobileLogin/mobileLogin.wxml-->
+<view class="l-login">
+
+  <text class="l-title">手机号码登录</text>
+
+
+  <view class="l-login-form">
+  
+    <!-- 手机号 -->
+    <view class="l-border">
+      <input placeholder="请输入手机号" bindinput="getMobile" value="{{mobile}}"></input>
+      <image class="pre-icon" src="../../images/login-mobile.png"></image>
+    </view>
+
+    <!-- 验证码 -->
+    <view class="l-border">
+      <input placeholder="请输入验证码" bindinput="getSmsCode"></input>
+      <image class="pre-icon" src="../../images/login-mobile.png"></image>
+      <view class="getCode" hidden="{{!showTime}}" bindtap="getSms">{{getCode}}</view>
+      <view class="getCode" hidden="{{showTime}}">{{time}}s后可重新发送</view>
+    </view>
+
+    <view class="l-login-btn" bindtap='login'>
+      <text>登录</text>
+    </view>
+
+  </view>
+
+
+</view>

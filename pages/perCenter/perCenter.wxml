@@ -17,10 +17,11 @@
           <view hidden="{{token !== ''}}">
             <view class="login">{{userName}}</view>
             <!-- <view class="loginInfo" hidden="{{uid !== ''}}">立即预测考试通过率</view> -->
-            <view class="wxlogin" hidden="{{uid !== ''}}">
-              <button open-type="getPhoneNumber" class="getUserInfo" bindgetphonenumber="getPhoneNumber">
+            <view class="wxlogin" hidden="{{token !== ''}}">
+              <!-- <button open-type="getPhoneNumber" class="getUserInfo" bindgetphonenumber="getPhoneNumber">
               马上登录
-              </button>
+              </button> -->
+              <view bindtap="loginIn">马上登录</view>
             </view>
           </view>
           
@@ -110,5 +111,34 @@
     </view>
     <view class="quit" wx:if="{{token}}" bindtap="quit">退出登录</view>
   </view>
+
+</view>
+
+<view class="l-cover" wx:if="{{showOrDisplay}}" style="width:{{width}}px;height:{{height}}px">
+
+<!-- 选择登录模式 -->
+<view class="l-choose-login">
+
+  <view class="l-cancle-login" bindtap="calcleLogin">
+    <image src="../../images/cancle.png"></image>
+    <view class="clear"></view>
+  </view>
+
+  <text class="l-login-style">登录方式</text>
+
+
+  <view class="l-wechat-login" bindgetuserinfo="getUserInfo">
+    <image src="../../images/wechat.png"></image>
+    <text>微信账号登录</text>
+    <button open-type="getPhoneNumber" class="getUserInfo" bindgetphonenumber="getPhoneNumber">获取用户手机号</button>
+    <!-- <button open-type="getUserInfo" class="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+  </view>
+
+  <view class="l-mobile-login" bindtap="toMobilePage">
+    <image src="../../images/mobile.png"></image>
+    <text>手机账号登录</text>
+  </view>
+
+</view>
 
 </view>

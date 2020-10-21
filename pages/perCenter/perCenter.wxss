@@ -244,3 +244,101 @@
   text-align: center;
   color:#ed7a68;
 }
+/* 遮罩层 */
+.l-cover{
+  background-color: rgba(0, 0, 0, 0.7);
+  position:absolute;
+  width:100%;
+  left:0;
+  top:0;
+  z-index:100;
+}
+
+/* 选择登录模式 */
+.l-choose-login{
+  opacity: 1;
+  position:fixed; 
+  width:70%;
+  top:300rpx;
+  left:0;
+  right:0;
+  margin:0 auto;
+  height:500rpx;
+  background: #fff;
+  border-radius: 5px
+}
+.l-cancle-login image{
+  opacity:1;
+  width:40rpx;
+  height:40rpx;
+  float:right;
+  margin-right:30rpx;
+  margin-top:30rpx;
+}
+.l-login-style{
+  text-align: center;
+  width:100%;
+  display:block;
+  color:black;
+  font-size: 34rpx;
+  margin-top:10rpx;
+}
+
+.l-wechat-login{
+  width:80%;
+  margin:0 auto;
+  margin-top:50rpx;
+  border-radius:5px;
+  height:100rpx;
+  background: #6DC3D2
+}
+.l-wechat-login image{
+  float:left;
+  margin-left:80rpx;
+  margin-top:25rpx;
+}
+.l-wechat-login text{
+  float:left;
+  margin-left:30rpx;
+  margin-top:30rpx;
+}
+.getUserInfo{
+  position:absolute;
+  width:80%;
+  opacity: 0
+}
+
+.l-mobile-login{
+  width:80%;
+  margin:0 auto;
+  margin-top:50rpx;
+  border-radius:5px;
+  height:100rpx;
+  background: #F8F8F8
+}
+.l-wechat-login image{
+  width:64rpx;
+  height:55rpx;
+}
+
+.l-mobile-login image{
+  width:36rpx;
+  height:64rpx;
+  float:left;
+  margin-left:90rpx;
+  margin-top:20rpx;
+}
+.l-wechat-login text{
+  color:#fff;
+  font-size: 30rpx;
+}
+.l-mobile-login text{
+  color:black;
+  font-size: 30rpx;
+  float:left;
+  margin-left:50rpx;
+  margin-top:30rpx;
+}
+.clear{
+  clear:both;
+}

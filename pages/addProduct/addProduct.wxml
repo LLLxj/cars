@@ -58,9 +58,9 @@
     </view>
   </view>
   <view class="list">
-    <view class="label">牌照</view>
+    <view class="label">牌照所在地</view>
     <view class="val">
-      <input value="{{licenseId}}" bindinput="licenseIdChange" placeholder="请输入牌照"></input>
+      <input value="{{licenseId}}" bindinput="licenseIdChange" placeholder="请输入牌照所在地"></input>
     </view>
   </view>
   <view class="list">

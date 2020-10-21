@@ -12,7 +12,8 @@ Page({
     width: '',
     height: '',
     token: '',
-    userInfo: {}
+    userInfo: {},
+    showOrDisplay: false
   },
 
   /**
@@ -67,7 +68,6 @@ Page({
     var token = wx.getStorageSync('token')
     var userInfo = wx.getStorageSync('userInfo')
     var isFresh = wx.getStorageSync('isFresh')
-    console.log(token)
     this.setData({
       token: token,
       userInfo: userInfo
@@ -112,7 +112,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  loginIn: function () {
+    this.setData({
+      showOrDisplay: true
+    })
+  },
   // 获取用户手机号
   getPhoneNumber: function (e) {
     var mythis = this
@@ -136,7 +140,8 @@ Page({
             if (res.data && res.data.code == 0) {
               wx.hideLoading()
               mythis.setData({
-                token: res.data.data
+                token: res.data.data,
+                showOrDisplay: false
               })
               mythis.getUserInfo()
               // //缓存分享参数
@@ -172,6 +177,14 @@ Page({
       }
     })
   },
+  toMobilePage() {
+    wx.navigateTo({
+      url: '/pages/mobileLogin/mobileLogin'
+    })
+    this.setData({
+      showOrDisplay: false
+    })
+  },
   getUserInfo() {
     var mythis = this
     wx.showLoading({
@@ -204,6 +217,11 @@ Page({
             }
           })
         } else {
+          mythis.setData({
+            token: '',
+            userName: '马上登录'
+          })
+          wx.clearStorage()
           wx.hideLoading()
           app.showErrorMsg(res.data.message);
         }
@@ -327,6 +345,7 @@ Page({
           // console.log('清除token')
           mythis.setData({
             token: '',
+            userInfo: {},
             userName: '马上登录'
           })
           wx.clearStorage()
