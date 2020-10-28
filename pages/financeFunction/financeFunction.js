@@ -89,7 +89,7 @@ Page({
       // }) 
       wx.showModal({
         title: '提示',
-        content: '确定提现',
+        content: '确定兑换',
         success (res) {
           if (res.confirm) {
             mythis.handleWidthDraw()

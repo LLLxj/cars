@@ -167,6 +167,6 @@
     <!-- {{userInfo.start}} -->
   </view>
   <view class="list phone" bindtap="contact">
-    分期咨询
+    详情咨询
   </view>
 </view>

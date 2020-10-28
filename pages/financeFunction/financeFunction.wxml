@@ -1,18 +1,18 @@
 <view class="list-wrap">
   <view class="list" bindtap="toFinance">
-    金融单
+    业务订单
     <view class="function">
       <image src="../../images/array1.png" mode="widthFix"></image>
     </view>
   </view>
   <view class="list" bindtap="toWidthDraw">
-    客户提现
+    积分兑换
     <view class="function">
       <image src="../../images/array1.png" mode="widthFix"></image>
     </view>
   </view>
   <view class="list" bindtap="toRecordList">
-    提现、扣费记录
+    兑换记录
     <view class="function">
       <image src="../../images/array1.png" mode="widthFix"></image>
     </view>

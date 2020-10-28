@@ -85,7 +85,7 @@
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
     </view><view class="list" bindtap="toFinancePart" wx:if="{{userInfo.type === 1}}">
-      金融模块
+      业务模块
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>
@@ -104,7 +104,7 @@
       </view>
     </view> -->
     <view class="list" bindtap="toInstalMent">
-      咨询分期列表
+      咨询列表
       <view class="function">
         <image src="../../images/array1.png" mode="widthFix"></image>
       </view>

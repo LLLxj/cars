@@ -35,7 +35,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    apiUrl: "http://39.100.108.10:8087/wechat",
+    // apiUrl: " http://39.100.108.10:8087/wechat",
+    apiUrl: "https://wx.ysch99.com/wechat",
   },
   showNetworkError: function () {
     wx.showToast({

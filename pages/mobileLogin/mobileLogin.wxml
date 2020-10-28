@@ -14,10 +14,10 @@
 
     <!-- 验证码 -->
     <view class="l-border">
-      <input placeholder="请输入验证码" bindinput="getSmsCode"></input>
+      <input placeholder="请输入密码" bindinput="getSmsCode"></input>
       <image class="pre-icon" src="../../images/login-mobile.png"></image>
-      <view class="getCode" hidden="{{!showTime}}" bindtap="getSms">{{getCode}}</view>
-      <view class="getCode" hidden="{{showTime}}">{{time}}s后可重新发送</view>
+      <!-- <view class="getCode" hidden="{{!showTime}}" bindtap="getSms">{{getCode}}</view>
+      <view class="getCode" hidden="{{showTime}}">{{time}}s后可重新发送</view> -->
     </view>
 
     <view class="l-login-btn" bindtap='login'>
