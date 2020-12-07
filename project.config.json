@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "postcss": true,
     "minified": true,
@@ -27,9 +27,11 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "bundle": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.2",
@@ -42,17 +44,10 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "gamePlugin": {
@@ -68,10 +63,9 @@
           "scene": null
         },
         {
-          "id": 1,
           "name": "pages/detail/detail",
           "pathName": "pages/detail/detail",
-          "query": "id= 1315410d0a2c4e20a463b23dc6f4eeba&type=0&couWaresId=1",
+          "query": "id= 54570a708c20435fbc0cb05eb8b6169e",
           "scene": null
         },
         {
@@ -253,6 +247,12 @@
           "id": -1,
           "name": "pages/preAccess/preAccess",
           "pathName": "pages/preAccess/preAccess",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/regionList/regionList",
+          "pathName": "pages/regionList/regionList",
           "query": "",
           "scene": null
         }

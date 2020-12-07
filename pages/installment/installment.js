@@ -104,15 +104,10 @@ Page({
   sumbit() {
     const mythis = this
     const contactName = mythis.data.contactName
-    const contactPhone = mythis.data.contactPhone
-    const sex = mythis.data.sex
+    // const contactPhone = mythis.data.contactPhone
+    // const sex = mythis.data.sex
     const dealUserId = mythis.data.userInfo.dealUserId
     const dealWaresId = mythis.data.dealWaresId
-    console.log(contactName)
-    console.log(contactPhone)
-    console.log(sex)
-    console.log(dealUserId)
-    console.log(dealWaresId)
     if (!contactName) {
       wx.showToast({
         title: '请填写联系人',
@@ -121,22 +116,22 @@ Page({
       })
       return 
     }
-    if (!contactPhone) {
-      wx.showToast({
-        title: '请填写联系人电话',
-        icon: 'none',
-        duration: 2000
-      })
-      return 
-    }
-    if (!sex) {
-      wx.showToast({
-        title: '请选择性别',
-        icon: 'none',
-        duration: 2000
-      })
-      return 
-    }
+    // if (!contactPhone) {
+    //   wx.showToast({
+    //     title: '请填写联系人电话',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return 
+    // }
+    // if (!sex) {
+    //   wx.showToast({
+    //     title: '请选择性别',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    //   return 
+    // }
     wx.showLoading({
       title: '提交中。。。',
     })
@@ -148,8 +143,8 @@ Page({
       method: 'post', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       data: {
         contactName: contactName,
-        contactPhone: contactPhone,
-        sex: sex,
+        // contactPhone: contactPhone,
+        // sex: sex,
         dealUserId: dealUserId,
         dealWaresId: dealWaresId,
       },

@@ -2,7 +2,7 @@
 <wxs module="formatter" src="companyList.wxs"></wxs>
 <view class="wrap">
 
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:350rpx;">
     <block wx:for="{{bannerList}}" wx:key="index">
       <swiper-item>
         <image src="{{item.image}}" class="slide-image" model="widthFix" />
@@ -12,6 +12,23 @@
   
   <!-- 搜索框 -->
   <view class="serach">
+
+    <!-- 地区 -->
+    <view class="list" bindtap="toSearchRegion">
+      <view class="section">
+        <view class="section__title"></view>
+        <view class="picker">
+          <view class="location">{{region}}</view>
+          <view class="icon">
+            <image src="../../images/array.png" mode="widthFix"></image>
+          </view>
+          <!-- <picker class="picker-handle" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+            <view class="pickervalue">
+            </view>
+          </picker> -->
+        </view>
+      </view>
+    </view>
 
     <!-- 品牌 -->
     <view class="list" bindtap="toBrand">
@@ -106,9 +123,10 @@
         </picker>
       </view>
     </view> -->
-    <view class="input-wrap">
-      <input type="text" placeholder="请输入您要搜索的关键字" bindinput="getSearch" bindconfirm="getDataList"></input>
-    </view>
+  </view>
+
+  <view class="input-wrap">
+    <input type="text" placeholder="请输入您要搜索的关键字" bindinput="getSearch" bindconfirm="getDataList1"></input>
   </view>
 
   <view class="list-wrap">
@@ -129,7 +147,7 @@
             <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
             <!-- <view class="postdate">{{item.tradePrice}}元</view> -->
           </view>
-          <view class="price">{{item.tradePrice}}元</view>
+          <view class="price">{{item.tradePrice}}万元</view>
         </view>
 
       </view>

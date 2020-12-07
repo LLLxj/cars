@@ -34,7 +34,8 @@
     "pages/seriesList/seriesList",
     "pages/modelList/modelList",
     "pages/addSell/addSell",
-    "pages/mobileLogin/mobileLogin"
+    "pages/mobileLogin/mobileLogin",
+    "pages/regionList/regionList"
 
   ],
   "window": {

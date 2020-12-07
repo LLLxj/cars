@@ -68,7 +68,7 @@
     </view>
   </view>
   <view class="list logo">
-    <view class="label">驾驶证</view>
+    <view class="label">行驶证</view>
     <view class="val">
       <view class="logo-wrap" bindtap="uploadLogo">
         <image src="../../images/add-pic-icon.png"></image>

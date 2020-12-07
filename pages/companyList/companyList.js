@@ -11,6 +11,9 @@ Page({
     price: '价格',
     infolist: [],
     bannerList: [],
+    proAreaName: '',
+    cityAreaName: '',
+    countyAreaName: '',
     token: '',
     param: '',
     page: 1,
@@ -18,7 +21,8 @@ Page({
     couBrandName: '品牌',
     couBrandId: '',
     couModelId: '',
-    couModelName: '车辆类型'
+    couModelName: '车辆类型',
+    countyAreaId: ''
   },
 
   /**
@@ -41,7 +45,9 @@ Page({
   onShow: function () {
     var token = wx.getStorageSync('token')
     this.setData({
-      token: token
+      token: token,
+      infolist: [],
+      page: 1
     })
     if (this.data.couBrandName !== '品牌') {
       this.setData({
@@ -63,6 +69,12 @@ Page({
       this.setData({
         couModelName: '车辆类型',
         couModelId: ''
+      })
+    }
+    if (this.data.areaName !== '地区') {
+      this.setData({
+        region: this.data.areaName,
+        countyAreaId: this.data.cityId
       })
     }
     this.getDataList()
@@ -147,12 +159,23 @@ Page({
       app.showErrorMsg('请登录')
     }
   },
-  getDataList(param) {
+  getDataList1() {
+    this.setData({
+      page: 1,
+      infolist: []
+    })
+    this.getDataList()
+  },
+  getDataList() {
     var mythis = this
     const page = mythis.data.page
     const couBrandId = mythis.data.couBrandId || ''
     const dealWaresTitle = mythis.data.dealWaresTitle || ''
     const couModelId = mythis.data.couModelId || ''
+    const proAreaName = mythis.data.proAreaName || ''
+    const cityAreaName = mythis.data.cityAreaName || ''
+    const countyAreaName = mythis.data.countyAreaName || ''
+    const countyAreaId = mythis.data.countyAreaId || ''
     wx.showLoading({
       title: '加载中',
     })
@@ -167,14 +190,16 @@ Page({
         limit: 10,
         dealWaresTitle: dealWaresTitle,
         couBrandId: couBrandId,
-        couModelId: couModelId
+        couModelId: couModelId,
+        proAreaName: proAreaName,
+        cityAreaName: cityAreaName,
+        countyAreaName: countyAreaName,
+        countyAreaId: countyAreaId
       },
       success: function (res) {
         wx.hideLoading()
-        if (mythis.data.page === 1) {
-          mythis.setData({
-            infolist: []
-          })
+        const result = res.data.data.list
+        if (result && result.length) {
           if (res.data.data.currPage < res.data.data.totalPage) {
             const tempList = mythis.data.infolist.concat(res.data.data.list)
             const page = mythis.data.page
@@ -190,6 +215,11 @@ Page({
               canChangePage: false
             })
           }
+          if (mythis.data.page === 1 && !res.data.data.list.length) {
+            mythis.setData({
+              infolist: result,
+            })
+          }
         }
       },
       fail: function (err) {
@@ -200,9 +230,16 @@ Page({
     })
   },
   bindRegionChange: function (e) {
+    const regions = e.detail.value
+    const length = e.detail.value.length
+    const region = e.detail.value[length - 1]
     this.setData({
-      region: e.detail.value[0]
+      region: region,
+      proAreaName: regions[0],
+      cityAreaName: regions[1],
+      countyAreaName: regions[2],
     })
+    this.getDataList()
   },
   bindDateChange: function (e) {
     this.setData({
@@ -249,10 +286,8 @@ Page({
   },
   getSearch(e) {
     this.setData({
-      param: e.detail.value
+      dealWaresTitle: e.detail.value
     })
-    // const param = e.detail.value
-    // this.getDataList(param)
   },
   toPersonList() {
     wx.switchTab({
@@ -267,6 +302,23 @@ Page({
   toModel() {
     wx.navigateTo({
       url: '/pages/modelList/modelList',
+    })
+  },
+  bindRegionChange: function (e) {
+    const regions = e.detail.value
+    const length = e.detail.value.length
+    const region = e.detail.value[length - 1]
+    this.setData({
+      region: region,
+      proAreaName: regions[0],
+      cityAreaName: regions[1],
+      countyAreaName: regions[2],
+    })
+    this.getDataList()
+  },
+  toSearchRegion () {
+    wx.navigateTo({
+      url: '/pages/regionList/regionList',
     })
   }
 })

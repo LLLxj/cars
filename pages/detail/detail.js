@@ -127,6 +127,7 @@ Page({
    */
   onLoad: function (options) {
     var token = wx.getStorageSync('token')
+    console.log(options)
     this.setData({
       imageWidth: wx.getSystemInfoSync().windowWidth,
       id: options.id,
@@ -205,7 +206,6 @@ Page({
       success: function (res) {
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
-          console.log(res.data.data)
           mythis.setData({
             carInfo: res.data.data
           })
@@ -238,7 +238,6 @@ Page({
       success: function (res) {
         if (res.data && res.data.code == 0) {
           wx.hideLoading()
-          console.log(res.data.data)
           mythis.setData({
             carInfo: res.data.data
           })
@@ -275,9 +274,41 @@ Page({
   },
 
   phoneCall: function () {
-    wx.makePhoneCall({
-      phoneNumber: this.data.carInfo.contactPhone
-    })
+    const mythis = this
+    if (mythis.data.type == 0) {
+      wx.showLoading({
+        title: '请求中',
+      })
+      wx.request({
+        url: app.globalData.apiUrl + '/sys/config/getDefaultPhone',
+        header: {
+          token: mythis.data.token
+        },
+        method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        data: {
+        },
+        success: function (res) {
+          if (res.data && res.data.code == 0) {
+            wx.hideLoading()
+            wx.makePhoneCall({
+              phoneNumber: res.data.data
+            })
+          } else {
+            wx.hideLoading()
+            app.showErrorMsg(res.data.message);
+          }
+        },
+        fail: function (err) {
+          wx.hideLoading()
+          console.log(err);
+          app.showNetworkError(err)
+        }
+      })
+    } else {
+      wx.makePhoneCall({
+        phoneNumber: mythis.data.carInfo.contactPhone
+      })
+    }
   },
 
   estPrice() {

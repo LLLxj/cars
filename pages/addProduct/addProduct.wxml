@@ -46,13 +46,13 @@
     </view>
   </view> -->
   <view class="list">
-    <view class="label">批发价</view>
+    <view class="label">批发价(万元)</view>
     <view class="val">
       <input value="{{tradePrice}}" type="number" bindinput="tradePriceChange" placeholder="请输入批发价"></input>
     </view>
   </view>
   <view class="list">
-    <view class="label">零售价</view>
+    <view class="label">零售价(万元)</view>
     <view class="val">
       <input value="{{retailPrice}}" type="number" bindinput="retailPriceChange" placeholder="请输入零售价"></input>
     </view>
@@ -125,7 +125,7 @@
       <input value="{{transferNum}}" type="number" bindinput="getTransNum" placeholder="请输入过户次数"></input>
     </view>
   </view>
-  <view class="list">
+  <!-- <view class="list">
     <view class="label">是否有过户费</view>
     <view class="val">
       <picker bindchange="transferChange" range="{{transferArray}}" range-key="label">  
@@ -148,7 +148,7 @@
         <input name="isMaintain" disabled placeholder="请选择" value='{{isMaintainLabel}}' />  
       </picker>
     </view>
-  </view>
+  </view> -->
   <view class="list">
     <view class="label">联系人名称</view>
     <view class="val">
@@ -170,7 +170,7 @@
     </view>
   </view>
   <view class="list logo">
-    <view class="label">驾驶证</view>
+    <view class="label">行驶证</view>
     <view class="val">
       <view class="logo-wrap" bindtap="uploadLogo">
         <image src="../../images/add-pic-icon.png"></image>
@@ -212,9 +212,13 @@
     </view>
   </view>
 </view>
-<view class="btn" wx:if="{{!id}}" bindtap="submit">新增</view>
+<view class="btn" wx:if="{{!id}}" bindtap="submit">确定</view>
 <view class="btn" wx:if="{{id && detail.status === 1 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="submit">更新</view>
 <!-- <view class="btn" wx:if="{{id}}" bindtap="sellhanlde">出售</view> -->
-<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="onLineHandle">上架</view>
-<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="unLineHandle">下架</view>
-<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="sellhanlde" bindtap="saleHandle">已售出</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="onLineHandle">上架</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="unLineHandle">下架</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="saleHandle">已售出</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 0 && detail.sellStatus === 0}}" bindtap="contactHandle">详情咨询</view>
+<view class="btn" wx:if="{{detail.status === 4}}" bindtap="deleteHandle">删除</view>
+<view class="btn" wx:if="{{detail.status === 3 && detail.onlineStatus === 1 && detail.sellStatus === 0}}" bindtap="wasteHandle">作废</view>
+

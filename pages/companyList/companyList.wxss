@@ -62,29 +62,26 @@
 
 /* 搜索框开始 */
 .serach{
-  overflow: hidden;
   width:100%;
   /* border:1px solid #000000; */
   margin-bottom: 20rpx;
+  display:flex;
 }
 .serach .list{
-  width:33.3%;
-  float:left;
+  width:25%;
   padding:15rpx 0 0 0;
+  position: relative;
 }
 .serach .list .picker{
-  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 .picker .location{
-  float:left;
-  width:50%;
   text-align: right;
   margin-top:5rpx;
   font-size:26rpx;
 }
 .picker .icon{
-  float:left;
-  width:50%;
 }
 .picker .icon image{
   width:50rpx;
@@ -106,7 +103,7 @@
 }
 .input-wrap input{
   width: 94%;
-  margin: 10rpx auto;
+  margin: 10rpx auto 20rpx auto;
   height: 60rpx;
   line-height: 60rpx;
   padding: 0 0 0 20rpx;
@@ -120,4 +117,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.picker-handle{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 64rpx!important;
+}
+.pickervalue{
+  height: 64rpx;
 }

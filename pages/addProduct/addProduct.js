@@ -165,6 +165,7 @@ Page({
         if (res.data && res.data.code === 0) {
           wx.hideLoading()
           const result = res.data.data
+          console.log(result)
           mythis.setData({
             detail: result,
             couBrandId: result.couBrandId,
@@ -192,12 +193,12 @@ Page({
             addr: result.addr,
             waresRemark: result.waresRemark,
             transferNum: result.transferNum,
-            isTransfer: result.isTransfer,
-            isTransferLabel: result.isTransferLable,
-            isMortgage: result.isMortgage,
-            isMortgageLabel: result.isMortgageLable,
-            isMaintain: result.isMaintain,
-            isMaintainLabel: result.isMaintainLable,
+            // isTransfer: result.isTransfer,
+            // isTransferLabel: result.isTransferLable,
+            // isMortgage: result.isMortgage,
+            // isMortgageLabel: result.isMortgageLable,
+            // isMaintain: result.isMaintain,
+            // isMaintainLabel: result.isMaintainLable,
             marketYear: result.marketYear,
             couModelId: result.couModelId,
             couModelName: result.couModelName,
@@ -486,7 +487,8 @@ Page({
     var mythis = this
     wx.chooseImage({
       count: 1, // 默认9
-      sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      // sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -496,7 +498,8 @@ Page({
           title: '上传中...',
         })
         const uploadTask = wx.uploadFile({
-          url: app.globalData.apiUrl + '/deal/assess/upload/drivingImage', //仅为示例，非真实的接口地址
+          // url: app.globalData.apiUrl + '/deal/assess/upload/drivingImage', //仅为示例，非真实的接口地址
+          url: app.globalData.apiUrl + '/deal/wares/upload/drivingImage', //仅为示例，非真实的接口地址
           filePath: tempFiles[0].path,
           name: 'file',
           header: {
@@ -528,7 +531,8 @@ Page({
     var mythis = this
     wx.chooseImage({
       count: 1, // 默认9
-      sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      // sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -538,7 +542,8 @@ Page({
           title: '上传中...',
         })
         const uploadTask = wx.uploadFile({
-          url: app.globalData.apiUrl + '/deal/assess/upload/drivingImage', //仅为示例，非真实的接口地址
+          // url: app.globalData.apiUrl + '/deal/assess/upload/drivingImage', //仅为示例，非真实的接口地址
+          url: app.globalData.apiUrl + '/deal/wares/upload/waresImage', //仅为示例，非真实的接口地址
           filePath: tempFiles[0].path,
           name: 'file',
           header: {
@@ -570,7 +575,8 @@ Page({
     var mythis = this
     wx.chooseImage({
       count: 9, // 默认9
-      sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      // sizeType: ['original'], // 可以指定是原图还是压缩图，默认二者都有
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
@@ -652,9 +658,9 @@ Page({
     const addr = mythis.data.addr
     const waresRemark = mythis.data.waresRemark
     const transferNum = mythis.data.transferNum
-    const isTransfer = mythis.data.isTransfer
-    const isMortgage = mythis.data.isMortgage
-    const isMaintain = mythis.data.isMaintain
+    // const isTransfer = mythis.data.isTransfer
+    // const isMortgage = mythis.data.isMortgage
+    // const isMaintain = mythis.data.isMaintain
     const coverImage = mythis.data.coverImage
     const marketYear = mythis.data.marketYear
     wx.showLoading({
@@ -689,9 +695,9 @@ Page({
           addr: addr,
           waresRemark: waresRemark,
           transferNum: transferNum,
-          isTransfer: isTransfer,
-          isMortgage: isMortgage,
-          isMaintain: isMaintain,
+          // isTransfer: isTransfer,
+          // isMortgage: isMortgage,
+          // isMaintain: isMaintain,
           marketYear: marketYear,
           couModelId: couModelId,
           coverImage: {
@@ -746,9 +752,9 @@ Page({
           addr: addr,
           waresRemark: waresRemark,
           transferNum: transferNum,
-          isTransfer: isTransfer,
-          isMortgage: isMortgage,
-          isMaintain: isMaintain,
+          // isTransfer: isTransfer,
+          // isMortgage: isMortgage,
+          // isMaintain: isMaintain,
           marketYear: marketYear,
           couModelId: couModelId,
           coverImage: {
@@ -988,6 +994,76 @@ Page({
     })
     wx.request({
       url: app.globalData.apiUrl + '/deal/wares/sale/' + mythis.data.id,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          app.showsuccessMsg('操作成功')
+          setTimeout(function () {
+            wx.navigateBack()
+          }, 1000)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  contactHandle () {
+    const dealWaresId = this.data.detail.dealWaresId
+    wx.navigateTo({
+      url: '/pages/installment/installment?dealWaresId=' + dealWaresId
+    })
+  },
+  deleteHandle () {
+    var mythis = this
+    wx.showLoading({
+      title: '提交中',
+    })
+    const dealWaresId = mythis.data.detail.dealWaresId
+    wx.request({
+      url: app.globalData.apiUrl + '/deal/wares/delete/' + dealWaresId,
+      header: {
+        'token': mythis.data.token
+      },
+      method: 'get', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      data: {},
+      success: function (res) {
+        if (res.data && res.data.code === 0) {
+          wx.hideLoading()
+          app.showsuccessMsg('操作成功')
+          setTimeout(function () {
+            wx.navigateBack()
+          }, 1000)
+        } else {
+          wx.hideLoading()
+          app.showErrorMsg(res.data.msg);
+        }
+      },
+      fail: function (err) {
+        wx.hideLoading()
+        console.log(err);
+        app.showNetworkError()
+      }
+    })
+  },
+  wasteHandle () {
+    var mythis = this
+    wx.showLoading({
+      title: '提交中',
+    })
+    const dealWaresId = mythis.data.detail.dealWaresId
+    wx.request({
+      url: app.globalData.apiUrl + 'deal/wares/waste/' + dealWaresId,
       header: {
         'token': mythis.data.token
       },

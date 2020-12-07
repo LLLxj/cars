@@ -1,7 +1,5 @@
 var formatter = {
   getSlice: function (value) {
-    console.log(value)
-    console.log(typeof(value))
     var result = value.substring(0, 7)
     return result
   }

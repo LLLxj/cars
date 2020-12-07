@@ -9,7 +9,7 @@
       <block wx:for="{{carInfo.waresImages}}" wx:key="index">
         <swiper-item>
           <view class="swiper-item">
-            <image src="{{item.image}}" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image>
+            <image src="{{item.image}}" mode="widthFix" style="width: {{imageWidth}}px;"></image>
             <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image> -->
           </view>
         </swiper-item>
@@ -77,22 +77,19 @@
           过户次数<text class="value">{{carInfo.transferNum}}</text>
         </view>
       </view>
-      <view class="row">
+      <!-- <view class="row">
         <view class="list">
-          是否含过户费<text class="value">{{carInfo.isTransfer === 0 ? '是' : '否'}}</text>
+          是否含过户费<text class="value">{{carInfo.isTransfer === 0 ? '否' : '是'}}</text>
         </view>
         <view class="list">
-          是否有抵押<text class="value">{{carInfo.isMortgage === 0 ? '是' : '否'}}</text>
+          是否有抵押<text class="value">{{carInfo.isMortgage === 0 ? '否' : '是'}}</text>
         </view>
-      </view>
-      <view class="row">
+      </view> -->
+      <!-- <view class="row">
         <view class="list">
           是否有定期4s保养<text class="value">{{carInfo.isMaintain === 0 ? '是' : '否'}}</text>
         </view>
-        <!-- <view class="list">
-          1.3万公里/年<text class="value">{{carInfo.rundistance}}</text>
-        </view> -->
-      </view>
+      </view> -->
       <!-- <view class="row">
         <view class="list">
           上牌时间<text class="value">{{carInfo.shangpainianyue}}</text>
@@ -146,7 +143,7 @@
     <view class="title">图片展示</view>
     <view class="img-box" wx:if="carInfo.waresImages.length">
       <view class="img-list" wx:for="{{carInfo.waresImages}}" wx:key="unique">
-        <image class="img-list-src" src="{{item.image}}"></image>
+        <image class="img-list-src" mode="widthFix" src="{{item.image}}"></image>
       </view>
     </view>
   </view>
@@ -166,7 +163,7 @@
     立即联系
     <!-- {{userInfo.start}} -->
   </view>
-  <view class="list phone" bindtap="contact">
+  <!-- <view class="list phone" bindtap="contact">
     详情咨询
-  </view>
+  </view> -->
 </view>

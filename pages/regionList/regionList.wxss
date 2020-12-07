@@ -1,0 +1,142 @@
+.wrap{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: auto;
+}
+.list{
+  width:100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  font-size: 30rpx;
+  background: #ffffff;
+  border-bottom:1px solid #efefef;
+}
+.list-wrap .list{
+  width:100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 5%;
+  font-size: 30rpx;
+  background: #ffffff;
+  border-bottom:1px solid #efefef;
+}
+.logo{
+  font-size: 0;
+  margin: 0 0 0 20rpx;
+  width:80rpx; 
+}
+.logo image{
+  width: 100%;
+}
+.info{
+  font-size:30rpx;
+  margin:0 0 0 40rpx;
+}
+
+.no-data-wrap{
+  width: 80%;
+}
+.noData{
+  /* width: 80%; */
+  width:320rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+.noData image{
+  width: 100%;
+  margin:0 auto;
+  /* width:100%; */
+}
+.noData-text{
+  width:100%;
+  text-align: center;
+}
+.all-title{
+  padding: 10rpx 5%;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  background: #eeeeee;
+}
+.hot{
+  /* padding: 10rpx 5%; */
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+.hot .title{
+  font-size: 26rpx;
+}
+.hot-box{
+  display: flex;
+  flex-wrap: wrap;
+}
+.hot-box .item{
+  padding: 15rpx 30rpx;
+  font-size: 24rpx;
+  background: #efefef;
+  margin: 30rpx 15rpx 30rpx 0;
+}
+.hotImg{
+  width: 100%;
+}
+.brandName{
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.abs-btn{
+  position: fixed;
+  width: 60rpx;
+  height: 100vh;
+  right:0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  font-size: 30rpx;
+  
+}
+.abs-item{
+  margin: 0 auto;
+  width: 30rpx;
+  overflow: hidden;
+  height: 45rpx;
+  text-align: center;
+  color: #b9b9b9;
+}
+.rightScroll{
+  /* height: 70vh; */
+}
+.active{
+  color: red;
+}
+.cover{
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  /* left:0; */
+  top:0;
+  right: -100%;
+}
+.blank{
+  flex: 1;
+}
+.area{
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0 5%;
+  box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(0, 0, 0, 0.8);
+}
+.area .title{
+  font-size: 30rpx;
+  background: #ffffff;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: black;
+}
+.selectVisible{
+  transform: translate(-100%, 0px);
+}

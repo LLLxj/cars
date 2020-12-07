@@ -1,4 +1,8 @@
 /* pages/home/home.wxss */
+.wrap{
+  position: relative;
+  z-index: 10;
+}
 .list-wrap .list{
   width:90%;
   margin:0 auto;
@@ -62,22 +66,35 @@
 
 /* 搜索框开始 */
 .serach{
-  overflow: hidden;
+  /* overflow: hidden; */
   width:100%;
   /* border:1px solid #000000; */
   margin-bottom: 20rpx;
+  display: flex;
 }
 .serach .list{
-  width:33.3%;
-  float:left;
+  width:25%;
+  /* float:left; */
   padding:15rpx 0 0 0;
 }
 .serach .list .picker{
-  overflow: hidden;
+  /* overflow: hidden; */
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.picker-handle{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 64rpx!important;
+}
+.pickervalue{
+  height: 64rpx;
 }
 .picker .location{
-  float:left;
-  width:50%;
+  /* width:70%; */
   text-align: right;
   margin-top:5rpx;
   font-size:26rpx;
@@ -86,8 +103,8 @@
   font-size:26rpx;
 }
 .picker .icon{
-  float:left;
-  width:50%;
+  /* float:left; */
+  /* width:50%; */
 }
 .picker .icon image{
   width:50rpx;
@@ -112,7 +129,7 @@
 
 .input-wrap input{
   width: 94%;
-  margin: 10rpx auto;
+  margin: 10rpx auto 20rpx auto;
   height: 60rpx;
   line-height: 60rpx;
   padding: 0 0 0 20rpx;
@@ -126,4 +143,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.cover{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  font-size: 0;
+}
+.img-src{
+  width: 100%;
+}
+.cover-select{
+  position: fixed;
+  left:0;
+  top:0;
+  border: 1px solid red;
 }
