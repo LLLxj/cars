@@ -53,10 +53,21 @@
   color:#ea6200;
 }
 .info-desc .price{
-  margin-top:10rpx;
+  /* margin-top:10rpx; */
   font-size:32rpx;
   font-weight:bold;
   color:#ea6200;
+}
+.price-row{
+  margin-top:10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.area{
+  font-size:24rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 5rpx 0 0 0;
 }
 /* 介绍结束 */
 
@@ -64,7 +75,6 @@
 .serach{
   width:100%;
   /* border:1px solid #000000; */
-  margin-bottom: 20rpx;
   display:flex;
 }
 .serach .list{

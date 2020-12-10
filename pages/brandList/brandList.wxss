@@ -21,6 +21,9 @@
 .logo image{
   width: 100%;
 }
+.slide-wrap{
+  width: 100%;
+}
 .info{
   font-size:30rpx;
   margin:0 0 0 40rpx;

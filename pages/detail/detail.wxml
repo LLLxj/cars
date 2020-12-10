@@ -9,6 +9,7 @@
       <block wx:for="{{carInfo.waresImages}}" wx:key="index">
         <swiper-item>
           <view class="swiper-item">
+            <!-- aspectFill -->
             <image src="{{item.image}}" mode="widthFix" style="width: {{imageWidth}}px;"></image>
             <!-- <image src="https://pic1.58cdn.com.cn/p1/small/n_v2ada48ee087d94068954564042814126d.jpg" mode="widthFix" model="aspectFit" style="width: {{imageWidth}}px;"></image> -->
           </view>
@@ -29,7 +30,7 @@
     <view class="basic-info">
       <view class="item">
         <view class="label">车辆售价</view>
-        <view class="value addColor">{{carInfo.tradePrice || carInfo.retailPrice}}</view>
+        <view class="value addColor">{{carInfo.tradePrice || carInfo.retailPrice}}万元</view>
       </view>
       <view class="item item-two">
         <view class="label">上牌时间</view>

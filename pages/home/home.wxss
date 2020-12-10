@@ -57,19 +57,33 @@
   color:#ea6200;
 }
 .info-desc .price{
-  margin-top:10rpx;
+  /* margin-top:10rpx; */
   font-size:32rpx;
   font-weight:bold;
   color:#ea6200;
 }
+.price-row{
+  margin-top:10rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.area{
+  font-size:24rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin: 5rpx 0 0 0;
+}
 /* 介绍结束 */
 
 /* 搜索框开始 */
+.slide-wrap{
+  width: 100%;
+  font-size: 0;
+}
 .serach{
   /* overflow: hidden; */
   width:100%;
   /* border:1px solid #000000; */
-  margin-bottom: 20rpx;
   display: flex;
 }
 .serach .list{
@@ -101,10 +115,6 @@
 }
 .comEnter{
   font-size:26rpx;
-}
-.picker .icon{
-  /* float:left; */
-  /* width:50%; */
 }
 .picker .icon image{
   width:50rpx;
@@ -149,14 +159,24 @@
   left: 0;
   top: 0;
   z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5)
+}
+.img-wrap{
   font-size: 0;
+  width: 80%;
+  margin:200rpx auto;
+}
+.pass{
+  position: fixed;
+  top: 100rpx;
+  right: 50rpx;
+  width: 100rpx;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 24rpx;
+  text-align: center;
+  border-radius: 40rpx;
 }
 .img-src{
   width: 100%;
-}
-.cover-select{
-  position: fixed;
-  left:0;
-  top:0;
-  border: 1px solid red;
 }

@@ -2,7 +2,7 @@
 <wxs module="formatter" src="companyList.wxs"></wxs>
 <view class="wrap">
 
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:350rpx;">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:480rpx;">
     <block wx:for="{{bannerList}}" wx:key="index">
       <swiper-item>
         <image src="{{item.image}}" class="slide-image" model="widthFix" />
@@ -147,7 +147,11 @@
             <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
             <!-- <view class="postdate">{{item.tradePrice}}元</view> -->
           </view>
-          <view class="price">{{item.tradePrice}}万元</view>
+          <!-- <view class="price">{{item.tradePrice}}万元</view> -->
+          <view class="price-row">
+            <view class="price">{{item.tradePrice}}万元</view>
+            <view class="area">{{item.cityAreaName}}{{item.countyAreaName}}</view>
+          </view>
         </view>
 
       </view>

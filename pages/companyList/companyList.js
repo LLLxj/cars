@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    region: '广州',
+    region: '地区',
     date: '2020',
     price: '价格',
     infolist: [],
@@ -71,10 +71,9 @@ Page({
         couModelId: ''
       })
     }
-    if (this.data.areaName !== '地区') {
+    if (this.data.countyAreaName !== '' && this.data.cityAreaName !== '' && this.data.proAreaName !== '') {
       this.setData({
-        region: this.data.areaName,
-        countyAreaId: this.data.cityId
+        region: this.data.countyAreaName || this.data.cityAreaName || this.data.proAreaName
       })
     }
     this.getDataList()

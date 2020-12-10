@@ -111,7 +111,8 @@
   /* height: 70vh; */
 }
 .active{
-  color: red;
+  color: #E35F54;
+  background: #FDF5F2;
 }
 .cover{
   position: fixed;
@@ -127,16 +128,22 @@
 .area{
   width: 50%;
   box-sizing: border-box;
-  padding: 0 5%;
+  /* padding: 0 5%; */
   box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(0, 0, 0, 0.8);
 }
 .area .title{
   font-size: 30rpx;
   background: #ffffff;
   height: 80rpx;
+  padding: 0 10%;
   line-height: 80rpx;
   color: black;
 }
 .selectVisible{
   transform: translate(-100%, 0px);
+  transition-timing-function: linear;
+  transition-duration: .6s
+}
+.area .list{
+  padding: 0 10%;
 }

@@ -2,10 +2,13 @@
     <view class="hot">
       <view class="title">省份</view>
       <view class="hot-box">
-        <view class="item {{item.areaId === areaId ? 'active' : '' }}" wx:for="{{hotList}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="changeRegion">
+        <view class="item {{item.areaName === proAreaName ? 'active' : '' }}" wx:for="{{hotList}}" wx:key="index" wx:for-item='item' data-id="{{item}}" bindtap="changeRegion">
           {{item.areaName}}
         </view>
       </view>
+    </view>
+    <view class="list" bindtap="noCityHandle"> 
+      不限
     </view>
     <scroll-view class='rightScroll' scroll-y scroll-into-view="{{toView}}" scroll-with-animation="true">
       <view wx:for="{{list}}" wx:key="index" wx:for-item="item" data-id="{{item}}" bindtap="selectCity">
@@ -25,10 +28,10 @@
     <view class="noData-text">暂无数据</view>
   </view>
 </view> -->
-<view class="cover {{cityId ? 'selectVisible' : ''}}" style="width:{{width}}px;height:{{height}}px;">
-  <view class="blank"></view>
+<view class="cover {{cityId && show ? 'selectVisible' : ''}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="blank" bindtap="cancle"></view>
   <view class="area">
-    <view class="title">{{areaName}}</view>
+    <view class="title" bindtap="noAreaHandle">不限</view>
     <view wx:for="{{cityList}}" wx:key="index" wx:for-item="item" data-id="{{item}}" bindtap="selectArea">
       <view class="list"> 
         {{item.areaName}}

@@ -11,7 +11,7 @@
       </swiper-item>
     </block>
   </swiper> -->
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:350rpx;">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height:480rpx;">
     <block wx:for="{{bannerList}}" wx:key="index">
       <swiper-item>
           <image src="{{item.image}}" class="slide-image" model="widthFix" />
@@ -116,7 +116,11 @@
           <view class="buytime">{{formatter.getYearVal(item.registerTime)}}年  {{item.distance}}公里</view>
           <!-- <view class="postdate">{{item.retailPrice}}元</view> -->
         </view>
-        <view class="price">{{item.retailPrice}}万元</view>
+        <view class="price-row">
+          <view class="price">{{item.retailPrice}}万元</view>
+          <view class="area">{{item.cityAreaName}}{{item.countyAreaName}}</view>
+        </view>
+        
       </view>
 
       </view>
@@ -131,6 +135,9 @@
 
 </view>
 
-<!-- <view class="cover" style="width:{{width}}px;height:{{height}}px;">
-  <image class="img-src" src="{{advertiseInfo.image}}" mode="widthFix"></image>
-</view> -->
+<view class="cover" wx:if="{{showAdvertise}}" style="width:{{width}}px;height:{{height}}px;">
+  <view class="pass" bindtap="passHandle">跳过</view>
+  <view class="img-wrap">
+    <image class="img-src" src="{{advertiseInfo.image}}" mode="widthFix"></image>
+  </view>
+</view>

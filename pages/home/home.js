@@ -29,14 +29,16 @@ Page({
     width: '',
     height: '',
     advertiseInfo: {},
-    countyAreaId: ''
+    countyAreaId: '',
+    showAdvertise: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+    const mythis = this
+    mythis.setData({
       width: wx.getSystemInfoSync().windowWidth,
       height: wx.getSystemInfoSync().windowHeight
     })
@@ -53,9 +55,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this.data.cityId)
-    console.log(this.data.areaName)
-    // console.log(this.data.infolist)
     var token = wx.getStorageSync('token')
     var userInfo = wx.getStorageSync('userInfo')
     this.setData({
@@ -86,12 +85,18 @@ Page({
         couModelId: ''
       })
     }
-    if (this.data.areaName !== '地区') {
+    if (this.data.countyAreaName !== '' && this.data.cityAreaName !== '' && this.data.proAreaName !== '') {
       this.setData({
-        region: this.data.areaName,
-        countyAreaId: this.data.cityId
+        region: this.data.countyAreaName || this.data.cityAreaName || this.data.proAreaName
       })
     }
+    
+    // if (this.data.areaName !== '地区') {
+    //   this.setData({
+    //     region: this.data.areaName,
+    //     countyAreaId: this.data.cityId
+    //   })
+    // }
     this.getDataList()
     this.getBannerList()
     this.getAdvertiseInfo()
@@ -235,6 +240,11 @@ Page({
           mythis.setData({
             advertiseInfo: res.data.data
           })
+          setTimeout(function (){
+            mythis.setData({
+              showAdvertise: false
+            })
+          }, 3000)
         } else {
           wx.hideLoading()
           app.showErrorMsg(res.data.msg);
@@ -375,6 +385,11 @@ Page({
   toSearchRegion () {
     wx.navigateTo({
       url: '/pages/regionList/regionList',
+    })
+  },
+  passHandle () {
+    this.setData({
+      showAdvertise: false
     })
   }
 })

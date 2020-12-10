@@ -11,12 +11,16 @@ Page({
     list: [
       { firstLetter: '全部', brandVoList: [{ couBrandName: '不限' }] }
     ],
+    proAreaName: '广东省',
+    cityAreaName: '',
+    countyAreaName: '',
     areaId: 19,
     cityId: '',
     areaName: '广东省',
     toView: '',
     width: '',
-    height: ''
+    height: '',
+    show: false
   },
 
   /**
@@ -131,7 +135,6 @@ Page({
           mythis.setData({
             list: res.data.data
           })
-          console.log(res.data.data)
         } else {
           app.showErrorMsg(res.data.msg)
         }
@@ -143,48 +146,20 @@ Page({
       }
     })
   },
-  selectBrand(e) {
-    const brandParam = e.currentTarget.dataset.id
-    var pages = getCurrentPages();
-    var currPage = pages[pages.length - 1];   //当前页面
-    var prevPage = pages[pages.length - 2];  //上一个页面
-    
-    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
-    prevPage.setData({
-      couBrandName: brandParam.couBrandName,
-      couBrandId: brandParam.couBrandId,
-    })
-    setTimeout(function () {
-      wx.navigateBack({
-        delta: 1
-      })
-    }, 1000)
-  },
-  clickScroll(e) {
-    let value = e.target.dataset.id.firstLetter
-    if (value === '全部') {
-      value = 'qb'
-    } 
-    this.setData({
-      toView: value
-    })
-  },
   changeRegion (e) {
-    console.log(e)
-    const areaId = e.currentTarget.dataset.id.areaId
+    const proAreaName = e.currentTarget.dataset.id.areaName
     this.setData({
-      areaId: areaId,
+      proAreaName: proAreaName,
     })
     this.getDataList()
   },
   selectCity (e) {
-    console.log(e)
-    const areaName = e.currentTarget.dataset.id.areaName
+    const cityAreaName = e.currentTarget.dataset.id.areaName
     const cityId = e.currentTarget.dataset.id.areaId
-    console.log(areaName)
     this.setData({
-      areaName: areaName,
-      cityId: cityId
+      cityAreaName: cityAreaName,
+      cityId: cityId,
+      show: true
     })
     this.getCountry()
   },
@@ -207,7 +182,6 @@ Page({
           mythis.setData({
             cityList: res.data.data
           })
-          console.log(res.data.data)
         } else {
           app.showErrorMsg(res.data.msg)
         }
@@ -220,24 +194,69 @@ Page({
     })
   },
   selectArea (e) {
-    const areaName = e.currentTarget.dataset.id.areaName
+    const countyAreaName = e.currentTarget.dataset.id.areaName
     const cityId = e.currentTarget.dataset.id.areaId
-    console.log(areaName)
-    console.log(cityId)
+    const proAreaName = this.data.proAreaName
+    const cityAreaName = this.data.cityAreaName
     var pages = getCurrentPages();
-    console.log(pages)
     var currPage = pages[pages.length - 1];   //当前页面
     var prevPage = pages[pages.length - 2];  //上一个页面
     
     //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
     prevPage.setData({
-      areaName: areaName,
-      cityId: cityId,
+      proAreaName: proAreaName,
+      cityAreaName: cityAreaName,
+      countyAreaName: countyAreaName,
     })
     setTimeout(function () {
       wx.navigateBack({
         delta: 1
       })
     }, 1000)
+  },
+  noCityHandle () {
+    const proAreaName = this.data.proAreaName
+    const cityAreaName = null
+    const countyAreaName = null
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      proAreaName: proAreaName,
+      cityAreaName: cityAreaName,
+      countyAreaName: countyAreaName,
+    })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1000)
+  },
+  noAreaHandle () {
+    const proAreaName = this.data.proAreaName
+    const cityAreaName = this.data.cityAreaName
+    const countyAreaName = null
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1];   //当前页面
+    var prevPage = pages[pages.length - 2];  //上一个页面
+    
+    //直接调用上一个页面对象的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      proAreaName: proAreaName,
+      cityAreaName: cityAreaName,
+      countyAreaName: countyAreaName,
+    })
+    setTimeout(function () {
+      wx.navigateBack({
+        delta: 1
+      })
+    }, 1000)
+  },
+  cancle () {
+    this.setData({
+      show: false
+    })
   }
 })
